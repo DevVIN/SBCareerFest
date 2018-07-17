@@ -5,8 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Test Page</title>
+<link href="css/custom.css" rel="stylesheet"/>
+
 </head>
 <body>
 Test
+<script src="js/custom.js"></script>
 </body>
 </html>
