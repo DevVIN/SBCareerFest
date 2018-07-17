@@ -1,0 +1,409 @@
+/* Custom css for styling */
+.ui-dialog .ui-dialog-titlebar-close {
+  background: url(../images/close-cross.png) no-repeat top right transparent;
+  height: 24px;
+  width: 24px;
+  top: 24%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  right: auto; }
+
+.ui-dialog-titlebar {
+  background: transparent;
+  text-align: center;
+  border: none;
+  font-size: 20px;
+  margin: 30px 0;
+  text-transform: capitalize;
+  font-weight: bold;
+  color: #000000; }
+  .ui-dialog-titlebar {
+    margin: 0; }
+
+.ui-dialog-content {
+  overflow: hidden; }
+
+.checkcontainer {
+  display: inline;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.checkrow {
+  height: 34px;
+  line-height: 34px; }
+  .checkrow label {
+    font-size: 14px;
+    font-weight: normal;
+    font-family: 'Open Sans', sans-serif; }
+
+/* Hide the browser's default checkbox */
+.checkcontainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer; }
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee; }
+
+/* On mouse-over, add a grey background color */
+.checkcontainer:hover input ~ .checkmark {
+  background-color: #ccc; }
+
+/* When the checkbox is checked, add a blue background */
+.checkcontainer input:checked ~ .checkmark {
+  background-color: #1F618D; }
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none; }
+
+/* Show the checkmark when checked */
+.checkcontainer input:checked ~ .checkmark:after {
+  display: block; }
+
+/* Style the checkmark/indicator */
+.checkcontainer .checkmark:after {
+  left: 9px;
+  top: 3px;
+  width: 8px;
+  height: 15px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg); }
+
+.linkbtnstyle {
+  cursor: pointer;
+  color: #1F618D !important;
+  font-size: 14px; }
+  .linkbtnstyle:hover, .linkbtnstyle:active {
+    color: #5DADE2 !important; }
+
+.orSec {
+  margin: 15px 60px 12px;
+  border-top: 1px solid #ffffff;
+  position: relative; }
+  .orSec .ortext {
+    padding: 4px;
+    top: -13px;
+    font-size: 12px;
+    left: 50%;
+    background: #f8d4ce;
+    margin: 0 0 0 -16px;
+    position: absolute;
+    color: #666; }
+
+.form-group .bootstrap-select.btn-group {
+  margin-bottom: 10px; }
+
+.rowline {
+  margin-top: 30px;
+  margin-bottom: 30px; }
+
+.alreadymemeber {
+  height: 50px;
+  line-height: 50px;
+  background: #1F618D;
+  border: 1px solid #1F618D;
+  border-radius: 5px;
+  margin-top: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #ffffff; }
+  .alreadymemeber:hover, .alreadymemeber:active {
+    background: #5DADE2;
+    border-color: #5DADE2; }
+
+.bg-light-pink {
+  background: #f8d4ce; }
+
+.fright {
+  float: right; }
+
+.btn {
+  border-radius: 0; }
+
+.pad-top-btm-lrg {
+  padding: 50px 0; }
+
+.padtopbtm {
+  padding-top: 30px;
+  padding-bottom: 30px; }
+
+.margin-50 {
+  margin: 50px 0; }
+
+.bootstrap-select .dropdown-menu.inner {
+  overflow-x: hidden; }
+
+.bootstrap-select > .dropdown-toggle.bs-placeholder, .btn-group.bootstrap-select {
+  color: #555;
+  background-color: transparent;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  font-size: 14px;
+  font-weight: normal;
+  font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased; }
+
+button[type="submit"] {
+  color: #FFF;
+  background-color: #1F618D;
+  border: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  outline: 0;
+  width: 100%; }
+  button[type="submit"]:hover, button[type="submit"]:active {
+    background-color: #5DADE2 !important;
+    opacity: 1;
+    color: #fff !important; }
+
+.form-check-input {
+  width: auto;
+  display: inline-block; }
+
+.inlineblock {
+  display: inline-block; }
+
+.btn-group.bootstrap-select, .dropdown-toggle.bs-placeholder {
+  white-space: nowrap;
+  border-bottom: 1px solid #e7e7e7; }
+  .btn-group.bootstrap-select:focus, .dropdown-toggle.bs-placeholder:focus {
+    border-bottom: 1px solid #A3E4D7;
+    outline: none !important; }
+
+.left-align {
+  text-align: left; }
+
+.ui-dialog.loginDialog .ui-dialog-titlebar {
+  background: transparent;
+  text-align: center;
+  border: none;
+  font-size: 20px;
+  margin: 30px 0;
+  text-transform: capitalize;
+  font-weight: bold;
+  color: #000000; }
+  .ui-dialog.loginDialog .ui-dialog-titlebar {
+    margin: 0; }
+
+.ui-dialog.loginDialog .ui-dialog-content {
+  overflow: hidden; }
+
+.pad-top {
+  padding-top: 50px; }
+
+input[type="text"], input[type="email"], input[type="search"], input[type="password"], textarea {
+  border: none;
+  border-bottom: 1px solid #e7e7e7;
+  background: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none; }
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="search"]:focus, input[type="password"]:focus, textarea:focus {
+  border-bottom: 1px solid #A3E4D7;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none; }
+
+.form-control:focus {
+  border: #A3E4D7; }
+
+.search-container .srchbtn {
+  text-transform: uppercase; }
+
+.form-control {
+  margin: 0 0 10px 0; }
+
+.logo {
+  max-height: 50px; }
+
+.navbar .mainlogo {
+  display: block;
+  margin-bottom: 10px; }
+
+.upload-resume {
+  -webkit-box-shadow: 0px 0px 20px 0px cadetblue;
+          box-shadow: 0px 0px 20px 0px cadetblue; }
+
+.topbar {
+  height: 90px;
+  padding: 25px 0; }
+  .topbar .topLogo {
+    float: left; }
+  .topbar img {
+    width: 163px;
+    height: 40px; }
+  .topbar p {
+    float: right;
+    width: auto;
+    max-width: 400px;
+    word-break: break-all;
+    margin: 0;
+    padding: 10px 0; }
+
+.linkstyle {
+  color: #2c485f;
+  display: inline-block; }
+
+.banner {
+  background: #4b4b4b;
+  height: 60px;
+  text-align: center;
+  padding: 20px; }
+  .banner p {
+    font-size: 16px;
+    color: #ffffff; }
+
+.container {
+  text-align: center; }
+  .container .job-text {
+    width: 435px;
+    margin: 20px auto; }
+
+.educational-info-img {
+  background: url(../images/educational-info.png) no-repeat top center;
+  height: 128px;
+  width: 128px;
+  margin: 0 auto 20px; }
+
+.personal-info-img {
+  background: url(../images/personal-info.png) no-repeat top center;
+  height: 128px;
+  width: 128px;
+  margin: 0 auto 20px; }
+
+.fresher-icon {
+  background: url(../images/college-graduation.png) no-repeat top center;
+  height: 128px;
+  width: 128px;
+  margin: 0 auto 20px; }
+
+.professional-icon {
+  background: url(../images/professional-advance.png) no-repeat top center;
+  height: 128px;
+  width: 128px;
+  margin: 0 auto 20px; }
+
+.subtext {
+  margin: 20px 0; }
+
+.head {
+  font-size: 20px;
+  margin: 30px 0;
+  text-transform: capitalize;
+  font-weight: bold;
+  color: #000000; }
+
+.info-text {
+  padding: 20px 0;
+  float: left;
+  width: 100%; }
+  .info-text ul {
+    list-style: none;
+    display: inline-block; }
+    .info-text ul li {
+      text-align: left;
+      font-size: 12px;
+      color: #000;
+      font-weight: 600; }
+  .info-text .numbers i {
+    border-right: 1px solid #707070;
+    margin: 0 15px; }
+
+footer a {
+  color: #27A7D4;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 1;
+  padding: 0 10px;
+  border-left: solid 1px #A7A7A7; }
+  footer a:first-child {
+    border-left: none; }
+
+.white-popup {
+  position: relative;
+  background: #FFF;
+  padding: 20px;
+  width: auto;
+  max-width: 500px;
+  margin: 20px auto; }
+
+@media (min-width: 1024px) {
+  .keyword-container {
+    padding-right: 5px; }
+  .srchbtn-container {
+    padding-left: 5px; }
+  .search-container .loc-container, .search-container .exp-container, .search-container .sal-container {
+    padding-left: 5px;
+    padding-right: 5px; } }
+
+.search-container .selectpicker {
+  height: 40px; }
+
+@media (max-width: 1023px) {
+  .search-container .row {
+    display: block; }
+  .search-container {
+    margin: 10px 0; } }
+
+label, input {
+  display: block; }
+
+input.text {
+  margin-bottom: 12px;
+  width: 95%;
+  padding: .4em; }
+
+fieldset {
+  padding: 0;
+  border: 0;
+  margin-top: 25px; }
+
+h1 {
+  font-size: 1.2em;
+  margin: .6em 0; }
+
+div#users-contain {
+  width: 350px;
+  margin: 20px 0; }
+
+div#users-contain table {
+  margin: 1em 0;
+  border-collapse: collapse;
+  width: 100%; }
+
+div#users-contain table td, div#users-contain table th {
+  border: 1px solid #eee;
+  padding: .6em 10px;
+  text-align: left; }
+
+.ui-dialog .ui-state-error {
+  padding: .3em; }
+
+.validateTips {
+  border: 1px solid transparent;
+  padding: 0.3em; }
