@@ -1,4 +1,4 @@
-package careerfest.in.controllers;
+package com.careerfest.controllers;
 
 import java.util.Map;
 
@@ -27,7 +27,7 @@ public class TestController {
 			Rmodel.setPassword("1234567890");
 			Rmodel.setConfirm_password("0987654321");
 			System.out.println("On Login Controller Registration value "+Rmodel.getEmail_id()+" "+Rmodel.getPassword());
-			saveRegistrationData.saveRegistrationDetail(Rmodel);
+		//	saveRegistrationData.saveRegistrationDetail(Rmodel);
 			return "home";
 		}
 }

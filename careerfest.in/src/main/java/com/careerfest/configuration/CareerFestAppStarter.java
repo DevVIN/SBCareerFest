@@ -1,4 +1,4 @@
-package careerfest.in;
+package com.careerfest.configuration;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.careerfest,careerfest.in")
+@ComponentScan(basePackages = "com.careerfest")
 @EntityScan("com.careerfest.model")
 @EnableJpaRepositories("com.careerfest.repository")
 public class CareerFestAppStarter extends SpringBootServletInitializer {
