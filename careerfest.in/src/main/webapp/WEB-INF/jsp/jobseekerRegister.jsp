@@ -1,4 +1,4 @@
-<!-- Jobseek Registration -->
+<!-- Jobseeker Registration -->
 
 <section class="builder-bg contact-form-style1" id="contact-section9">
     <div class="container pad-top-btm-lrg">
@@ -21,31 +21,31 @@
            </div>
            <div class="upload-resume col-xs-12 col-sm-5 bg-light-gray padtopbtm">
                 <div class="head">Register and Upload resume with us!</div>
-                <form role="form">
+                <form role="form" id="registerform" method="post" action="/jobseekerRegister">
                     <div class="form-group row">
                         <div class="col-xs-12 col-sm-12">
-                            <input type="text" class="form-control" id="fullname" placeholder="Full Name">
+                            <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Full Name">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-12 col-sm-12">
-                            <input type="email" class="form-control" id="remail" placeholder="Email">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                         </div>
                     </div>
                     <div class="clearfix"></div>
                     <div class="form-group row"> 
                         <div class="col-xs-12 col-sm-12">
-                            <input type="password" class="form-control" id="epassword" placeholder="Password">
+                            <input type="password" class="form-control" id="password"  name="password" placeholder="Password">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-12 col-sm-12">                          
-                            <input type="text" class="form-control" id="rmobile" placeholder="Mobile">
+                            <input type="text" class="form-control" id="mobileno" name="mobileno" placeholder="Mobile">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-12 col-sm-12">                                                        
-                            <select class="selectpicker form-control" data-live-search="true" title="Location">
+                            <select id="Location" name="Location" class="selectpicker form-control" data-live-search="true" title="Location">
                                 <option data-tokens="Mumbai">Mumbai</option>
                                 <option data-tokens="Pune">Pune</option>
                                 <option data-tokens="Delhi">Delhi</option>
@@ -57,7 +57,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-12 col-sm-12">                                 
-                            <select class="selectpicker form-control" data-live-search="true" title="Experience">
+                            <select id="Experience"  name="Experience" class="selectpicker form-control" data-live-search="true" title="Experience">
                                 <option  data-tokens="0/Fresher">0/Fresher</option>
                                 <option data-tokens="1">1</option>
                                 <option data-tokens="2">2</option>
@@ -68,12 +68,12 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-12 col-sm-12">                                 
-                            <input type="text" class="form-control" id="rkeyskill" placeholder="Key Skills">
+                            <input type="text" class="form-control" name="skills" id="skills" placeholder="Key Skills">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-12 col-sm-12">                                  
-                            <select class="selectpicker form-control" data-live-search="true" title="Industry">
+                            <select class="selectpicker form-control" data-live-search="true" name="Industry" id="Industry" title="Industry">
                                 <option  data-tokens="Automotive/ Ancillaries">Automotive/ Ancillaries</option>
                                 <option data-tokens="Banking/ Financial Services">Banking/ Financial Services</option>
                                 <option data-tokens="Construction & Engineering">Construction & Engineering</option>
@@ -86,7 +86,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-12 col-sm-12">                                  
-                            <select class="selectpicker form-control" data-live-search="true" title="Function">
+                            <select class="selectpicker form-control" data-live-search="true" name="Functional" id="Functional" title="Function">
                                 <option  data-tokens="Admin/Secretarial">Admin/Secretarial</option>
                                 <option data-tokens="Customer Service/ Call Centre/ BPO">Customer Service/ Call Centre/ BPO</option>
                                 <option data-tokens="Finance & Accounts">Finance & Accounts</option>
@@ -100,7 +100,7 @@
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label" for="mobile">Upload Resume:</label>
                         <div class="col-sm-8">  
-                            <input type="file" id="exampleInputFile" class="form-control">
+                            <input type="file" id="Resume" name="Resume" class="form-control">
                         </div>
                     </div>
                     <div class="form-group row">

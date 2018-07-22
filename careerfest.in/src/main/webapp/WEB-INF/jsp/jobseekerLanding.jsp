@@ -14,10 +14,10 @@
                             <input type="text" class="form-control" id="fullname" placeholder="Full Name">
                         </div>
                         <div class="col-xs-12 col-sm-6">
-                            <input type="email" class="form-control" id="pemail" placeholder="Email">
+                            <input type="email" class="form-control" id="email" placeholder="Email">
                         </div>
                         <div class="col-xs-12 col-sm-6">
-                            <input type="password" class="form-control" id="ppassword" placeholder="Password">
+                            <input type="password" class="form-control" id="password" placeholder="Password">
                         </div>
                         <div class="col-xs-12 col-sm-6">                          
                             <input type="text" class="form-control" id="mobile" placeholder="Mobile">
