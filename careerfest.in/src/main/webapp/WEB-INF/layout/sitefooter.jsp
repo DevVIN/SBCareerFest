@@ -21,7 +21,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-                    <div>Not a member yet? <a href="#" class="linkbtnstyle">Register Now</a></div>
+                    <div>Not a member yet? <a href="/jobseekerRegister" class="linkbtnstyle">Register Now</a></div>
                     <!-- Allow form submission with keyboard without duplicating the dialog button -->
                     <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
                 </div>
