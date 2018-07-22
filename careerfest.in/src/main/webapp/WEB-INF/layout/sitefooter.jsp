@@ -1,39 +1,38 @@
 <!-- Global Sections which will be used on any page -->
 
 <div id="login-form" class="container" title="Welcome on Careerfest" style="display: none">
-    <form>
-        <fieldset>
-            <div class="form-group row">
-                <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-                    <input type="text" name="email" id="emailid" placeholder="Enter your Email ID" class="text ui-widget-content ui-corner-all">
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-xs-12 col-sm-10 col-sm-offset-1 left-align">
-                    <input type="password" name="password" id="password" placeholder="Enter your Password" class="text ui-widget-content ui-corner-all">
-                    <a target="_blank" href="#" class="linkbtnstyle">Forgot Password?</a>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-                    <button type="submit" class="btn btn-default" value="Login">Login</button>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-                    <div>Not a member yet? <a href="/jobseekerRegister" class="linkbtnstyle">Register Now</a></div>
-                    <!-- Allow form submission with keyboard without duplicating the dialog button -->
-                    <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
-                </div>
-            </div>
-        </fieldset>
-    </form>
+	<form>
+		<fieldset>
+			<div class="form-group row">
+				<div class="col-xs-12 col-sm-10 col-sm-offset-1">
+					<input type="text" name="email" id="emailid" placeholder="Enter your Email ID" class="text ui-widget-content ui-corner-all">
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-xs-12 col-sm-10 col-sm-offset-1 left-align">
+					<input type="password" name="password" id="password" placeholder="Enter your Password" class="text ui-widget-content ui-corner-all">
+					<a target="_blank" href="#" class="linkbtnstyle">Forgot Password?</a>
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-xs-12 col-sm-6 col-sm-offset-3">
+					<button type="submit" class="btn btn-default" value="Login">Login</button>
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-xs-12 col-sm-10 col-sm-offset-1">
+					<div>Not a member yet? <a href="/jobseekerRegister" class="linkbtnstyle">Register Now</a></div>
+					<!-- Allow form submission with keyboard without duplicating the dialog button -->
+					<input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+				</div>
+			</div>
+		</fieldset>
+	</form>
 </div> 
 
 <div class="test-popup-link" style="display: none">
-    <img src="images/website_under_maintenance.png" title="website_under_maintenance"/>
-</div>     
-
+	<img src="images/website_under_maintenance.png" title="website_under_maintenance"/>
+</div>
 
 <!-- javascript libraries for website -->
 
