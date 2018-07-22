@@ -10,23 +10,41 @@
 				</div>
 				<div class="col-xs-12 col-sm-8 padtopbtm upload-resume bg-light-gray">
 					<div class="form-group row">
-						<div class="col-xs-12 col-sm-6">
-							<input type="text" class="form-control" id="fullname" placeholder="Full Name">
+						<div class="col-xs-12 col-sm-12">
+							<div class="row">
+								<div class="col-xs-12 col-sm-4">
+									<div class="prevphoto">
+										<img id="propic" src="images/proimg124x124.png" alt="Profile image" />
+									</div>
+								</div>
+								<div class="prevphotoinfo col-xs-12 col-sm-8">
+									<ul>
+										<li>Max file upload size: 2 MB.</li>
+										<li>You can upload picture in ".jpg, .jpeg, .png, bmp, tif." formats.</li>
+										<li>The image file name should not contain special characters</li>
+									</ul>
+									<div class="uploadphoto">
+										<span class="inputwrapper btnstyleblue btn btn-default">Upload Photo
+											<input type='file' id="proImg" value="Upload Photo" />
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="line-separator"></div>
+						</div>
+						<div class="col-xs-12 col-sm-10">
+							<input type="text" class="form-control" id="resumetitle" placeholder="Resume Title">
 						</div>
 						<div class="col-xs-12 col-sm-6">
-							<input type="email" class="form-control" id="email" placeholder="Email">
+							<select class="selectpicker form-control" data-live-search="true" title="Job Type">
+								<option data-tokens="Full Time">Full Time</option>
+								<option data-tokens="Part Time">Part Time</option>
+								<option data-tokens="Contract">Contract</option>
+								<option data-tokens="Freelance">Freelance</option>
+							</select>
 						</div>
 						<div class="col-xs-12 col-sm-6">
-							<input type="password" class="form-control" id="password" placeholder="Password">
-						</div>
-						<div class="col-xs-12 col-sm-6">
-							<input type="text" class="form-control" id="mobile" placeholder="Mobile">
-						</div>
-						<div class="col-xs-12 col-sm-6">
-							<input type="text" class="form-control" id="keyskill" placeholder="Key Skills">
-						</div>
-						<div class="col-xs-12 col-sm-6">
-							<select class="selectpicker form-control" data-live-search="true" title="Location">
+							<select class="selectpicker form-control" data-live-search="true" title="Preferred Job Location" multiple data-max-options="3">
 								<option data-tokens="Mumbai">Mumbai</option>
 								<option data-tokens="Pune">Pune</option>
 								<option data-tokens="Delhi">Delhi</option>
@@ -36,33 +54,13 @@
 							</select>
 						</div>
 						<div class="col-xs-12 col-sm-6">
-							<select class="selectpicker form-control" data-live-search="true" title="Industry">
-								<option  data-tokens="Automotive/ Ancillaries">Automotive/ Ancillaries</option>
-								<option data-tokens="Banking/ Financial Services">Banking/ Financial Services</option>
-								<option data-tokens="Construction & Engineering">Construction & Engineering</option>
-								<option data-tokens="ITES/BPO">ITES/BPO</option>
-								<option data-tokens="IT/ Computers - Hardware">IT/ Computers - Hardware</option>
-								<option data-tokens="IT/ Computers - Software">IT/ Computers - Software</option>
-								<option data-tokens="KPO/Analytics">KPO/Analytics</option>
-							</select>
-						</div>
-						<div class="col-xs-12 col-sm-6">
-							<select class="selectpicker form-control" data-live-search="true" title="Function">
-								<option  data-tokens="Admin/Secretarial">Admin/Secretarial</option>
-								<option data-tokens="Customer Service/ Call Centre/ BPO">Customer Service/ Call Centre/ BPO</option>
-								<option data-tokens="Finance & Accounts">Finance & Accounts</option>
-								<option data-tokens="Human Resources">Human Resources</option>
-								<option data-tokens="IT">IT</option>
-								<option data-tokens="Marketing & Communicationse">Marketing & Communicationse</option>
-							</select>
-						</div>
-						<div class="col-xs-12 col-sm-6">
-							<select class="selectpicker form-control" data-live-search="true" title="Experience">
-								<option  data-tokens="0/Fresher">0/Fresher</option>
-								<option data-tokens="1">1</option>
-								<option data-tokens="2">2</option>
-								<option data-tokens="3">3</option>
-								<option data-tokens="4">4</option>
+							<select class="selectpicker form-control" data-live-search="true" title="Role">
+								<option data-tokens="Java Developer">Java Developer</option>
+								<option data-tokens="UI Developer">UI Developer</option>
+								<option data-tokens="Dot Net Developer">Dot Net Developer</option>
+								<option data-tokens="Software Engineer">Software Engineer</option>
+								<option data-tokens="Team Lead">Team Lead</option>
+								<option data-tokens="Trainee">Trainee</option>
 							</select>
 						</div>
 					</div>

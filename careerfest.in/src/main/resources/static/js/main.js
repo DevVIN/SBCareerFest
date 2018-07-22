@@ -25,9 +25,23 @@ var isMobile = {
 /*==============================================================
  owl slider
  ==============================================================*/
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        
+        reader.onload = function (e) {
+            $('#propic').attr('src', e.target.result);
+        }
+        
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 
 $(document).ready(function () {
     bind_shrink_header();
+    $("#proImg").change(function(){
+        readURL(this);
+    });
     $('.button--trigger').on('click', function(e) {
         $('.button--disapear').show();
         $('.button--disapear').removeClass('out').addClass('active');
