@@ -18,9 +18,9 @@
 	    <tiles:insertAttribute name="cssheader"></tiles:insertAttribute>
     </head>
     <body>
-    	<tiles:insertAttribute name="innerheader"></tiles:insertAttribute>
+    	<tiles:insertAttribute name="header"></tiles:insertAttribute>
 		<tiles:insertAttribute name="body"></tiles:insertAttribute>
-		<tiles:insertAttribute name="innerfooter"></tiles:insertAttribute>
+		<tiles:insertAttribute name="footer"></tiles:insertAttribute>
 		<tiles:insertAttribute name="cssfooter"></tiles:insertAttribute>
 	</body>
 </html>
