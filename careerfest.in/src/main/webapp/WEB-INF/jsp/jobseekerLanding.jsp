@@ -142,6 +142,88 @@
 				</div>
 				<div class="clearfix"></div>
 			</div>
+			<div class="row rowline">
+				<div class="col-xs-12 col-sm-4 pad-top">
+					<div class="educational-info-img"></div>
+				</div>
+				<div class="col-xs-12 col-sm-8 padtopbtm upload-resume bg-light-gray">
+					<div class="form-group row">
+						<div class="col-xs-12 col-sm-6">
+							<input type="text" class="form-control" id="designation" name="designation" placeholder="Designation">
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<select class="selectpicker form-control" data-live-search="true" title="Company">
+								<option data-tokens="Infosys">Infosys</option>
+								<option data-tokens="Tech Mahendra">Tech Mahendra</option>
+								<option data-tokens="Isobar commerce">Isobar commerce</option>
+								<option data-tokens="Swiftwin">Swiftwin</option>
+								<option data-tokens="IBM">IBM</option>
+								<option data-tokens="Accenture">Accenture</option>
+							</select>
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<select class="selectpicker form-control" data-live-search="true" title="Year">
+								<option data-tokens="2018">2018</option>
+								<option data-tokens="2017">2017</option>
+								<option data-tokens="2016">2016</option>
+								<option data-tokens="2015">2015</option>
+								<option data-tokens="2014">2014</option>
+								<option data-tokens="2013">2013</option>
+							</select>
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<select class="selectpicker form-control" data-live-search="true" title="Salary">
+								<option><1 Lac</option>
+								<option data-tokens="1">1</option>
+								<option data-tokens="2">2</option>
+								<option data-tokens="3">3</option>
+								<option data-tokens="4">4</option>
+								<option data-tokens="5">5</option>
+								<option data-tokens="6">6</option>
+								<option data-tokens="7">7</option>
+								<option data-tokens="8">8</option>
+								<option data-tokens="9">9</option>
+								<option data-tokens="10">10</option>
+								<option data-tokens="11">11</option>
+								<option data-tokens="12">12</option>
+							</select>
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<div class="row checkrow">
+								<div class="right col-sm-2">
+									<label class="checkcontainer">
+										<input type="checkbox" checked="checked" class="form-control">
+										<span class="checkmark"></span>
+									</label>
+								</div>
+								<label class="left col-sm-5">Current Employer</label>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<select class="selectpicker form-control" data-live-search="true" title="Notice Period">
+								<option  data-tokens="Immediately">Immediately</option>
+								<option data-tokens="15 Days">15 Days</option>
+								<option data-tokens="30 Days">30 Days</option>
+								<option data-tokens="45 Days">45 Days</option>
+								<option data-tokens="60 Days">60 Days</option>
+								<option data-tokens="90 Days">90 Days</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="row rowline">
+				<div class="col-xs-12 col-sm-4 pad-top">
+				</div>
+				<div class="col-xs-12 col-sm-8 padtopbtm upload-resume bg-light-gray">
+					<div class="form-group row">
+						<div class="col-xs-12 col-sm-6">
+							<button type="submit" class="btn btn-default">Save & Continue</button>
+						</div>
+					</div>
+				</div>
+			</div>
 		</form>
 	</div>
 </section>
