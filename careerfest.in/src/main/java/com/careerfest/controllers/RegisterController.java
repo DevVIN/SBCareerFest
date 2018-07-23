@@ -1,13 +1,13 @@
 package com.careerfest.controllers;
 
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.careerfest.model.Contact;
 import com.careerfest.model.User;
 import com.careerfest.service.UserService;
 
@@ -19,9 +19,11 @@ public class RegisterController {
 	UserService userService;
 
 	 @RequestMapping("/home")
-	 public String welcome(Map<String, Object> model) {
+	 public ModelAndView welcome(ModelAndView modelAndView,Contact contact,BindingResult result) {
 		System.out.println("Welcome Home");
-		return "home";
+		modelAndView.addObject("contactus",contact);
+		modelAndView.setViewName("home");
+		return modelAndView;
 		}
 	 
 	 @RequestMapping(value="/jobseekerRegister", method = RequestMethod.GET)

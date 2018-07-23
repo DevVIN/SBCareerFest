@@ -38,5 +38,6 @@ public final class TilesDefinationConfiguration implements DefinitionsFactory {
 		System.out.println("inside adddefinations");
 		addDefaultLayoutDef("home", "Home", "/WEB-INF/jsp/home.jsp");
 		addDefaultLayoutDef("registration", "Registration", "/WEB-INF/jsp/registration.jsp");
+		addDefaultLayoutDef("jobseekerRegister", "Registration", "/WEB-INF/jsp/jobseekerRegister.jsp");
 	}
 }
