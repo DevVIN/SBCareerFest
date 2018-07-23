@@ -898,7 +898,7 @@
 					<h5
 						class="alt-font text-dark-gray display-block tz-text margin-fifteen-bottom">Ready
 						to Get Started?</h5>
-					<form role="form"  action="/mailcontact" method="post">
+					<form role="form"  action="/contact" method="post">
 						<input  type="text" name="name" data-email="required" id="name"
 							placeholder="* Your Name" class="medium-input border-radius-8">
 						<input  type="text" name="email" data-email="required" id="email"
@@ -906,7 +906,7 @@
 						<textarea  name="message" id="message" placeholder="Your Message"
 							class="medium-input border-radius-8"></textarea>
 						<button
-							class="default-submit btn-medium btn-circle btn bg-greenish-blue text-white tz-text"
+							class="btn-medium btn-circle btn bg-greenish-blue text-white tz-text"
 							type="submit">SEND MESSAGE</button>
 					</form>
 				</div>

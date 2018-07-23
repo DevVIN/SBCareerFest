@@ -1,25 +1,14 @@
 package com.careerfest.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 import org.hibernate.validator.constraints.NotEmpty;
 
-@Entity
 public class Contact {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "S_no")
-	private Integer id;
 	
 	@NotEmpty(message="Please Provide Full Name")
 	String name;
 	@NotEmpty(message="Please Provide valid Email-Id")
 	String email;
+	@NotEmpty(message="Please Enter Comment")
 	String message;
 	public String getName() {
 		return name;
