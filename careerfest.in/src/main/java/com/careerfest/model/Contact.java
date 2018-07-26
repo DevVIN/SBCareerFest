@@ -1,14 +1,19 @@
 package com.careerfest.model;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 public class Contact {
 	
-	@NotEmpty(message="Please Provide Full Name")
+	@NotNull
+	@NotEmpty(message="*Please Provide Full Name")
 	String name;
-	@NotEmpty(message="Please Provide valid Email-Id")
+	@NotEmpty(message="*Please Provide valid Email-Id")
+	@Email
 	String email;
-	@NotEmpty(message="Please Enter Comment")
+	@NotNull
+	@NotEmpty(message="*Please Enter Comment")
 	String message;
 	public String getName() {
 		return name;

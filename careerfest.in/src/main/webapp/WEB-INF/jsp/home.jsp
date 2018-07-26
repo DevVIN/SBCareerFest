@@ -898,17 +898,21 @@
 					<h5
 						class="alt-font text-dark-gray display-block tz-text margin-fifteen-bottom">Ready
 						to Get Started?</h5>
-					<form role="form"  action="/contact" method="post">
-						<input  type="text" name="name" data-email="required" id="name"
-							placeholder="* Your Name" class="medium-input border-radius-8">
-						<input  type="text" name="email" data-email="required" id="email"
+					<form:form role="form"  action="/contact" method="post" commandName="contact">
+						<form:errors path="name" class="text-danger"></form:errors>	
+						<input type="text" name="name" data-email="required" id="name"
+							placeholder="* Your Name" class="medium-input border-radius-8"/>
+						<form:errors path="email" class="text-danger"></form:errors>						
+						<input type="text" name="email" data-email="required" id="email"
 							placeholder="* Your Email" class="medium-input border-radius-8">
-						<textarea  name="message" id="message" placeholder="Your Message"
+						<form:errors path="message" class="text-danger"></form:errors>	
+						<textarea name="message" id="message" placeholder="Your Message"
 							class="medium-input border-radius-8"></textarea>
+							
 						<button
 							class="btn-medium btn-circle btn bg-greenish-blue text-white tz-text"
 							type="submit">SEND MESSAGE</button>
-					</form>
+					</form:form>
 				</div>
 			</div>
 			<!-- end contact form -->
