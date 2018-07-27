@@ -15,6 +15,22 @@
 		color: #ffffff;
 	}
 }
+.ui-datepicker.dateofbirth {
+	.ui-datepicker-calendar {
+		display: block;
+	}
+}
+.ui-datepicker-calendar {
+	display: none;
+}
+.ui-datepicker {
+	width: 20em;
+}
+.datepickerfromto {
+	float: left;
+	width: 50%;
+	font-size: 14px;
+}
 .btnstyleblue {
 	@include btnstyleblue;
 }

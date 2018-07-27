@@ -38,6 +38,23 @@ function readURL(input) {
 }
 
 $(document).ready(function () {
+    $( "#datepickerfrom, #datepickerto" ).datepicker({
+        changeMonth: true,
+        changeYear: true,
+        showButtonPanel: true,
+        dateFormat: 'MM yy',
+        onClose: function(dateText, inst) { 
+            $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
+        }        
+    });
+    $( "#dateofbirth" ).datepicker({
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "1930:2000",
+        beforeShow: function(input, inst) {
+            $('#ui-datepicker-div').addClass('dateofbirth');
+        }
+    });
     bind_shrink_header();
     $("#proImg").change(function(){
         readURL(this);
@@ -52,7 +69,7 @@ $(document).ready(function () {
             $('.button--disapear').hide() 
         }, 300); //Same time as animation
     });
-    
+   
     var dialog, form,
     allFields = $( [] ).add( name ).add( email ).add( password );
 

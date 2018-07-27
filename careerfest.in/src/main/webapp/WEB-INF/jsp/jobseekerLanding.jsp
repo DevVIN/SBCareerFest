@@ -63,6 +63,9 @@
 								<option data-tokens="Trainee">Trainee</option>
 							</select>
 						</div>
+						<div class="col-xs-12 col-sm-6">
+							<input type="text" id="dateofbirth" class="datepickerfromto form-control" placeholder="Date of Birth"/>
+						</div>
 					</div>
 					<div class="clearfix"></div>
 				</div>
@@ -162,14 +165,8 @@
 							</select>
 						</div>
 						<div class="col-xs-12 col-sm-6">
-							<select class="selectpicker form-control" data-live-search="true" title="Year">
-								<option data-tokens="2018">2018</option>
-								<option data-tokens="2017">2017</option>
-								<option data-tokens="2016">2016</option>
-								<option data-tokens="2015">2015</option>
-								<option data-tokens="2014">2014</option>
-								<option data-tokens="2013">2013</option>
-							</select>
+							<input type="text" id="datepickerfrom" class="datepickerfromto form-control" placeholder="From"/>
+							<input type="text" id="datepickerto" class="datepickerfromto form-control" placeholder="To"/>
 						</div>
 						<div class="col-xs-12 col-sm-6">
 							<select class="selectpicker form-control" data-live-search="true" title="Salary">

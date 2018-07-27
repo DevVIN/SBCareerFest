@@ -1,4 +1,18 @@
 /* Custom css for styling fir css check */
+.ui-datepicker.dateofbirth .ui-datepicker-calendar {
+  display: block; }
+
+.ui-datepicker-calendar {
+  display: none; }
+
+.ui-datepicker {
+  width: 20em; }
+
+.datepickerfromto {
+  float: left;
+  width: 50%;
+  font-size: 14px; }
+
 .btnstyleblue {
   background: #1F618D;
   color: #ffffff; }
