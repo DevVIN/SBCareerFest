@@ -70,39 +70,39 @@
 								placeholder="Location/Locality" />
 						</div>
 						<div class="col-md-2 col-sm-4 col-xs-6 exp-container">
-							<select class="selectpicker form-control" data-live-search="true"
-								title="Experience">
-								<option data-tokens="0">0</option>
-								<option data-tokens="1">1</option>
-								<option data-tokens="2">2</option>
-								<option data-tokens="3">3</option>
-								<option data-tokens="4">4</option>
-								<option data-tokens="5">5</option>
-								<option data-tokens="6">6</option>
-								<option data-tokens="7">7</option>
-								<option data-tokens="8">8</option>
-								<option data-tokens="9">9</option>
-								<option data-tokens="10">10</option>
-								<option data-tokens="11">11</option>
-								<option data-tokens="12">12</option>
+							<select class="selectpicker form-control" title="Experience" data-placeholder="Experience">
+								<option></option>
+								<option value="0">0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
 							</select>
 						</div>
 						<div class="col-md-2 col-sm-4 col-xs-6 sal-container">
-							<select class="selectpicker form-control" data-live-search="true"
-								title="Salary">
+							<select class="selectpicker form-control" title="Salary" data-placeholder="Salary">
+								<option></option>
 								<option><1 Lac</option>
-								<option data-tokens="1">1</option>
-								<option data-tokens="2">2</option>
-								<option data-tokens="3">3</option>
-								<option data-tokens="4">4</option>
-								<option data-tokens="5">5</option>
-								<option data-tokens="6">6</option>
-								<option data-tokens="7">7</option>
-								<option data-tokens="8">8</option>
-								<option data-tokens="9">9</option>
-								<option data-tokens="10">10</option>
-								<option data-tokens="11">11</option>
-								<option data-tokens="12">12</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
 							</select>
 						</div>
 						<div class="col-md-2 col-sm-4 col-xs-6 srchbtn-container">

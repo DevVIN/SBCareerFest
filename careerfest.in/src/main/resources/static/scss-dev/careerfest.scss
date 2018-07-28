@@ -419,10 +419,11 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="search"]:focus,
 	box-shadow: 0px 0px 20px 0px cadetblue;
 }
 .topbar {
-	height: 90px;
-	padding: 25px 0;
+	height: 60px;
+	padding: 15px 0;
 	.topLogo {
 		float: left;
+		margin: -5px 0px;
 	}
 	img {
 		width: 163px;
@@ -457,6 +458,58 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="search"]:focus,
 		width: 435px;
 		margin: 20px auto;
 	}
+}
+.pd-left15 {
+	padding-left: 15px;
+}
+.userinfo {
+	text-align: center;
+	padding: 10px 0 0;
+}
+.leftsec {
+	.line-separator {
+		margin: 10px 0;
+	}
+}
+.profname {
+	font-size: 20px;
+	color: #424242;
+}
+.shortdesc, .usercontact {
+	font-size: 14px;
+	color: #424242;
+}
+.updatestat {
+	text-align: center;
+	font-size: 16px;
+	padding: 10px;
+}
+.mrtb {
+	margin: 20px 0;
+}
+.leftlinks {
+	a {
+		border-bottom: 1px #e4e4e5 solid;
+		cursor: pointer;
+		display: block;
+		text-decoration: none;
+		padding: 0 15px;
+		position: relative;
+		line-height: 30px;
+		color: #424242;
+		font-weight: 400;
+		font-size: 14px;
+		padding-left: 15px;
+	}
+}
+.bg-light-white {
+	background: #ffffff;
+}
+.panel {
+	padding: 0 15px;
+}
+.dashcontainer {
+	max-width: 1280px;
 }
 .educational-info-img {    
 	background: url(../images/educational-info.png) no-repeat top center;

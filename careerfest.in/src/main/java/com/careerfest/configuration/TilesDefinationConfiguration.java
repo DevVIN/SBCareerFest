@@ -40,5 +40,7 @@ public final class TilesDefinationConfiguration implements DefinitionsFactory {
 		addDefaultLayoutDef("jobseekerRegister", "Registration", "/WEB-INF/jsp/jobseekerRegister.jsp");
 		addDefaultLayoutDef("employerRegister", "EmployerRegistration", "/WEB-INF/jsp/employerRegister.jsp");
 		addDefaultLayoutDef("jobseekerLanding", "JobseekerLanding", "/WEB-INF/jsp/jobseekerLanding.jsp");
+		addDefaultLayoutDef("jobseekerDashboard", "JobseekerDashboard", "/WEB-INF/jsp/jobseekerDashboard.jsp");
+		addDefaultLayoutDef("employerDashboard", "EmployerDashboard", "/WEB-INF/jsp/employerDashboard.jsp");
 	}
 }
