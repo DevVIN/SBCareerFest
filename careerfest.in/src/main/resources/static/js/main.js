@@ -39,6 +39,9 @@ function readURL(input) {
 
 $(document).ready(function () {
 	$('.selectpicker').select2();
+	$('.selectpicker.preferredjob').select2({
+		 maximumSelectionLength: 3
+	});
     $( "#datepickerfrom, #datepickerto" ).datepicker({
         changeMonth: true,
         changeYear: true,
@@ -72,7 +75,7 @@ $(document).ready(function () {
     });
    
     var dialog, form,
-    allFields = $( [] ).add( name ).add( email ).add( password );
+    allFields = $( [] ).add( name ).add( emailid ).add( password );
 
     dialog = $( "#login-form" ).dialog({
         autoOpen: false,

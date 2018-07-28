@@ -36,31 +36,34 @@
 							<input type="text" class="form-control" id="resumetitle" placeholder="Resume Title">
 						</div>
 						<div class="col-xs-12 col-sm-6">
-							<select class="selectpicker form-control" data-live-search="true" title="Job Type">
-								<option data-tokens="Full Time">Full Time</option>
-								<option data-tokens="Part Time">Part Time</option>
-								<option data-tokens="Contract">Contract</option>
-								<option data-tokens="Freelance">Freelance</option>
+							<select class="selectpicker form-control" title="Job Type" data-placeholder="Job Type">
+								<option></option>
+								<option value="Full Time">Full Time</option>
+								<option value="Part Time">Part Time</option>
+								<option value="Contract">Contract</option>
+								<option value="Freelance">Freelance</option>
 							</select>
 						</div>
 						<div class="col-xs-12 col-sm-6">
-							<select class="selectpicker form-control" data-live-search="true" title="Preferred Job Location" multiple data-max-options="3">
-								<option data-tokens="Mumbai">Mumbai</option>
-								<option data-tokens="Pune">Pune</option>
-								<option data-tokens="Delhi">Delhi</option>
-								<option data-tokens="Banglore">Banglore</option>
-								<option data-tokens="Hyderabad">Hyderabad</option>
-								<option data-tokens="Kolkata">Kolkata</option>
+							<select class="selectpicker preferredjob form-control"  title="Preferred Job Location" data-placeholder="Preferred Job Location" multiple="multiple">
+								<option></option>
+								<option value="Mumbai">Mumbai</option>
+								<option value="Pune">Pune</option>
+								<option value="Delhi">Delhi</option>
+								<option value="Banglore">Banglore</option>
+								<option value="Hyderabad">Hyderabad</option>
+								<option value="Kolkata">Kolkata</option>
 							</select>
 						</div>
 						<div class="col-xs-12 col-sm-6">
-							<select class="selectpicker form-control" data-live-search="true" title="Role">
-								<option data-tokens="Java Developer">Java Developer</option>
-								<option data-tokens="UI Developer">UI Developer</option>
-								<option data-tokens="Dot Net Developer">Dot Net Developer</option>
-								<option data-tokens="Software Engineer">Software Engineer</option>
-								<option data-tokens="Team Lead">Team Lead</option>
-								<option data-tokens="Trainee">Trainee</option>
+							<select class="selectpicker form-control"  title="Role" data-placeholder="Role">
+								<option></option>
+								<option value="Java Developer">Java Developer</option>
+								<option value="UI Developer">UI Developer</option>
+								<option value="Dot Net Developer">Dot Net Developer</option>
+								<option value="Software Engineer">Software Engineer</option>
+								<option value="Team Lead">Team Lead</option>
+								<option value="Trainee">Trainee</option>
 							</select>
 						</div>
 						<div class="col-xs-12 col-sm-6">
@@ -77,44 +80,48 @@
 				<div class="col-xs-12 col-sm-8 padtopbtm upload-resume bg-light-gray">
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-6">
-							<select class="selectpicker form-control" data-live-search="true" title="Highest Qualification">
-								<option data-tokens="Doctorate/Phd">Doctorate/Phd</option>
-								<option data-tokens="Masters/Post-Graduation">Masters/Post-Graduation</option>
-								<option data-tokens="Graduation/Diploma">Graduation/Diploma</option>
-								<option data-tokens="12th">12th</option>
-								<option data-tokens="10th">10th</option>
-								<option data-tokens="Below 10th">Below 10th</option>
+							<select class="selectpicker form-control" title="Highest Qualification" data-placeholder="Highest Qualification">
+								<option></option>
+								<option value="Doctorate/Phd">Doctorate/Phd</option>
+								<option value="Masters/Post-Graduation">Masters/Post-Graduation</option>
+								<option value="Graduation/Diploma">Graduation/Diploma</option>
+								<option value="12th">12th</option>
+								<option value="10th">10th</option>
+								<option value="Below 10th">Below 10th</option>
 							</select>
 						</div>
 						<div class="col-xs-12 col-sm-6">
-							<select class="selectpicker form-control" data-live-search="true" title="Course">
-								<option data-tokens="BA">BA</option>
-								<option data-tokens="B.Arch">B.Arch</option>
-								<option data-tokens="B.Des">B.Des</option>
-								<option data-tokens="BCA">BCA</option>
-								<option data-tokens="B.Com">B.Com</option>
-								<option data-tokens="B.Tech/BE">B.Tech/BE</option>
+							<select class="selectpicker form-control"  title="Course" data-placeholder="Course">
+								<option></option>
+								<option value="BA">BA</option>
+								<option value="B.Arch">B.Arch</option>
+								<option value="B.Des">B.Des</option>
+								<option value="BCA">BCA</option>
+								<option value="B.Com">B.Com</option>
+								<option value="B.Tech/BE">B.Tech/BE</option>
 							</select>
 						</div>
 						<div class="col-xs-12 col-sm-6">
-							<select class="selectpicker form-control" data-live-search="true" title="Specialization">
-								<option data-tokens="Agriculture">Agriculture</option>
-								<option data-tokens="Automobile">Automobile</option>
-								<option data-tokens="Chemical">Chemical</option>
-								<option data-tokens="Civil">Civil</option>
-								<option data-tokens="Computers">Computers</option>
-								<option data-tokens="Electronics/Telecommunication">Electronics/Telecommunication</option>
+							<select class="selectpicker form-control" title="Specialization" data-placeholder="Specialization">
+								<option></option>
+								<option value="Agriculture">Agriculture</option>
+								<option value="Automobile">Automobile</option>
+								<option value="Chemical">Chemical</option>
+								<option value="Civil">Civil</option>
+								<option value="Computers">Computers</option>
+								<option value="Electronics/Telecommunication">Electronics/Telecommunication</option>
 							</select>
 						</div>
 						<div class="col-xs-12 col-sm-6">
-							<select class="selectpicker form-control" data-live-search="true" title="University/College">
-								<option data-tokens="Fergusson College, Pune">Fergusson College, Pune</option>
-								<option data-tokens="Symbiosis Institute of Media and Communication, Pune">Symbiosis Institute of Media and Communication, Pune</option>
-								<option data-tokens="Government College of Engineering (GCE), Pune">Government College of Engineering (GCE), Pune</option>
-								<option data-tokens="Indian Institute of Modern Management (IIMM), Pune">Indian Institute of Modern Management (IIMM), Pune</option>
-								<option data-tokens="Indian Institute of Technology (IIT), Mumbai">Indian Institute of Technology (IIT), Mumbai</option>
-								<option data-tokens="Dr Babasaheb Ambedkar Marathwada University, Aurangabad">Dr Babasaheb Ambedkar Marathwada University, Aurangabad</option>
-								<option data-tokens="Dr Babasaheb Ambedkar Technological University, Lonere">Dr Babasaheb Ambedkar Technological University, Lonere</option>
+							<select class="selectpicker form-control" title="University/College" data-placeholder="University/College">
+								<option></option>
+								<option value="Fergusson College, Pune">Fergusson College, Pune</option>
+								<option value="Symbiosis Institute of Media and Communication, Pune">Symbiosis Institute of Media and Communication, Pune</option>
+								<option value="Government College of Engineering (GCE), Pune">Government College of Engineering (GCE), Pune</option>
+								<option value="Indian Institute of Modern Management (IIMM), Pune">Indian Institute of Modern Management (IIMM), Pune</option>
+								<option value="Indian Institute of Technology (IIT), Mumbai">Indian Institute of Technology (IIT), Mumbai</option>
+								<option value="Dr Babasaheb Ambedkar Marathwada University, Aurangabad">Dr Babasaheb Ambedkar Marathwada University, Aurangabad</option>
+								<option value="Dr Babasaheb Ambedkar Technological University, Lonere">Dr Babasaheb Ambedkar Technological University, Lonere</option>
 							</select>
 						</div>
 						<div class="col-xs-12 col-sm-6">
@@ -133,12 +140,13 @@
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-6">
-							<select class="selectpicker form-control" data-live-search="true" title="Passing Year">
-								<option  data-tokens="2018">2018</option>
-								<option data-tokens="2017">2017</option>
-								<option data-tokens="2016">2016</option>
-								<option data-tokens="2015">2015</option>
-								<option data-tokens="2014">2014</option>
+							<select class="selectpicker form-control"  title="Passing Year" data-placeholder="Passing Year">
+								<option></option>
+								<option  value="2018">2018</option>
+								<option value="2017">2017</option>
+								<option value="2016">2016</option>
+								<option value="2015">2015</option>
+								<option value="2014">2014</option>
 							</select>
 						</div>
 					</div>
@@ -155,13 +163,14 @@
 							<input type="text" class="form-control" id="designation" name="designation" placeholder="Designation">
 						</div>
 						<div class="col-xs-12 col-sm-6">
-							<select class="selectpicker form-control" data-live-search="true" title="Company">
-								<option data-tokens="Infosys">Infosys</option>
-								<option data-tokens="Tech Mahendra">Tech Mahendra</option>
-								<option data-tokens="Isobar commerce">Isobar commerce</option>
-								<option data-tokens="Swiftwin">Swiftwin</option>
-								<option data-tokens="IBM">IBM</option>
-								<option data-tokens="Accenture">Accenture</option>
+							<select class="selectpicker form-control" title="Company" data-placeholder="Company">
+								<option></option>
+								<option value="Infosys">Infosys</option>
+								<option value="Tech Mahendra">Tech Mahendra</option>
+								<option value="Isobar commerce">Isobar commerce</option>
+								<option value="Swiftwin">Swiftwin</option>
+								<option value="IBM">IBM</option>
+								<option value="Accenture">Accenture</option>
 							</select>
 						</div>
 						<div class="col-xs-12 col-sm-6">
@@ -169,20 +178,21 @@
 							<input type="text" id="datepickerto" class="datepickerfromto form-control" placeholder="To"/>
 						</div>
 						<div class="col-xs-12 col-sm-6">
-							<select class="selectpicker form-control" data-live-search="true" title="Salary">
+							<select class="selectpicker form-control" title="Salary" data-placeholder="Salary">
+								<option></option>
 								<option><1 Lac</option>
-								<option data-tokens="1">1</option>
-								<option data-tokens="2">2</option>
-								<option data-tokens="3">3</option>
-								<option data-tokens="4">4</option>
-								<option data-tokens="5">5</option>
-								<option data-tokens="6">6</option>
-								<option data-tokens="7">7</option>
-								<option data-tokens="8">8</option>
-								<option data-tokens="9">9</option>
-								<option data-tokens="10">10</option>
-								<option data-tokens="11">11</option>
-								<option data-tokens="12">12</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
 							</select>
 						</div>
 						<div class="col-xs-12 col-sm-6">
@@ -197,13 +207,14 @@
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-6">
-							<select class="selectpicker form-control" data-live-search="true" title="Notice Period">
-								<option  data-tokens="Immediately">Immediately</option>
-								<option data-tokens="15 Days">15 Days</option>
-								<option data-tokens="30 Days">30 Days</option>
-								<option data-tokens="45 Days">45 Days</option>
-								<option data-tokens="60 Days">60 Days</option>
-								<option data-tokens="90 Days">90 Days</option>
+							<select class="selectpicker form-control" title="Notice Period" data-placeholder="Notice Period">
+								<option></option>
+								<option value="Immediately">Immediately</option>
+								<option value="15 Days">15 Days</option>
+								<option value="30 Days">30 Days</option>
+								<option value="45 Days">45 Days</option>
+								<option value="60 Days">60 Days</option>
+								<option value="90 Days">90 Days</option>
 							</select>
 						</div>
 					</div>
