@@ -38,6 +38,7 @@ function readURL(input) {
 }
 
 $(document).ready(function () {
+	$('.selectpicker').select2();
     $( "#datepickerfrom, #datepickerto" ).datepicker({
         changeMonth: true,
         changeYear: true,
@@ -72,8 +73,6 @@ $(document).ready(function () {
    
     var dialog, form,
     allFields = $( [] ).add( name ).add( email ).add( password );
-
-    $('.selectpicker').selectpicker();
 
     dialog = $( "#login-form" ).dialog({
         autoOpen: false,

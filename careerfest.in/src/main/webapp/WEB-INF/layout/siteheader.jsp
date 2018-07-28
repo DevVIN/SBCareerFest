@@ -4,10 +4,9 @@
 <link rel="stylesheet" href="css/animate.css" />
 <!-- bootstrap -->    
 <link rel="stylesheet" href="css/bootstrap.min.css" />
-<!-- bootstrap select -->    
-<link rel="stylesheet" href="css/bootstrap-select.min.css" />
 <!-- font-awesome icon -->
-<link rel="stylesheet" href="css/font-awesome.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link href="css/select2.css" rel="stylesheet"/>
 <!-- themify-icons -->
 <link rel="stylesheet" href="css/themify-icons.css" />
 <!-- owl carousel -->

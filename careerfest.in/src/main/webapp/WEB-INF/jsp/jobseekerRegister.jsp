@@ -35,7 +35,7 @@
 					<div class="clearfix"></div>
 					<div class="form-group row"> 
 						<div class="col-xs-12 col-sm-12">
-							<input type="password" class="form-control" id="password"  name="password" placeholder="Password">
+							<input type="password" class="form-control" id="rpassword"  name="rpassword" placeholder="Password">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -45,54 +45,67 @@
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-							<select id="Location" name="Location" class="selectpicker form-control" data-live-search="true" title="Location">
-								<option data-tokens="Mumbai">Mumbai</option>
-								<option data-tokens="Pune">Pune</option>
-								<option data-tokens="Delhi">Delhi</option>
-								<option data-tokens="Banglore">Banglore</option>
-								<option data-tokens="Hyderabad">Hyderabad</option>
-								<option data-tokens="Kolkata">Kolkata</option>
+							<select id="Location" name="Location" class="selectpicker form-control" title="Location" data-placeholder="Location">
+								<option></option>
+								<option value="Mumbai">Mumbai</option>
+								<option value="Pune">Pune</option>
+								<option value="Delhi">Delhi</option>
+								<option value="Banglore">Banglore</option>
+								<option value="Hyderabad">Hyderabad</option>
+								<option value="Kolkata">Kolkata</option>
 							</select>
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-							<select id="Experience"  name="Experience" class="selectpicker form-control" data-live-search="true" title="Experience">
-								<option  data-tokens="0/Fresher">0/Fresher</option>
-								<option data-tokens="1">1</option>
-								<option data-tokens="2">2</option>
-								<option data-tokens="3">3</option>
-								<option data-tokens="4">4</option>
+							<select id="Experience"  name="Experience" class="selectpicker form-control" title="Experience" data-placeholder="Experience">
+								<option></option>
+								<option value="0/Fresher">0/Fresher</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
 							</select>
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-							<input type="text" class="form-control" name="skills" id="skills" placeholder="Key Skills">
-						</div>
-					</div>
-					<div class="form-group row">
-						<div class="col-xs-12 col-sm-12">
-							<select class="selectpicker form-control" data-live-search="true" name="Industry" id="Industry" title="Industry">
-								<option  data-tokens="Automotive/ Ancillaries">Automotive/ Ancillaries</option>
-								<option data-tokens="Banking/ Financial Services">Banking/ Financial Services</option>
-								<option data-tokens="Construction & Engineering">Construction & Engineering</option>
-								<option data-tokens="ITES/BPO">ITES/BPO</option>
-								<option data-tokens="IT/ Computers - Hardware">IT/ Computers - Hardware</option>
-								<option data-tokens="IT/ Computers - Software">IT/ Computers - Software</option>
-								<option data-tokens="KPO/Analytics">KPO/Analytics</option>
+							<select class="selectpicker form-control" name="skills" id="skills" title="Key Skills" data-placeholder="Key Skills" multiple="multiple">
+								<option></option>
+								<option value="Java">Java</option>
+								<option value="Javascript">Javascript</option>
+								<option value="Bootstrap">Bootstrap</option>
+								<option value="Angular">Angular</option>
+								<option value="React">React</option>
+								<option value="Dot Net">Dot Net</option>
+								<option value="Ajax">Ajax</option>
 							</select>
 						</div>
 					</div>
 					<div class="form-group row">
-						<div class="col-xs-12 col-sm-12">                                  
-							<select class="selectpicker form-control" data-live-search="true" name="Functional" id="Functional" title="Function">
-								<option  data-tokens="Admin/Secretarial">Admin/Secretarial</option>
-								<option data-tokens="Customer Service/ Call Centre/ BPO">Customer Service/ Call Centre/ BPO</option>
-								<option data-tokens="Finance & Accounts">Finance & Accounts</option>
-								<option data-tokens="Human Resources">Human Resources</option>
-								<option data-tokens="IT">IT</option>
-								<option data-tokens="Marketing & Communicationse">Marketing & Communicationse</option>
+						<div class="col-xs-12 col-sm-12">
+							<select class="selectpicker form-control" name="Industry" id="Industry" title="Industry" data-placeholder="Industry">
+								<option></option>
+								<option  value="Automotive/ Ancillaries">Automotive/ Ancillaries</option>
+								<option value="Banking/ Financial Services">Banking/ Financial Services</option>
+								<option value="Construction & Engineering">Construction & Engineering</option>
+								<option value="ITES/BPO">ITES/BPO</option>
+								<option value="IT/ Computers - Hardware">IT/ Computers - Hardware</option>
+								<option value="IT/ Computers - Software">IT/ Computers - Software</option>
+								<option value="KPO/Analytics">KPO/Analytics</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-xs-12 col-sm-12">
+							<select class="selectpicker form-control" name="Functional" id="Functional" title="Function" data-placeholder="Function">
+								<option></option>
+								<option value="Admin/Secretarial">Admin/Secretarial</option>
+								<option value="Customer Service/ Call Centre/ BPO">Customer Service/ Call Centre/ BPO</option>
+								<option value="Finance & Accounts">Finance & Accounts</option>
+								<option value="Human Resources">Human Resources</option>
+								<option value="IT">IT</option>
+								<option value="Marketing & Communicationse">Marketing & Communicationse</option>
 							</select>
 						</div>
 					</div>

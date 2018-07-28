@@ -18,7 +18,7 @@ public class RegisterController {
 	@Autowired
 	UserService userService;
 
-	 @RequestMapping("/home")
+	 @RequestMapping("/")
 	 public ModelAndView welcome(ModelAndView modelAndView,Contact contact,BindingResult result) {
 		System.out.println("Welcome Home");
 		modelAndView.addObject("contactus",contact);

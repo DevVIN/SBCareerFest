@@ -5,7 +5,7 @@
 		<fieldset>
 			<div class="form-group row">
 				<div class="col-xs-12 col-sm-10 col-sm-offset-1">
-					<input type="text" name="email" id="emailid" placeholder="Enter your Email ID" class="text ui-widget-content ui-corner-all">
+					<input type="text" name="emailid" id="emailid" placeholder="Enter your Email ID" class="text ui-widget-content ui-corner-all">
 				</div>
 			</div>
 			<div class="form-group row">
@@ -42,7 +42,7 @@
 <script type="text/javascript" src="js/jquery.appear.js"></script>
 <script type="text/javascript" src="js/smooth-scroll.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="js/select2.js"></script>
 <!-- wow animation -->
 <script type="text/javascript" src="js/wow.min.js"></script>
 <!-- owl carousel -->
