@@ -114,7 +114,8 @@
 .ui-dialog-content {
   overflow: hidden; }
 
-.checkcontainer {
+/* The container */
+.radiocontainer, .checkcontainer {
   display: inline;
   position: relative;
   padding-left: 35px;
@@ -126,6 +127,49 @@
   -ms-user-select: none;
   user-select: none; }
 
+/* Hide the browser's default radio button */
+.radiocontainer input, .checkcontainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer; }
+
+/* Create a custom radio button */
+.radiocheckmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%; }
+
+/* On mouse-over, add a grey background color */
+.radiocontainer:hover input ~ .radiocheckmark {
+  background-color: #ccc; }
+
+/* When the radio button is checked, add a blue background */
+.radiocontainer input:checked ~ .radiocheckmark {
+  background-color: #2196F3; }
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.radiocheckmark:after {
+  content: "";
+  position: absolute;
+  display: none; }
+
+/* Show the indicator (dot/circle) when checked */
+.radiocontainer input:checked ~ .radiocheckmark:after {
+  display: block; }
+
+/* Style the indicator (dot/circle) */
+.radiocontainer .radiocheckmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white; }
+
 .checkrow {
   height: 34px;
   line-height: 34px; }
@@ -133,12 +177,6 @@
     font-size: 14px;
     font-weight: normal;
     font-family: 'Open Sans', sans-serif; }
-
-/* Hide the browser's default checkbox */
-.checkcontainer input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer; }
 
 /* Create a custom checkbox */
 .checkmark {
@@ -306,14 +344,14 @@ button[type="submit"] {
 .pad-top {
   padding-top: 50px; }
 
-input[type="text"], input[type="email"], input[type="search"], input[type="password"], textarea {
+input[type="text"], input[type="email"], input[type="search"], input[type="password"], textarea, textarea.form-control {
   border: none;
   border-bottom: 1px solid #e7e7e7;
   background: transparent;
   -webkit-box-shadow: none;
           box-shadow: none; }
 
-input[type="text"]:focus, input[type="email"]:focus, input[type="search"]:focus, input[type="password"]:focus, textarea:focus {
+input[type="text"]:focus, input[type="email"]:focus, input[type="search"]:focus, input[type="password"]:focus, textarea:focus, textarea.form-control:focus {
   border-bottom: 1px solid #A3E4D7;
   background-color: transparent;
   -webkit-box-shadow: none;

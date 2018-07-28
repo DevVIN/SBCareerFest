@@ -93,7 +93,7 @@ $(document).ready(function () {
         event.preventDefault();
     });
 
-    $( ".JobseekerLogin" ).on( "click", function() {
+    $( ".jobseekerLogin, .employerLogin " ).on( "click", function() {
         dialog.dialog( "open" );
     });
 

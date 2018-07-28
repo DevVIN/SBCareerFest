@@ -13,8 +13,8 @@
 						</div>
 						<!-- social elements -->
 						<div class="social float-right">
-							<a class="linkbtnstyle" href="employerLogin.html">Employer</a>
-							<div class="JobseekerLogin inlineblock linkbtnstyle">Jobseeker</div>
+							<div class="employerLogin inlineblock linkbtnstyle">Employer</div> | 
+							<div class="jobseekerLogin inlineblock linkbtnstyle">Jobseeker</div>
 						</div>
 					</div>
 				</div>
