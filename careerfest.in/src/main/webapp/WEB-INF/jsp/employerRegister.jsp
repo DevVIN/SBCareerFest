@@ -1,5 +1,8 @@
 <!-- Employeer Registration -->
 
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@page import="org.springframework.util.StringUtils" %>
+
 <section class="builder-bg" id="contact-section9">
 	<div class="container pad-top-btm-lrg">
 		<div class="row">
@@ -21,7 +24,8 @@
 			</div>
 			<div class="upload-resume col-xs-12 col-sm-5 bg-light-gray padtopbtm">
 				<div class="head">New Employer/Recruiter Registration!</div>
-				<form role="form" id="registerform" method="post" action="/employerRegister">
+				<form:form role="form" id="empregisterform" method="post" action="/employerRegister" commandName="employer">
+					<% String alreadyRegisteredMessage=(String)request.getAttribute("alreadyRegisteredMessage");%>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
 							<div class="row">
@@ -46,30 +50,36 @@
 							<div class="line-separator"></div>
 						</div>
 						<div class="col-xs-12 col-sm-12">
-							<input type="text" class="form-control" id="fullname" name="fullname" placeholder="Full Name">
+						    <form:errors path="eFullname" class="text-danger"></form:errors>
+							<input type="text" class="form-control" id="eFullname" name="eFullname" placeholder="Full Name">
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-							<input type="email" class="form-control" id="email" name="email" placeholder="Email">
+					     <div id="alreadyRegisteredMessage" class="text-danger"><%=StringUtils.isEmpty(alreadyRegisteredMessage)!=true?alreadyRegisteredMessage:""%></div>
+						 <form:errors path="eEmail" class="text-danger"></form:errors>
+						 <input type="email" class="form-control" id="eEmail" name="eEmail" placeholder="Email">
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-							<input type="password" class="form-control" id="rpassword"  name="rpassword" placeholder="Password">
+						    <form:errors path="ePassword" class="text-danger"></form:errors>
+							<input type="password" class="form-control" id="ePassword"  name="ePassword" placeholder="Password">
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-							<input type="text" class="form-control" id="mobileno" name="mobileno" placeholder="Mobile">
+						    <form:errors path="eMobileno" class="text-danger"></form:errors>
+							<input type="text" class="form-control" id="eMobileno" name="eMobileno" placeholder="Mobile">
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-							<select class="selectpicker form-control" title="Company" data-placeholder="Company Name">
+						    <form:errors path="eCompanyname" class="text-danger"></form:errors>
+							<select id="eCompanyname" name="eCompanyname" class="selectpicker form-control" title="Company" data-placeholder="Company Name">
 								<option></option>
 								<option value="Infosys">Infosys</option>
-								<option value="Tech Mahendra">Tech Mahendra</option>
+								<option value="Tech Mahindra">Tech Mahindra</option>
 								<option value="Isobar commerce">Isobar commerce</option>
 								<option value="Swiftwin">Swiftwin</option>
 								<option value="IBM">IBM</option>
@@ -79,7 +89,8 @@
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-							<select class="selectpicker form-control" name="Industry" id="Industry" title="Industry Type" data-placeholder="Industry Type">
+						    <form:errors path="eIndustry" class="text-danger"></form:errors>
+							<select class="selectpicker form-control" name="eIndustry" id="eIndustry" title="Industry Type" data-placeholder="Industry Type">
 								<option></option>
 								<option  value="Automotive/ Ancillaries">Automotive/ Ancillaries</option>
 								<option value="Banking/ Financial Services">Banking/ Financial Services</option>
@@ -96,11 +107,11 @@
 							<div class="row checkrow">
 								<div class="right col-sm-12">
 									<label class="radiocontainer">Company
-										<input type="radio" checked="checked" class="form-control" name="radio">
+										<input value="Company" type="radio" checked="checked" class="form-control" name="eType">
 										<span class="radiocheckmark"></span>
 									</label>
 									<label class="radiocontainer">Consultant
-										<input type="radio" class="form-control" name="radio">
+										<input value="Consultant" type="radio" class="form-control" name="eType">
 										<span class="radiocheckmark"></span>
 									</label>
 								</div>
@@ -109,22 +120,26 @@
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-							<input type="text" class="form-control" id="contactname" name="contactname" placeholder="Contact Person's Name">
+						    <form:errors path="eContactperson" class="text-danger"></form:errors>
+							<input type="text" class="form-control" id="eContactperson" name="eContactperson" placeholder="Contact Person's Name">
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-							<input type="text" class="form-control" id="designation" name="designation" placeholder="Designation">
+						    <form:errors path="eDesignation" class="text-danger"></form:errors>
+							<input type="text" class="form-control" id="eDesignation" name="eDesignation" placeholder="Designation">
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-							<textarea class="form-control" id="officeaddress" name="officeaddress" placeholder="Office Address"></textarea>
+						     <form:errors path="eOfficeaddress" class="text-danger"></form:errors>
+							<textarea class="form-control" id="eOfficeaddress" name="eOfficeaddress" placeholder="Office Address"></textarea>
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-6">
-							<select id="country" name="country" class="selectpicker form-control" title="country" data-placeholder="Country">
+						    <form:errors path="eCountry" class="text-danger"></form:errors>
+							<select id="eCountry" name="eCountry" class="selectpicker form-control" title="country" data-placeholder="Country">
 								<option></option>
 								<option value="Argentina">Argentina</option>
 								<option value="Brazil">Brazil</option>
@@ -138,7 +153,8 @@
 							</select>
 						</div>
 						<div class="col-xs-12 col-sm-6">
-							<select id="state" name="state" class="selectpicker form-control" title="state" data-placeholder="State">
+						   <form:errors path="eState" class="text-danger"></form:errors>
+							<select id="eState" name="eState" class="selectpicker form-control" title="state" data-placeholder="State">
 								<option></option>
 								<option value="MH">MH</option>
 								<option value="NH">NH</option>
@@ -150,7 +166,8 @@
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-6">
-							<select id="city" name="city" class="selectpicker form-control" title="city" data-placeholder="City">
+						    <form:errors path="eCity" class="text-danger"></form:errors>
+							<select id="eCity" name="eCity" class="selectpicker form-control" title="city" data-placeholder="City">
 								<option></option>
 								<option value="Mumbai">Mumbai</option>
 								<option value="Pune">Pune</option>
@@ -161,14 +178,15 @@
 							</select>
 						</div>
 						<div class="col-xs-12 col-sm-6">
-							<input type="text" class="form-control" id="pincode" name="pincode" placeholder="Pincode">
+						   <form:errors path="ePincode" class="text-danger"></form:errors>
+							<input type="text" class="form-control" id="ePincode" name="ePincode" placeholder="Pincode">
 						</div>
 					</div>
 					<div class="clearfix"></div>
 					<div class="col-xs-10 col-sm-6 col-sm-offset-3">
 						<button type="submit" class="btn btn-default">Register Now</button>
 					</div>
-				</form>
+				</form:form>
 				<div class="clearfix"></div>
 			</div>
 		</div>
