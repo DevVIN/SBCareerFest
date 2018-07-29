@@ -75,7 +75,7 @@ $(document).ready(function () {
     });
    
     var dialog, form,
-    allFields = $( [] ).add( name ).add( emailid ).add( password );
+    allFields = $( [] ).add( name ).add( email ).add( rpassword );
 
     dialog = $( "#login-form" ).dialog({
         autoOpen: false,
@@ -94,7 +94,37 @@ $(document).ready(function () {
     });
 
     $( ".jobseekerLogin, .employerLogin " ).on( "click", function() {
+    	$('#errorMessage').empty();
         dialog.dialog( "open" );
+    });
+    
+    $('#loginsubmit').on("click",function(){
+    	var data={
+	    			email: $('#email').val(),
+	    			rpassword: $('#rpassword').val()
+    	}
+    	$('#errorMessage').empty();
+    	$.ajax({
+            url: 'http://localhost:8080/login',
+            type: 'POST',    
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(data),
+            success: function (data) {
+            	if(data.validated){
+            		dialog.dialog("close");
+            		window.location.href = "http://localhost:8080/employeedashboard";
+            	}else{
+            		/* $.each(data.errorMessages,function(key,value){
+           	            $('input[name='+key+']').before('<span style="float: left; color: red;">'+value+'</span>');
+                       });*/
+            		$('#errorMessage').append('<span style="float: left; color: red;">'+data.emessage+'</span>');
+            	}
+                
+            },
+            error: function () {
+            	$('#errorMessage').append('<span style="float: left; color: red;">*Something went wrong.Please try after some time.</span>');
+            }
+        });
     });
 
     $( ".test-popup-link" ).dialog({

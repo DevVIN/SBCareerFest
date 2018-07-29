@@ -16,7 +16,7 @@ public class Contactcontroller {
 
 	@RequestMapping(value="/contact", method={RequestMethod.POST})
 	public ModelAndView contact(@Valid Contact contact,BindingResult result,ModelAndView modelAndView){
-		System.out.println("contact controller name = "+contact.getName()+"  "+contact.getEmail());
+		System.out.println("contact controller name = "+contact.getName()+"  "+contact.getEmailid());
 		if(result.hasErrors()){
 			System.out.println("validation Error : ");
 		}else{

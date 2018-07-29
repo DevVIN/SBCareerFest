@@ -11,7 +11,7 @@ public class Contact {
 	String name;
 	@NotEmpty(message="*Please Provide valid Email-Id")
 	@Email
-	String email;
+	String emailid;
 	@NotNull
 	@NotEmpty(message="*Please Enter Comment")
 	String message;
@@ -21,11 +21,11 @@ public class Contact {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getEmail() {
-		return email;
+	public String getEmailid() {
+		return emailid;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setEmailid(String emailid) {
+		this.emailid = emailid;
 	}
 	public String getMessage() {
 		return message;
@@ -33,4 +33,6 @@ public class Contact {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+
+
 }
