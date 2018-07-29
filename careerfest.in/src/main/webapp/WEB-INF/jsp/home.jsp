@@ -902,8 +902,8 @@
 						<form:errors path="name" class="text-danger"></form:errors>	
 						<input type="text" name="name" data-email="required" id="name"
 							placeholder="* Your Name" class="medium-input border-radius-8"/>
-						<form:errors path="email" class="text-danger"></form:errors>						
-						<input type="text" name="email" data-email="required" id="email"
+						<form:errors path="emailid" class="text-danger"></form:errors>						
+						<input type="text" name="emailid" data-email="required" id="emailid"
 							placeholder="* Your Email" class="medium-input border-radius-8">
 						<form:errors path="message" class="text-danger"></form:errors>	
 						<textarea name="message" id="message" placeholder="Your Message"
