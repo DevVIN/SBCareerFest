@@ -1,4 +1,6 @@
 <!-- Jobseeker Registration -->
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@page import="org.springframework.util.StringUtils" %>
 
 <section class="builder-bg contact-form-style1" id="contact-section9">
 	<div class="container pad-top-btm-lrg">
@@ -21,31 +23,38 @@
 			</div>
 			<div class="upload-resume col-xs-12 col-sm-5 bg-light-gray padtopbtm">
 				<div class="head">Register and Upload resume with us!</div>
-				<form role="form" id="registerform" method="post" action="/jobseekerRegister">
+				<form:form role="form" id="registerform" method="post" action="/jobseekerRegister" commandName="user">
+				<% String alreadyRegisteredMessage=(String)request.getAttribute("alreadyRegisteredMessage");%>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-							<input type="text" class="form-control" id="fullname" name="fullname" placeholder="Full Name">
-						</div>
+						    <form:errors path="fullname" class="text-danger"></form:errors>	
+						    <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Full Name">
+                        </div>
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-							<input type="email" class="form-control" id="email" name="email" placeholder="Email">
+						    <div id="alreadyRegisteredMessage" class="text-danger"><%=StringUtils.isEmpty(alreadyRegisteredMessage)!=true?alreadyRegisteredMessage:""%></div>
+						    <form:errors path="email" class="text-danger"></form:errors>
+						    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
 						</div>
 					</div>
 					<div class="clearfix"></div>
 					<div class="form-group row"> 
-						<div class="col-xs-12 col-sm-12">
+						<div class="col-xs-12 col-sm-12">                            
+						    <form:errors path="rpassword" class="text-danger"></form:errors>	   
 							<input type="password" class="form-control" id="rpassword"  name="rpassword" placeholder="Password">
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-							<input type="text" class="form-control" id="mobileno" name="mobileno" placeholder="Mobile">
+						     <form:errors path="mobileno" class="text-danger"></form:errors>	
+						     <input type="text" class="form-control" id="mobileno" name="mobileno" placeholder="Mobile">
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-							<select id="Location" name="Location" class="selectpicker form-control" title="Location" data-placeholder="Location">
+						    <form:errors path="location" class="text-danger"></form:errors>	
+						    <select id="Location" name="Location" class="selectpicker form-control" title="Location" data-placeholder="Location">
 								<option></option>
 								<option value="Mumbai">Mumbai</option>
 								<option value="Pune">Pune</option>
@@ -58,7 +67,8 @@
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-							<select id="Experience"  name="Experience" class="selectpicker form-control" title="Experience" data-placeholder="Experience">
+						    <form:errors path="experience" class="text-danger"></form:errors>
+						    <select id="Experience"  name="Experience" class="selectpicker form-control" title="Experience" data-placeholder="Experience">
 								<option></option>
 								<option value="0/Fresher">0/Fresher</option>
 								<option value="1">1</option>
@@ -70,7 +80,8 @@
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-							<select class="selectpicker form-control" name="skills" id="skills" title="Key Skills" data-placeholder="Key Skills" multiple="multiple">
+						    <form:errors path="skills" class="text-danger"></form:errors>	
+						    <select class="selectpicker form-control" name="skills" id="skills" title="Key Skills" data-placeholder="Key Skills" multiple="multiple">
 								<option></option>
 								<option value="Java">Java</option>
 								<option value="Javascript">Javascript</option>
@@ -84,7 +95,8 @@
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-							<select class="selectpicker form-control" name="Industry" id="Industry" title="Industry" data-placeholder="Industry">
+						    <form:errors path="industry" class="text-danger"></form:errors>	
+						    <select class="selectpicker form-control" name="Industry" id="Industry" title="Industry" data-placeholder="Industry">
 								<option></option>
 								<option  value="Automotive/ Ancillaries">Automotive/ Ancillaries</option>
 								<option value="Banking/ Financial Services">Banking/ Financial Services</option>
@@ -98,7 +110,8 @@
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-							<select class="selectpicker form-control" name="Functional" id="Functional" title="Function" data-placeholder="Function">
+						    <form:errors path="functional" class="text-danger"></form:errors>
+						    <select class="selectpicker form-control" name="Functional" id="Functional" title="Function" data-placeholder="Function">
 								<option></option>
 								<option value="Admin/Secretarial">Admin/Secretarial</option>
 								<option value="Customer Service/ Call Centre/ BPO">Customer Service/ Call Centre/ BPO</option>
@@ -112,8 +125,9 @@
 					<div class="clearfix"></div>
 					<div class="form-group row">
 						<label class="col-sm-4 col-form-label" for="mobile">Upload Resume:</label>
-						<div class="col-sm-8">  
-							<input type="file" id="Resume" name="Resume" class="form-control">
+						<div class="col-sm-8">
+						     <form:errors path="resume" class="text-danger"></form:errors>
+							 <input type="file" id="Resume" name="Resume" class="form-control">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -126,7 +140,7 @@
 					<div class="col-xs-10 col-sm-6 col-sm-offset-3">
 						<button type="submit" class="btn btn-default">Register Now</button>
 					</div>
-				</form>
+				</form:form>
 				<div class="clearfix"></div>
 			</div>
 		</div>
