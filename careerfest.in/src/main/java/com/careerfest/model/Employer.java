@@ -20,6 +20,9 @@ public class Employer {
 	@Column(name = "S_no")
 	private Integer id;
 	
+	@Column(name = "ePhoto")
+	String ePhoto;
+	
 	@NotNull
 	@NotEmpty(message = "*Please Provide Your Full Name")
 	@Column(name = "eFullname")
@@ -209,6 +212,14 @@ public class Employer {
 
 	public void setePincode(String ePincode) {
 		this.ePincode = ePincode;
+	}
+
+	public String getePhoto() {
+		return ePhoto;
+	}
+
+	public void setePhoto(String ePhoto) {
+		this.ePhoto = ePhoto;
 	}
 	
 }

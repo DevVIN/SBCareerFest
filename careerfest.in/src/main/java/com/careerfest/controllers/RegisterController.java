@@ -98,6 +98,7 @@ public class RegisterController {
 			}
 			else
 			{
+				employer.setePhoto(employer.getePhoto());	
 				employer.seteFullname(employer.geteFullname());	
 				employer.seteEmail(employer.geteEmail());	
 				employer.seteCompanyname(employer.geteCompanyname());

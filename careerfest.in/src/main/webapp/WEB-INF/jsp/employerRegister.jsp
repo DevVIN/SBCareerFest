@@ -42,7 +42,7 @@
 									</ul>
 									<div class="uploadphoto">
 										<span class="inputwrapper btnstyleblue btn btn-default">Upload Photo
-											<input type='file' id="proImg" value="Upload Photo" />
+											<input type='file' id="proImg" name="ePhoto"/>
 										</span>
 									</div>
 								</div>
