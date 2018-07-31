@@ -1,5 +1,7 @@
 package com.careerfest.controllers;
 
+import java.util.Iterator;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.careerfest.model.City;
 import com.careerfest.model.Contact;
 import com.careerfest.model.Employer;
 import com.careerfest.model.User;
+import com.careerfest.service.CityService;
 import com.careerfest.service.EmpService;
 import com.careerfest.service.UserService;
 
@@ -19,10 +23,15 @@ import com.careerfest.service.UserService;
 @Controller
 public class RegisterController {
 
+	
 	@Autowired
 	UserService userService;
 	@Autowired
 	EmpService empService;
+	@Autowired
+	CityService cityService;
+	
+	
 
 	 @RequestMapping("/")
 	 public ModelAndView welcome(ModelAndView modelAndView,Contact contact,BindingResult result) {
@@ -33,7 +42,10 @@ public class RegisterController {
 	 
 	 @RequestMapping(value="/jobseekerRegister", method = RequestMethod.GET)
 		public ModelAndView showRegistrationPage(ModelAndView modelAndView, User user){
+		 
+		 Iterable<City> citylist = cityService.findAll();
 			modelAndView.addObject("register", user);
+			modelAndView.addObject("citylist", citylist);
 			modelAndView.setViewName("jobseekerRegister");
 			return modelAndView;
 		}
@@ -42,7 +54,7 @@ public class RegisterController {
 		protected ModelAndView processRegisteration(@Valid User user,BindingResult result,ModelAndView modelAndView){		
 		         
 		 User userExists = userService.findByEmail(user.getEmail());
-		 
+
 		 if(result.hasErrors()){
 			 modelAndView.setViewName("jobseekerRegister");
 		 }	else

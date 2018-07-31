@@ -1,6 +1,7 @@
 <!-- Jobseeker Registration -->
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@page import="org.springframework.util.StringUtils" %>
+<%@ page import="java.util.List" %>
 
 <section class="builder-bg contact-form-style1" id="contact-section9">
 	<div class="container pad-top-btm-lrg">
@@ -24,7 +25,11 @@
 			<div class="upload-resume col-xs-12 col-sm-5 bg-light-gray padtopbtm">
 				<div class="head">Register and Upload resume with us!</div>
 				<form:form role="form" id="registerform" method="post" action="/jobseekerRegister" commandName="user">
-				<% String alreadyRegisteredMessage=(String)request.getAttribute("alreadyRegisteredMessage");%>
+				<% 
+				String alreadyRegisteredMessage=(String)request.getAttribute("alreadyRegisteredMessage");
+				List citylist = (List)request.getAttribute("citylist");
+				%>
+			
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
 						    <form:errors path="fullname" class="text-danger"></form:errors>	
@@ -54,15 +59,12 @@
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
 						    <form:errors path="location" class="text-danger"></form:errors>	
-						    <select id="Location" name="Location" class="selectpicker form-control" title="Location" data-placeholder="Location">
+						    
+						    
+						     <form:select path="location" id="Location" name="Location" class="selectpicker form-control" title="Location" data-placeholder="Location">
 								<option></option>
-								<option value="Mumbai">Mumbai</option>
-								<option value="Pune">Pune</option>
-								<option value="Delhi">Delhi</option>
-								<option value="Banglore">Banglore</option>
-								<option value="Hyderabad">Hyderabad</option>
-								<option value="Kolkata">Kolkata</option>
-							</select>
+								<form:options items="${citylist}" itemValue="cityname" itemLabel="cityname" />
+							</form:select> 
 						</div>
 					</div>
 					<div class="form-group row">
