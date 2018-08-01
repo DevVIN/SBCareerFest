@@ -898,21 +898,18 @@
 					<h5
 						class="alt-font text-dark-gray display-block tz-text margin-fifteen-bottom">Ready
 						to Get Started?</h5>
-					<form:form role="form"  action="/contact" method="post" commandName="contact">
-						<form:errors path="name" class="text-danger"></form:errors>	
+					<div id="emailsentsuccessfully"></div>	
+					<form id="emailform">
 						<input type="text" name="name" data-email="required" id="name"
 							placeholder="* Your Name" class="medium-input border-radius-8"/>
-						<form:errors path="emailid" class="text-danger"></form:errors>						
 						<input type="text" name="emailid" data-email="required" id="emailid"
 							placeholder="* Your Email" class="medium-input border-radius-8">
-						<form:errors path="message" class="text-danger"></form:errors>	
 						<textarea name="message" id="message" placeholder="Your Message"
 							class="medium-input border-radius-8"></textarea>
 							
-						<button
-							class="btn-medium btn-circle btn bg-greenish-blue text-white tz-text"
-							type="submit">SEND MESSAGE</button>
-					</form:form>
+						<button	class="btn-medium btn-circle btn bg-greenish-blue text-white tz-text"
+							type="button" id="sendEmail">SEND MESSAGE</button>
+					</form>
 				</div>
 			</div>
 			<!-- end contact form -->

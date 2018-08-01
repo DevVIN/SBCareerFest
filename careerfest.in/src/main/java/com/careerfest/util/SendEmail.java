@@ -13,12 +13,12 @@ import javax.mail.internet.MimeMessage;
 import com.careerfest.model.Contact;
 
 public class SendEmail{	
-		public static void sendMail(Contact contact) {
+		public static Boolean sendMail(Contact contact) {
 			final String user = "enquirycareerfest@gmail.com";
 			final String pass = "careerfest@123";
-			String sender_mail_id = "adityadubey1411@gmail.com";
+			String sender_mail_id = "vinodkanpurne372@gmail.com";
 			String subject = "Enquire By "+contact.getName();
-			String content_message = "Name   :   "+contact.getName()+"\n\nEmail   :   "+contact.getEmailid()+"\n\nComment   :   "+contact.getMessage();
+			String content_message = "Name   :   "+contact.getName()+"\n\nEmail   :   "+contact.getEmailid()+"\n\nMessage   :   "+contact.getMessage();
 			// 1st step) Get the session object
 			Properties props = new Properties();
 			props.put("mail.smtp.host", "smtp.gmail.com");// change accordingly
@@ -45,10 +45,12 @@ public class SendEmail{
 				Transport.send(message);
 
 				System.out.println("email sent successfully.........................");
+				return true;
 
 			} catch (MessagingException e) {
 				// throw new RuntimeException(e);
 				e.printStackTrace();
+				return false;
 			}
 		}
 

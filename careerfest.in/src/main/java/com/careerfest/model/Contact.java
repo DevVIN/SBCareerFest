@@ -7,13 +7,12 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Contact {
 	
 	@NotNull
-	@NotEmpty(message="*Please Provide Full Name")
+	@NotEmpty(message="*Please Enter Full Name")
 	String name;
-	@NotEmpty(message="*Please Provide valid Email-Id")
+	@NotEmpty(message="*Please Enter valid Email Address")
 	@Email
 	String emailid;
-	@NotNull
-	@NotEmpty(message="*Please Enter Comment")
+	
 	String message;
 	public String getName() {
 		return name;

@@ -126,6 +126,39 @@ $(document).ready(function () {
             }
         });
     });
+    
+    $('#sendEmail').on("click",function(){
+    	var data={
+    				name: $('#name').val(),
+    				emailid: $('#emailid').val(),
+	    			message: $('#message').val()
+    	     };
+    	$('span').empty();
+    	var host = window.location.href;
+    	$.ajax({
+    		url: host+'contact',
+    		type: 'POST',    
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(data),
+            success: function (data) {
+            	if(data.isErrorAvailable){
+            		$.each(data.error,function(key,value){
+           	            $('input[name='+key+']').before('<span style="float: left; color: red;">'+value+'</span>');
+                       });
+            	}else{ 
+            			if(data.success != null)
+            				$('#emailsentsuccessfully').append('<span style="float: left; color: red;">'+data.success+'</span>').append('<span style="float: left; color: red;">'+data.success2+'</span>');
+            			else
+            				$('#emailsentsuccessfully').append('<span style="float: left; color: red;">'+data.service+'</span>')
+            	
+            	}
+                
+            },
+            error: function () {
+            	$('#emailsentsuccessfully').append('<span style="float: left; color: red;">*Something went wrong.Please try after some time.</span>');
+            }
+        });
+    });
 
     $( ".test-popup-link" ).dialog({
         autoOpen: true,
