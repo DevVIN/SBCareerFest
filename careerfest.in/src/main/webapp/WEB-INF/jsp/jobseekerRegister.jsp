@@ -28,6 +28,9 @@
 				<% 
 				String alreadyRegisteredMessage=(String)request.getAttribute("alreadyRegisteredMessage");
 				List citylist = (List)request.getAttribute("citylist");
+				List skillslist = (List)request.getAttribute("skillslist");
+				List industrylist = (List)request.getAttribute("industrylist");
+				List functionallist = (List)request.getAttribute("functionallist");
 				%>
 			
 					<div class="form-group row">
@@ -83,45 +86,28 @@
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
 						    <form:errors path="skills" class="text-danger"></form:errors>	
-						    <select class="selectpicker form-control" name="skills" id="skills" title="Key Skills" data-placeholder="Key Skills" multiple="multiple">
+						    <form:select path="skills" class="selectpicker form-control" name="skills" id="skills" title="Key Skills" data-placeholder="Key Skills" multiple="multiple">
 								<option></option>
-								<option value="Java">Java</option>
-								<option value="Javascript">Javascript</option>
-								<option value="Bootstrap">Bootstrap</option>
-								<option value="Angular">Angular</option>
-								<option value="React">React</option>
-								<option value="Dot Net">Dot Net</option>
-								<option value="Ajax">Ajax</option>
-							</select>
+								<form:options items="${skillslist}" itemValue="skillname" itemLabel="skillname" />
+							</form:select>
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
 						    <form:errors path="industry" class="text-danger"></form:errors>	
-						    <select class="selectpicker form-control" name="Industry" id="Industry" title="Industry" data-placeholder="Industry">
+						    <form:select  path="industry" class="selectpicker form-control" name="Industry" id="Industry" title="Industry" data-placeholder="Industry">
 								<option></option>
-								<option  value="Automotive/ Ancillaries">Automotive/ Ancillaries</option>
-								<option value="Banking/ Financial Services">Banking/ Financial Services</option>
-								<option value="Construction & Engineering">Construction & Engineering</option>
-								<option value="ITES/BPO">ITES/BPO</option>
-								<option value="IT/ Computers - Hardware">IT/ Computers - Hardware</option>
-								<option value="IT/ Computers - Software">IT/ Computers - Software</option>
-								<option value="KPO/Analytics">KPO/Analytics</option>
-							</select>
+								<form:options items="${industrylist}" itemValue="industryname" itemLabel="industryname" />
+							</form:select>
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
 						    <form:errors path="functional" class="text-danger"></form:errors>
-						    <select class="selectpicker form-control" name="Functional" id="Functional" title="Function" data-placeholder="Function">
+						    <form:select path="functional" class="selectpicker form-control" name="Functional" id="Functional" title="Function" data-placeholder="Function">
 								<option></option>
-								<option value="Admin/Secretarial">Admin/Secretarial</option>
-								<option value="Customer Service/ Call Centre/ BPO">Customer Service/ Call Centre/ BPO</option>
-								<option value="Finance & Accounts">Finance & Accounts</option>
-								<option value="Human Resources">Human Resources</option>
-								<option value="IT">IT</option>
-								<option value="Marketing & Communicationse">Marketing & Communicationse</option>
-							</select>
+								<form:options items="${functionallist}" itemValue="functionalname" itemLabel="functionalname" />
+							</form:select>
 						</div>
 					</div>
 					<div class="clearfix"></div>

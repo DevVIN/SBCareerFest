@@ -1,6 +1,5 @@
 package com.careerfest.controllers;
 
-import java.util.Iterator;
 
 import javax.validation.Valid;
 
@@ -14,9 +13,15 @@ import org.springframework.web.servlet.ModelAndView;
 import com.careerfest.model.City;
 import com.careerfest.model.Contact;
 import com.careerfest.model.Employer;
+import com.careerfest.model.Functional;
+import com.careerfest.model.Industry;
+import com.careerfest.model.Skills;
 import com.careerfest.model.User;
 import com.careerfest.service.CityService;
 import com.careerfest.service.EmpService;
+import com.careerfest.service.FunctionalService;
+import com.careerfest.service.IndustryService;
+import com.careerfest.service.SkillsService;
 import com.careerfest.service.UserService;
 
 
@@ -30,6 +35,12 @@ public class RegisterController {
 	EmpService empService;
 	@Autowired
 	CityService cityService;
+	@Autowired
+    SkillsService skillsService;
+	@Autowired
+    IndustryService industryService;
+	@Autowired
+    FunctionalService functionalService;
 	
 	
 
@@ -44,8 +55,15 @@ public class RegisterController {
 		public ModelAndView showRegistrationPage(ModelAndView modelAndView, User user){
 		 
 		 Iterable<City> citylist = cityService.findAll();
+		 Iterable<Skills> skillslist = skillsService.findAll();
+		 Iterable<Industry> industrylist = industryService.findAll();
+		 Iterable<Functional> functionallist = functionalService.findAll();
+
 			modelAndView.addObject("register", user);
 			modelAndView.addObject("citylist", citylist);
+			modelAndView.addObject("skillslist", skillslist);
+			modelAndView.addObject("industrylist", industrylist);
+			modelAndView.addObject("functionallist", functionallist);
 			modelAndView.setViewName("jobseekerRegister");
 			return modelAndView;
 		}
