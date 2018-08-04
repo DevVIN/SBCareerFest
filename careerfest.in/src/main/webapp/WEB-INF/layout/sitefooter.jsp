@@ -6,12 +6,12 @@
 			<div class="form-group row">
 				<div class="col-xs-12 col-sm-10 col-sm-offset-1" id="errorMessage"></div>
 				<div class="col-xs-12 col-sm-10 col-sm-offset-1">
-					<input type="text" name="email" id="email" placeholder="Enter your Email ID" class="text ui-widget-content ui-corner-all">
+					<input type="text" name="loginEmail" id="loginEmail" placeholder="Enter your Email ID" class="text ui-widget-content ui-corner-all">
 				</div>
 			</div>
 			<div class="form-group row">
 				<div class="col-xs-12 col-sm-10 col-sm-offset-1 left-align">
-					<input type="password" name="rpassword" id="rpassword" placeholder="Enter your Password" class="text ui-widget-content ui-corner-all">
+					<input type="password" name="loginPassword" id="loginPassword" placeholder="Enter your Password" class="text ui-widget-content ui-corner-all">
 					<a target="_blank" href="#" class="linkbtnstyle">Forgot Password?</a>
 				</div>
 			</div>

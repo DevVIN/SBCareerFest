@@ -3,6 +3,7 @@ package com.careerfest.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.careerfest.model.LoginModel;
 import com.careerfest.model.User;
 import com.careerfest.repository.UserRepository;
 
@@ -19,8 +20,11 @@ public class UserService {
     public User registerUser(User user){
 		
 		User saveuser =  userrepository.save(user);
-		return saveuser;
-				 
+		return saveuser;				 
 	}
+    
+    public User findUserByEmailPass(LoginModel loginModel){
+    	return userrepository.findByEmailAndRpassword(loginModel.getLoginEmail(), loginModel.getLoginPassword());
+    }
 	
 }

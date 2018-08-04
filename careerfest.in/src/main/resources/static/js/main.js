@@ -75,7 +75,7 @@ $(document).ready(function () {
     });
    
     var dialog, form,
-    allFields = $( [] ).add( name ).add( email ).add( rpassword );
+    allFields = $( [] ).add( name ).add( loginEmail ).add( loginPassword );
 
     dialog = $( "#login-form" ).dialog({
         autoOpen: false,
@@ -100,8 +100,8 @@ $(document).ready(function () {
     
     $('#loginsubmit').on("click",function(){
     	var data={
-	    			email: $('#email').val(),
-	    			rpassword: $('#rpassword').val()
+    			loginEmail: $('#loginEmail').val(),
+    			loginPassword: $('#loginPassword').val()
     	}
     	$('#errorMessage').empty();
     	$.ajax({
