@@ -83,6 +83,7 @@ $("#Industry").change(function() {
         },
         success: function(functional) {
         	$("#Functional").html('');
+        	$("#select2-Functional-container").html('Function');
         	$('<option>').appendTo('#Functional');
         	$.each( functional, function(i) {
                   	$('<option>').val(functional[i].functionalname).text(functional[i].functionalname).appendTo('#Functional');
@@ -108,6 +109,7 @@ $("#eCountry").change(function() {
         },
         success: function(state) {
         	$("#eState").html('');
+        	$("#select2-eState-container").html('State');
         	$('<option>').appendTo('#eState');
         	$.each( state, function(i) {
                   	$('<option>').val(state[i].statecode).text(state[i].statecode).appendTo('#eState');
@@ -135,6 +137,7 @@ $("#eState").change(function() {
         },
         success: function(city) {
         	$("#eCity").html('');
+        	$("#select2-eCity-container").html('City');
         	$('<option>').appendTo('#eCity');
         	$.each(city, function(i) {
                   	$('<option>').val(city[i].cityname).text(city[i].cityname).appendTo('#eCity');
