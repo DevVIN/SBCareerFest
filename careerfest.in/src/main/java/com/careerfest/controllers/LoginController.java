@@ -46,11 +46,11 @@ public class LoginController {
 			}
 			return loginJsonResponse;
 	}
-	@RequestMapping(value="/employeedashboard", method=RequestMethod.GET)
+	@RequestMapping(value="/jobseekardashboard", method=RequestMethod.GET)
 	public ModelAndView employeeDashboard(ModelAndView modelAndView, HttpServletRequest request){		
 		System.out.println("Inside Employer Dashboard...."+request.getSession().getAttribute("usersession"));
 		if((request.getSession().getAttribute("usersession")!= null)&& (request.getSession().getAttribute("usersession").equals("true"))){
-			modelAndView.setViewName("EmployeeDashboard");
+			modelAndView.setViewName("jobseekerDashboard");
 			
 		}else{
 			modelAndView.setViewName("redirect:/");

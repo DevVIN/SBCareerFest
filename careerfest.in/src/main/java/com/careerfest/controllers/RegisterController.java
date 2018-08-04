@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,9 +60,10 @@ public class RegisterController {
 
 
 	 @RequestMapping("/")
-	 public ModelAndView welcome(ModelAndView modelAndView,Contact contact,BindingResult result) {
+	 public ModelAndView welcome(ModelAndView modelAndView,Contact contact,BindingResult result,HttpSession session) {
 		 	modelAndView.addObject("contactus",contact);
 		 	modelAndView.setViewName("home");
+		 	session.invalidate();
 		 	return modelAndView;
 		}
 	 

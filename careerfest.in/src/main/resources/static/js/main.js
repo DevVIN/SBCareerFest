@@ -103,16 +103,17 @@ $(document).ready(function () {
     			loginEmail: $('#loginEmail').val(),
     			loginPassword: $('#loginPassword').val()
     	}
+    	var host = window.location.href;
     	$('#errorMessage').empty();
     	$.ajax({
-            url: 'http://localhost:8080/login',
+            url: host+'login',
             type: 'POST',    
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify(data),
             success: function (data) {
             	if(data.validated){
             		dialog.dialog("close");
-            		window.location.href = "http://localhost:8080/employeedashboard";
+            		window.location.href = host+'jobseekardashboard';
             	}else{
             		/* $.each(data.errorMessages,function(key,value){
            	            $('input[name='+key+']').before('<span style="float: left; color: red;">'+value+'</span>');
