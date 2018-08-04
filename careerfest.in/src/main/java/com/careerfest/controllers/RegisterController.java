@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -29,6 +30,8 @@ import com.careerfest.model.Country;
 import com.careerfest.model.Employer;
 import com.careerfest.model.Functional;
 import com.careerfest.model.Industry;
+import com.careerfest.model.JobSeekerLanding;
+import com.careerfest.model.Role;
 import com.careerfest.model.Skills;
 import com.careerfest.model.State;
 import com.careerfest.model.UploadFile;
@@ -39,6 +42,7 @@ import com.careerfest.service.CountryService;
 import com.careerfest.service.EmpService;
 import com.careerfest.service.FunctionalService;
 import com.careerfest.service.IndustryService;
+import com.careerfest.service.RoleService;
 import com.careerfest.service.SkillsService;
 import com.careerfest.service.StateService;
 import com.careerfest.service.UserService;
@@ -66,6 +70,8 @@ public class RegisterController {
     StateService stateService;
 	@Autowired
 	CompanyService companyService;
+	@Autowired
+	RoleService roleService;
 	
 	
 	private static String UPLOADED_FOLDER = "\\src\\main\\resources\\static\\cv\\";
@@ -282,7 +288,7 @@ public class RegisterController {
 
 			return statelist;
 		}
-	 
+	
 	 @ResponseBody
 	 @RequestMapping(value="/fetchCity", method = RequestMethod.POST)
 		public  Iterable<City> fetchCityList(@RequestParam("statecode") String statecode ,@RequestParam("countryname") String countryname ){
@@ -356,5 +362,12 @@ public class RegisterController {
 	    	
 	    }
 		 
-	    		 
+	@RequestMapping(value="/jobseekerlanding",method= RequestMethod.GET)
+	public ModelAndView saveJobseekarLanding(ModelAndView modelAndView,JobSeekerLanding jobSeekerLanding,BindingResult result){
+		List<Role> rolelist = roleService.findAll();
+		modelAndView.addObject("roleList",rolelist);
+		modelAndView.addObject("joblanding",jobSeekerLanding);
+		modelAndView.setViewName("jobseekerLanding");
+		return modelAndView;
+	}
 }

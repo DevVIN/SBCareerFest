@@ -1,8 +1,8 @@
 <!-- Jobseeker Landing -->
-
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <section class="builder-bg contact-form-style1" id="contact-section9">
 	<div class="container pad-top-btm-lrg">
-		<form role="form">
+		<form:form role="form" commandName="jobSeekerLanding">
 			<div class="row rowline">
 				<div class="col-xs-12 col-sm-4 pad-top">
 					<div class="head">Tell us more abut yourself</div>
@@ -56,15 +56,17 @@
 							</select>
 						</div>
 						<div class="col-xs-12 col-sm-6">
-							<select class="selectpicker form-control"  title="Role" data-placeholder="Role">
-								<option></option>
-								<option value="Java Developer">Java Developer</option>
+							<form:select path="role" name="role" class="selectpicker form-control"  title="Role" data-placeholder="Role">
+								
+								 <option></option>
+							<!-- <option value="Java Developer">Java Developer</option>
 								<option value="UI Developer">UI Developer</option>
 								<option value="Dot Net Developer">Dot Net Developer</option>
 								<option value="Software Engineer">Software Engineer</option>
 								<option value="Team Lead">Team Lead</option>
-								<option value="Trainee">Trainee</option>
-							</select>
+								<option value="Trainee">Trainee</option> -->
+								<form:options items="${roleList}" itemValue="rolename" itemLabel="rolename" />
+							</form:select>>
 						</div>
 						<div class="col-xs-12 col-sm-6">
 							<input type="text" id="dateofbirth" class="datepickerfromto form-control" placeholder="Date of Birth"/>
@@ -232,6 +234,6 @@
 					</div>
 				</div>
 			</div>
-		</form>
+		</form:form>>
 	</div>
 </section>

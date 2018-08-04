@@ -52,7 +52,7 @@
 										<li>The image file name should not contain special characters</li>
 									</ul>
 									<div class="uploadphoto">
-									  <div id="uploadImageFail" class="text-danger"><%=StringUtils.isEmpty(uploadImageFail)!=true?uploadImageFail:""%></div>
+									  <div id="uploadImageFail" class="error"><%=StringUtils.isEmpty(uploadImageFail)!=true?uploadImageFail:""%></div>
 										<span class="inputwrapper btnstyleblue btn btn-default">Upload Photo
 											<input type="file" id="proImg" name="ePhotoFile" class="form-control"/>
 										</span>
@@ -62,32 +62,32 @@
 							<div class="line-separator"></div>
 						</div>
 						<div class="col-xs-12 col-sm-12">
-						    <form:errors path="eFullname" class="text-danger"></form:errors>
+						    <form:errors path="eFullname" class="error"></form:errors>
 							<input type="text" class="form-control" id="eFullname" name="eFullname" placeholder="Full Name">
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-					     <div id="alreadyRegisteredMessage" class="text-danger"><%=StringUtils.isEmpty(alreadyRegisteredMessage)!=true?alreadyRegisteredMessage:""%></div>
-						 <form:errors path="eEmail" class="text-danger"></form:errors>
+					     <div id="alreadyRegisteredMessage" class="error"><%=StringUtils.isEmpty(alreadyRegisteredMessage)!=true?alreadyRegisteredMessage:""%></div>
+						 <form:errors path="eEmail" class="error"></form:errors>
 						 <input type="email" class="form-control" id="eEmail" name="eEmail" placeholder="Email">
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-						    <form:errors path="ePassword" class="text-danger"></form:errors>
+						    <form:errors path="ePassword" class="error"></form:errors>
 							<input type="password" class="form-control" id="ePassword"  name="ePassword" placeholder="Password">
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-						    <form:errors path="eMobileno" class="text-danger"></form:errors>
+						    <form:errors path="eMobileno" class="error"></form:errors>
 							<input type="text" class="form-control" id="eMobileno" name="eMobileno" placeholder="Mobile" minlength="10" maxlength="10">
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-						    <form:errors path="eCompanyname" class="text-danger"></form:errors>
+						    <form:errors path="eCompanyname" class="error"></form:errors>
 							<form:select path="eCompanyname" id="eCompanyname" name="eCompanyname" class="selectpicker form-control" title="Company" data-placeholder="Company Name">
 							<option></option>
 							<form:options items="${companylist}" itemValue="companyname" itemLabel="companyname" />
@@ -96,7 +96,7 @@
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-						    <form:errors path="eIndustry" class="text-danger"></form:errors>
+						    <form:errors path="eIndustry" class="error"></form:errors>
 							<form:select path="eIndustry"  class="selectpicker form-control" name="eIndustry" id="eIndustry" title="Industry Type" data-placeholder="Industry Type">
 							<option></option>
 							<form:options items="${industrylist}" itemValue="industryname" itemLabel="industryname" />
@@ -121,32 +121,32 @@
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-						    <form:errors path="eContactperson" class="text-danger"></form:errors>
+						    <form:errors path="eContactperson" class="error"></form:errors>
 							<input type="text" class="form-control" id="eContactperson" name="eContactperson" placeholder="Contact Person's Name">
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-						    <form:errors path="eDesignation" class="text-danger"></form:errors>
+						    <form:errors path="eDesignation" class="error"></form:errors>
 							<input type="text" class="form-control" id="eDesignation" name="eDesignation" placeholder="Designation">
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-						     <form:errors path="eOfficeaddress" class="text-danger"></form:errors>
+						     <form:errors path="eOfficeaddress" class="error"></form:errors>
 							<textarea class="form-control" id="eOfficeaddress" name="eOfficeaddress" placeholder="Office Address"></textarea>
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-6">
-						    <form:errors path="eCountry" class="text-danger"></form:errors>
+						    <form:errors path="eCountry" class="error"></form:errors>
 							<form:select path="eCountry" id="eCountry" name="eCountry" class="selectpicker form-control" title="country" data-placeholder="Country">
 							<option></option>
 							<form:options items="${countrylist}" itemValue="countryname" itemLabel="countryname" />
 							</form:select>
 						</div>
 						<div class="col-xs-12 col-sm-6">
-						   <form:errors path="eState" class="text-danger"></form:errors>
+						   <form:errors path="eState" class="error"></form:errors>
 							 <form:select  path="eState" id="eState" name="eState" class="selectpicker form-control" title="state" data-placeholder="State">
 							<option></option>
 							<form:options items="${statelist}" itemValue="statecode" itemLabel="statecode" />
@@ -155,14 +155,14 @@
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-6">
-						    <form:errors path="eCity" class="text-danger"></form:errors>
+						    <form:errors path="eCity" class="error"></form:errors>
 							<form:select path="eCity" id="eCity" name="eCity" class="selectpicker form-control" title="city" data-placeholder="City">
 								<option></option>
 								<form:options items="${citylist}" itemValue="cityname" itemLabel="cityname" />
 							</form:select>
 						</div>
 						<div class="col-xs-12 col-sm-6">
-						   <form:errors path="ePincode" class="text-danger"></form:errors>
+						   <form:errors path="ePincode" class="error"></form:errors>
 							<input type="text" class="form-control" id="ePincode" name="ePincode" placeholder="Pincode">
 						</div>
 					</div>
