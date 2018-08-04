@@ -39,7 +39,7 @@ public class LoginController {
 				 if(userDB != null){
 					 loginJsonResponse.setValidated(true);
 				 	 loginJsonResponse.setUser(userDB);
-				 	 session.setAttribute("usersession", true);				 	 
+				 	 session.setAttribute("usersession", "true");				 	 
 				 }else{
 					 loginJsonResponse.setEmessage("!Email ID password does not exist in our database. Please Enter valid emilid");
 				 }	
@@ -49,7 +49,7 @@ public class LoginController {
 	@RequestMapping(value="/employeedashboard", method=RequestMethod.GET)
 	public ModelAndView employeeDashboard(ModelAndView modelAndView, HttpServletRequest request){		
 		System.out.println("Inside Employer Dashboard...."+request.getSession().getAttribute("usersession"));
-		if((request.getSession().getAttribute("usersession")!= null)){
+		if((request.getSession().getAttribute("usersession")!= null)&& (request.getSession().getAttribute("usersession").equals("true"))){
 			modelAndView.setViewName("EmployeeDashboard");
 			
 		}else{
