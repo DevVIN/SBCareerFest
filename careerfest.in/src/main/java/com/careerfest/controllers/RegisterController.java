@@ -69,7 +69,7 @@ public class RegisterController {
 	
 	
 	private static String UPLOADED_FOLDER = "\\src\\main\\resources\\static\\cv\\";
-
+	private static String UPLOADED_IMAGE_FOLDER = "\\src\\main\\resources\\static\\images\\profile\\";
 
 	 @RequestMapping("/")
 	 public ModelAndView welcome(ModelAndView modelAndView,Contact contact,BindingResult result,HttpSession session) {
@@ -131,8 +131,22 @@ public class RegisterController {
 				user.setRpassword(user.getRpassword());
 				user.setSkills(user.getSkills());
 				user.setResume(System.getProperty("user.dir")+UPLOADED_FOLDER + user.getEmail()+"_"+uploadfile.getResumefile().getOriginalFilename());
+				String status ="";
 				
-				String status = singleFileUpload(uploadfile.getResumefile(),user);
+				if(uploadfile.getResumefile().getOriginalFilename()=="")
+	            {
+					status="fail";
+					modelAndView.addObject("uploadResumeFail", "Please Select Resume to Upload.");
+	            }
+				else
+				{
+					status = singleFileUpload(uploadfile.getResumefile(),user);
+					if(status=="fail")
+					{
+						modelAndView.addObject("uploadResumeFail", "Oops! Problem in uploading the resume , Please try again .");
+					}
+				}
+				
 				if(status == "success")
 				{
 					userService.registerUser(user);
@@ -140,7 +154,7 @@ public class RegisterController {
 					modelAndView.setViewName("jobseekerLanding");
 				}else
 				{
-					modelAndView.addObject("uploadResumeFail", "Oops! Problem in uploading the resume , Please try again .");
+					
 					result.reject("Resumefile");
 	     			modelAndView.setViewName("jobseekerRegister");
 				}
@@ -172,7 +186,7 @@ public class RegisterController {
 		}
 	 
 	 @RequestMapping(value = "/employerRegister", method = RequestMethod.POST)
-		protected ModelAndView processEmployerRegisteration(@Valid Employer employer,BindingResult result,ModelAndView modelAndView,@ModelAttribute Contact contact){		
+		protected ModelAndView processEmployerRegisteration(@Valid Employer employer,BindingResult result,ModelAndView modelAndView,@ModelAttribute UploadFile uploadfile,@ModelAttribute Contact contact){		
 		         
 		 	Employer employerExists = empService.findByeEmail(employer.geteEmail());
 		 
@@ -201,7 +215,7 @@ public class RegisterController {
 			}
 			else
 			{
-				employer.setePhoto(employer.getePhoto());	
+				employer.setePhoto(System.getProperty("user.dir")+UPLOADED_IMAGE_FOLDER + employer.geteEmail()+"_"+uploadfile.getePhotoFile().getOriginalFilename());	
 				employer.seteFullname(employer.geteFullname());	
 				employer.seteEmail(employer.geteEmail());	
 				employer.seteCompanyname(employer.geteCompanyname());
@@ -216,11 +230,34 @@ public class RegisterController {
 				employer.seteCity(employer.geteCity());
 				employer.setePincode(employer.getePincode());
 				employer.seteType(employer.geteType());
+				String status ="";
+				if(uploadfile.getePhotoFile().getOriginalFilename()=="")
+	            {
+					status="fail";
+					modelAndView.addObject("uploadImageFail","Please select image to upload");
 
+	            }
+				else
+				{
+				 status = singleImageUpload(uploadfile.getePhotoFile(),employer);
+				 if(status == "fail")
+				 {
+						modelAndView.addObject("uploadImageFail","Oops! Problem in uploading the image , Please try again ."); 
+				 }
+				}
+				if(status == "success")
+				{
+					empService.registerUser(employer);
+					sendEmployerRegisterationMail(contact,employer);
+					modelAndView.setViewName("employerDashboard");
+				}else
+				{
+					result.reject("ePhotoFile");
+	  			    modelAndView.setViewName("employerRegister");
+				}
+				
 			
-				empService.registerUser(employer);
-				sendEmployerRegisterationMail(contact,employer);
-				modelAndView.setViewName("employerDashboard");
+			
 			}
 		 	}
 		 return modelAndView;
@@ -258,15 +295,15 @@ public class RegisterController {
 	 
 	    public String singleFileUpload(MultipartFile file,User user) {
 	       
-	    	String uploadstatus = "success";
+	    	String uploadstatus = "";
 	        try {
 	        	System.out.println();
 	            // Get the file and save it somewhere
 	            byte[] bytes = file.getBytes();
 	            Path path = Paths.get(System.getProperty("user.dir")+UPLOADED_FOLDER + user.getEmail()+"_"+file.getOriginalFilename());
 	            Files.write(path, bytes);
-
-
+	            uploadstatus="success";
+	          
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	            uploadstatus = "fail";
@@ -276,6 +313,25 @@ public class RegisterController {
 	        return uploadstatus;
 	    }
 	    
+	    public String singleImageUpload(MultipartFile file,Employer emp) {
+		       
+	    	String uploadstatus = "";
+	        try {
+	        	System.out.println();
+	            // Get the file and save it somewhere
+	            byte[] bytes = file.getBytes();
+	            Path path = Paths.get(System.getProperty("user.dir")+UPLOADED_IMAGE_FOLDER + emp.geteEmail()+"_"+file.getOriginalFilename());
+	            Files.write(path, bytes);
+	            uploadstatus="success";
+
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	            uploadstatus = "fail";
+	            
+	        }
+
+	        return uploadstatus;
+	    }
 	    public void sendJobSeekerRegisterationMail(Contact contact ,User user) {
 	    	
 	    	contact.setName(user.getFullname());

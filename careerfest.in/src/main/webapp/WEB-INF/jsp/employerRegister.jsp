@@ -25,9 +25,10 @@
 			</div>
 			<div class="upload-resume col-xs-12 col-sm-5 bg-light-gray padtopbtm">
 				<div class="head">New Employer/Recruiter Registration!</div>
-				<form:form role="form" id="empregisterform" method="post" action="/employerRegister" commandName="employer">
-					<% String alreadyRegisteredMessage=(String)request.getAttribute("alreadyRegisteredMessage");
+				<form:form role="form" id="empregisterform" method="post" action="/employerRegister" commandName="employer" enctype="multipart/form-data">
 					
+					<% String alreadyRegisteredMessage=(String)request.getAttribute("alreadyRegisteredMessage");
+					String uploadImageFail=(String)request.getAttribute("uploadImageFail");
 					List citylist = (List)request.getAttribute("citylist");
 					List companylist = (List)request.getAttribute("companylist");
 					List industrylist = (List)request.getAttribute("industrylist");
@@ -51,8 +52,9 @@
 										<li>The image file name should not contain special characters</li>
 									</ul>
 									<div class="uploadphoto">
+									  <div id="uploadImageFail" class="text-danger"><%=StringUtils.isEmpty(uploadImageFail)!=true?uploadImageFail:""%></div>
 										<span class="inputwrapper btnstyleblue btn btn-default">Upload Photo
-											<input type='file' id="proImg" name="ePhoto"/>
+											<input type="file" id="proImg" name="ePhotoFile" class="form-control"/>
 										</span>
 									</div>
 								</div>
@@ -80,7 +82,7 @@
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
 						    <form:errors path="eMobileno" class="text-danger"></form:errors>
-							<input type="text" class="form-control" id="eMobileno" name="eMobileno" placeholder="Mobile">
+							<input type="text" class="form-control" id="eMobileno" name="eMobileno" placeholder="Mobile" minlength="10" maxlength="10">
 						</div>
 					</div>
 					<div class="form-group row">

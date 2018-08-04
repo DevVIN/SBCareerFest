@@ -57,7 +57,7 @@
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
 						     <form:errors path="mobileno" class="text-danger"></form:errors>	
-						     <input type="text" class="form-control" id="mobileno" name="mobileno" placeholder="Mobile">
+						     <input type="text" class="form-control" id="mobileno" name="mobileno" placeholder="Mobile"  minlength="10" maxlength="10">
 						</div>
 					</div>
 					<div class="form-group row">
