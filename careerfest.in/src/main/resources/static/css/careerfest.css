@@ -1,4 +1,39 @@
 /* Custom css for styling fir css check */
+.btn-default.disabled,
+.btn-default.disabled.active,
+.btn-default.disabled.focus,
+.btn-default.disabled:active,
+.btn-default.disabled:focus,
+.btn-default.disabled:hover,
+.btn-default[disabled],
+.btn-default[disabled].active,
+.btn-default[disabled].focus,
+.btn-default[disabled]:active,
+.btn-default[disabled]:focus,
+.btn-default[disabled]:hover,
+fieldset[disabled] .btn-default,
+fieldset[disabled] .btn-default.active,
+fieldset[disabled] .btn-default.focus,
+fieldset[disabled] .btn-default:active,
+fieldset[disabled] .btn-default:focus,
+fieldset[disabled] .btn-default:hover {
+  background-color: #1F618D;
+  border: none; }
+
+.error {
+  color: #ff0000;
+  float: left;
+  display: block;
+  margin-bottom: 10px; }
+
+.emailsentsuccessfully {
+  margin-bottom: 10px;
+  color: #3ed6a2; }
+  .emailsentsuccessfully .emailSend1 {
+    font-size: 20px; }
+  .emailsentsuccessfully .emailSend2 {
+    font-size: 16px; }
+
 .select2-container.select2-container--default .select2-selection--multiple input {
   margin-bottom: 0; }
 

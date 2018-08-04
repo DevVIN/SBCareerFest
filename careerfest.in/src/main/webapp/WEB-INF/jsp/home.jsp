@@ -15,6 +15,7 @@
 						<div class="social float-right">
 							<div class="employerLogin inlineblock linkbtnstyle">Employer</div> | 
 							<div class="jobseekerLogin inlineblock linkbtnstyle">Jobseeker</div>
+							<div class="inlineblock linkbtnstyle">Logout</div>
 						</div>
 					</div>
 				</div>
@@ -898,7 +899,7 @@
 					<h5
 						class="alt-font text-dark-gray display-block tz-text margin-fifteen-bottom">Ready
 						to Get Started?</h5>
-					<div id="emailsentsuccessfully"></div>	
+					<div id="emailsentsuccessfully" class="emailsentsuccessfully"></div>	
 					<form id="emailform">
 						<input type="text" name="name" data-email="required" id="name"
 							placeholder="* Your Name" class="medium-input border-radius-8"/>

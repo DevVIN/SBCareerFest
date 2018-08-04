@@ -144,19 +144,20 @@ $(document).ready(function () {
             success: function (data) {
             	if(data.isErrorAvailable){
             		$.each(data.error,function(key,value){
-           	            $('input[name='+key+']').before('<span style="float: left; color: red;">'+value+'</span>');
+           	            $('input[name='+key+']').before('<span class="error">'+value+'</span>');
                        });
-            	}else{ 
-            			if(data.success != null)
-            				$('#emailsentsuccessfully').append('<span style="float: left; color: red;">'+data.success+'</span>').append('<span style="float: left; color: red;">'+data.success2+'</span>');
-            			else
-            				$('#emailsentsuccessfully').append('<span style="float: left; color: red;">'+data.service+'</span>')
-            	
+            	}else{
+            		//$('input[type=text], textarea').val("");
+            		$('#emailform')[0].reset();
+        			if(data.success != null)
+        				$('#emailsentsuccessfully').append('<span class="emailSend1 sendsuc">'+data.success+'</span><br>').append('<span class="emailSend2 sendsuc">'+data.success2+'</span>');
+        			else
+        				$('#emailsentsuccessfully').append('<span class="error">'+data.service+'</span>')
             	}
                 
             },
             error: function () {
-            	$('#emailsentsuccessfully').append('<span style="float: left; color: red;">*Something went wrong.Please try after some time.</span>');
+            	$('#emailsentsuccessfully').append('<span class="error">*Something went wrong.Please try after some time.</span>');
             }
         });
     });

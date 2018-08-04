@@ -10,7 +10,7 @@ public class Contact {
 	@NotEmpty(message="*Please Enter Full Name")
 	String name;
 	@NotEmpty(message="*Please Enter valid Email Address")
-	@Email
+	@Email(message="*Please Enter valid Email Address")
 	String emailid;
 	
 	String message;

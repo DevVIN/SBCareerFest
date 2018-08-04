@@ -4,7 +4,12 @@
 	<nav class="navbar bg-white white-header alt-font no-margin no-padding">
 		<div class="topbar container">
 			<a href="/" class="topLogo"><img alt="" src="images/logo.svg" data-img-size="(W)163px X (H)39px"></a>
-			<div class="fright">Already Registered? <div class="JobseekerLogin inlineblock linkbtnstyle">Login</div> here</div>
+			<div class="fright">
+				Already Registered? 
+				<div class="JobseekerLogin inlineblock linkbtnstyle">Login</div> 
+				here
+				<div class="inlineblock linkbtnstyle">Logout</div>
+			</div>
 		</div>
 	</nav>
 </header>
