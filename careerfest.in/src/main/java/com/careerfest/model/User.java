@@ -11,11 +11,10 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name="user")
-public class User {
+public class User  {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

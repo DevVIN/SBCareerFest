@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.careerfest.email.SendRegisterationMail;
 import com.careerfest.model.City;
 import com.careerfest.model.Contact;
 import com.careerfest.model.Employer;
@@ -53,23 +54,24 @@ public class RegisterController {
 	@Autowired
     FunctionalService functionalService;
 	
+	
 	private static String UPLOADED_FOLDER = "\\src\\main\\resources\\static\\cv\\";
 
 
 	 @RequestMapping("/")
 	 public ModelAndView welcome(ModelAndView modelAndView,Contact contact,BindingResult result) {
-		modelAndView.addObject("contactus",contact);
-		modelAndView.setViewName("home");
-		return modelAndView;
+		 	modelAndView.addObject("contactus",contact);
+		 	modelAndView.setViewName("home");
+		 	return modelAndView;
 		}
 	 
 	 @RequestMapping(value="/jobseekerRegister", method = RequestMethod.GET)
 		public ModelAndView showRegistrationPage(ModelAndView modelAndView, User user){
 		 
-		 Iterable<City> citylist = cityService.findAll();
-		 Iterable<Skills> skillslist = skillsService.findAll();
-		 Iterable<Industry> industrylist = industryService.findAll();
-		 Iterable<Functional> functionallist = functionalService.findAll();
+		 	Iterable<City> citylist = cityService.findAll();
+		 	Iterable<Skills> skillslist = skillsService.findAll();
+		 	Iterable<Industry> industrylist = industryService.findAll();
+		 	Iterable<Functional> functionallist = functionalService.findAll();
 
 			modelAndView.addObject("register", user);
 			modelAndView.addObject("citylist", citylist);
@@ -81,23 +83,23 @@ public class RegisterController {
 		}
 	 
 	 @RequestMapping(value = "/jobseekerRegister", method = RequestMethod.POST)
-		protected ModelAndView processRegisteration(@Valid User user,BindingResult result,ModelAndView modelAndView ,@ModelAttribute UploadFile uploadfile){		
+		protected ModelAndView processRegisteration(@Valid User user,BindingResult result,ModelAndView modelAndView ,@ModelAttribute UploadFile uploadfile ,@ModelAttribute Contact contact){		
 		         
-		 User userExists = userService.findByEmail(user.getEmail());
+		 	User userExists = userService.findByEmail(user.getEmail());
 	 
-		 Iterable<City> citylist = cityService.findAll();
-		 Iterable<Skills> skillslist = skillsService.findAll();
-		 Iterable<Industry> industrylist = industryService.findAll();
-		 Iterable<Functional> functionallist = functionalService.findAll();
+		 	Iterable<City> citylist = cityService.findAll();
+		 	Iterable<Skills> skillslist = skillsService.findAll();
+		 	Iterable<Industry> industrylist = industryService.findAll();
+		 	Iterable<Functional> functionallist = functionalService.findAll();
 
 			modelAndView.addObject("citylist", citylist);
 			modelAndView.addObject("skillslist", skillslist);
 			modelAndView.addObject("industrylist", industrylist);
 			modelAndView.addObject("functionallist", functionallist);
-		 if(result.hasErrors()){
-			 modelAndView.setViewName("jobseekerRegister");
-		 }	else
-		 {
+			if(result.hasErrors()){
+				modelAndView.setViewName("jobseekerRegister");
+			}	else
+			{
 			if (userExists != null) {
 				modelAndView.addObject("alreadyRegisteredMessage", "Oops!  There is already a user registered with the email provided.");
 				result.reject("email");
@@ -105,22 +107,22 @@ public class RegisterController {
 			}
 			else
 			{
-			user.setFullname(user.getFullname());	
-			user.setEmail(user.getEmail());	
-			user.setExperience(user.getExperience());
-			user.setFunctional(user.getFunctional());
-			user.setIndustry(user.getIndustry());
-			user.setLocation(user.getLocation());
-			user.setMobileno(user.getMobileno());
-			user.setRpassword(user.getRpassword());
-			user.setSkills(user.getSkills());
-			user.setResume(System.getProperty("user.dir")+UPLOADED_FOLDER + user.getEmail()+"_"+uploadfile.getResumefile().getOriginalFilename());
-			
-			userService.registerUser(user);
-			
-			String status = singleFileUpload(uploadfile.getResumefile(),user);
-			
-			modelAndView.setViewName("jobseekerLanding");
+				user.setFullname(user.getFullname());	
+				user.setEmail(user.getEmail());	
+				user.setExperience(user.getExperience());
+				user.setFunctional(user.getFunctional());
+				user.setIndustry(user.getIndustry());
+				user.setLocation(user.getLocation());
+				user.setMobileno(user.getMobileno());
+				user.setRpassword(user.getRpassword());
+				user.setSkills(user.getSkills());
+				user.setResume(System.getProperty("user.dir")+UPLOADED_FOLDER + user.getEmail()+"_"+uploadfile.getResumefile().getOriginalFilename());
+
+				userService.registerUser(user);
+				
+				String status = singleFileUpload(uploadfile.getResumefile(),user);
+				sendJobSeekerRegisterationMail(contact,user);
+				modelAndView.setViewName("jobseekerLanding");
 			}
 		 }
 		 return modelAndView;
@@ -136,12 +138,12 @@ public class RegisterController {
 		}
 	 
 	 @RequestMapping(value = "/employerRegister", method = RequestMethod.POST)
-		protected ModelAndView processEmployerRegisteration(@Valid Employer employer,BindingResult result,ModelAndView modelAndView){		
+		protected ModelAndView processEmployerRegisteration(@Valid Employer employer,BindingResult result,ModelAndView modelAndView,@ModelAttribute Contact contact){		
 		         
-		 Employer employerExists = empService.findByeEmail(employer.geteEmail());
+		 	Employer employerExists = empService.findByeEmail(employer.geteEmail());
 		 
 		 	if(result.hasErrors()){
-			 modelAndView.setViewName("employerRegister");
+		 		modelAndView.setViewName("employerRegister");
 		 	}	
 		 	else
 		 	{
@@ -169,8 +171,9 @@ public class RegisterController {
 				employer.seteType(employer.geteType());
 
 			
-			empService.registerUser(employer);
-			modelAndView.setViewName("employerDashboard");
+				empService.registerUser(employer);
+				sendEmployerRegisterationMail(contact,employer);
+				modelAndView.setViewName("employerDashboard");
 			}
 		 	}
 		 return modelAndView;
@@ -181,7 +184,7 @@ public class RegisterController {
 		public  Iterable<Functional> fetchFunctionalList(@RequestParam("Industryid") String industryid){
 		 
 		 
-		Iterable<Functional> functionallist = functionalService.findByindustryid(industryid);
+		 	Iterable<Functional> functionallist = functionalService.findByindustryid(industryid);
 
 			return functionallist;
 		}
@@ -205,5 +208,30 @@ public class RegisterController {
 
 	        return uploadstatus;
 	    }
-	 
+	    
+	    public void sendJobSeekerRegisterationMail(Contact contact ,User user) {
+	    	
+	    	contact.setName(user.getFullname());
+			contact.setEmailid(user.getEmail());
+			contact.setMessage("Thank You JobSeeker for your Registration in CareerFest");
+			Boolean isEmailSent = SendRegisterationMail.sendRegisterationEmail(contact);
+			
+			System.out.println(isEmailSent);
+	    	
+	    	
+	    }
+		  
+	    public void sendEmployerRegisterationMail(Contact contact ,Employer emp) {
+	    	
+	    	contact.setName(emp.geteFullname());
+			contact.setEmailid(emp.geteEmail());
+			contact.setMessage("Thank You Employer for your Registration in CareerFest");
+			Boolean isEmailSent = SendRegisterationMail.sendRegisterationEmail(contact);
+			
+			System.out.println(isEmailSent);
+	    	
+	    	
+	    }
+		 
+	    		 
 }
