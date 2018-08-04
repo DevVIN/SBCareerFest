@@ -9,6 +9,6 @@ import com.careerfest.model.Functional;
 public interface FunctionalRepository extends CrudRepository <Functional, Long>{
 
 	Iterable<Functional> findAll();
-	Iterable<Functional>  findByindustryid(String industryid);
+	Iterable<Functional>  findByindustryname(String industryname);
 
 }

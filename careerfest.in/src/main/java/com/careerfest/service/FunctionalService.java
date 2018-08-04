@@ -17,8 +17,8 @@ public class FunctionalService {
 		
 	}
 
-	public Iterable<Functional> findByindustryid(String industryid){
-		return functionalrepository.findByindustryid(industryid);
+	public Iterable<Functional> findByindustryname(String industryname){
+		return functionalrepository.findByindustryname(industryname);
 		
 	}
 

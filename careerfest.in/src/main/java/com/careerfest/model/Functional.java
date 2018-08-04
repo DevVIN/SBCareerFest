@@ -20,15 +20,15 @@ public class Functional {
 	@Column(name = "functionalname")
 	String functionalname ;
 	
-	@Column(name = "industryid")
-    private String industryid;
+	@Column(name = "industryname")
+    private String industryname;
 	
-	public String getIndustryid() {
-		return industryid;
+	public String getIndustryname() {
+		return industryname;
 	}
 
-	public void setIndustryid(String industryid) {
-		this.industryid = industryid;
+	public void setIndustryname(String industryname) {
+		this.industryname = industryname;
 	}
 
 	public Integer getId() {

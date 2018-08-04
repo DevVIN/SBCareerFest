@@ -70,13 +70,13 @@
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript">
 $("#Industry").change(function() {
-    var Industryid = $(this).val();
+    var Industryname = $(this).val();
     $.ajax({
         async: true,
         type: 'POST',
         url: '/fetchFunctional',
         data: {
-        	Industryid : Industryid,
+        	Industryname : Industryname,
         },
         error: function() { 
             alert("Error");

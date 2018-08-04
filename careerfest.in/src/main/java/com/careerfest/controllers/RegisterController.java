@@ -117,12 +117,20 @@ public class RegisterController {
 				user.setRpassword(user.getRpassword());
 				user.setSkills(user.getSkills());
 				user.setResume(System.getProperty("user.dir")+UPLOADED_FOLDER + user.getEmail()+"_"+uploadfile.getResumefile().getOriginalFilename());
-
-				userService.registerUser(user);
 				
 				String status = singleFileUpload(uploadfile.getResumefile(),user);
-				sendJobSeekerRegisterationMail(contact,user);
-				modelAndView.setViewName("jobseekerLanding");
+				if(status == "success")
+				{
+					userService.registerUser(user);
+					sendJobSeekerRegisterationMail(contact,user);
+					modelAndView.setViewName("jobseekerLanding");
+				}else
+				{
+					modelAndView.addObject("uploadResumeFail", "Oops! Problem in uploading the resume , Please try again .");
+					result.reject("Resumefile");
+	     			modelAndView.setViewName("jobseekerRegister");
+				}
+				
 			}
 		 }
 		 return modelAndView;
@@ -181,10 +189,10 @@ public class RegisterController {
 		}
 	 @ResponseBody
 	 @RequestMapping(value="/fetchFunctional", method = RequestMethod.POST)
-		public  Iterable<Functional> fetchFunctionalList(@RequestParam("Industryid") String industryid){
+		public  Iterable<Functional> fetchFunctionalList(@RequestParam("Industryname") String industryname){
 		 
 		 
-		 	Iterable<Functional> functionallist = functionalService.findByindustryid(industryid);
+		 	Iterable<Functional> functionallist = functionalService.findByindustryname(industryname);
 
 			return functionallist;
 		}

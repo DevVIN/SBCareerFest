@@ -27,6 +27,7 @@
 				<form:form role="form" id="registerform" method="post" action="/jobseekerRegister" commandName="user" enctype="multipart/form-data">
 				<% 
 				String alreadyRegisteredMessage=(String)request.getAttribute("alreadyRegisteredMessage");
+				String uploadResumeFail=(String)request.getAttribute("uploadResumeFail");
 				List citylist = (List)request.getAttribute("citylist");
 				List skillslist = (List)request.getAttribute("skillslist");
 				List industrylist = (List)request.getAttribute("industrylist");
@@ -114,6 +115,7 @@
 					<div class="form-group row">
 						<label class="col-sm-4 col-form-label" for="mobile">Upload Resume:</label>
 						<div class="col-sm-8">
+						    <div id="uploadResumeFail" class="text-danger"><%=StringUtils.isEmpty(uploadResumeFail)!=true?uploadResumeFail:""%></div>
 						     <form:errors path="resume" class="text-danger"></form:errors>
 							 <input type="file" id="Resumefile" name="Resumefile" class="form-control">
 						</div>
