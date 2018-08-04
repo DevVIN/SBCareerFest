@@ -19,8 +19,8 @@ public class City {
 	@Column(name = "statecode")
 	String statecode;
 	
-	@Column(name = "countrycode")
-	String countrycode ;
+	@Column(name = "countryname")
+	String countryname ;
 	
 	@Column(name = "cityname")
 	String cityname;
@@ -41,12 +41,12 @@ public class City {
 		this.statecode = statecode;
 	}
 
-	public String getCountrycode() {
-		return countrycode;
+	public String getCountryname() {
+		return countryname;
 	}
 
-	public void setCountrycode(String countrycode) {
-		this.countrycode = countrycode;
+	public void setCountryname(String countryname) {
+		this.countryname = countryname;
 	}
 
 	public String getCityname() {

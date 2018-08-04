@@ -18,8 +18,8 @@ public class State {
 	@Column(name = "stateid")
 	private Integer id;
 	
-	@Column(name = "countrycode")
-	String countrycode ;
+	@Column(name = "countryname")
+	String countryname ;
 	
 	@Column(name = "statecode")
 	String statecode ;
@@ -51,13 +51,15 @@ public class State {
 		this.statename = statename;
 	}
 
-	public String getCountrycode() {
-		return countrycode;
+	public String getCountryname() {
+		return countryname;
 	}
 
-	public void setCountrycode(String countrycode) {
-		this.countrycode = countrycode;
+	public void setCountryname(String countryname) {
+		this.countryname = countryname;
 	}
+
+	
 
 	
 	

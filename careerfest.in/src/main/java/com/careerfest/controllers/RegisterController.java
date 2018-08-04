@@ -23,18 +23,24 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.careerfest.email.SendRegisterationMail;
 import com.careerfest.model.City;
+import com.careerfest.model.Company;
 import com.careerfest.model.Contact;
+import com.careerfest.model.Country;
 import com.careerfest.model.Employer;
 import com.careerfest.model.Functional;
 import com.careerfest.model.Industry;
 import com.careerfest.model.Skills;
+import com.careerfest.model.State;
 import com.careerfest.model.UploadFile;
 import com.careerfest.model.User;
 import com.careerfest.service.CityService;
+import com.careerfest.service.CompanyService;
+import com.careerfest.service.CountryService;
 import com.careerfest.service.EmpService;
 import com.careerfest.service.FunctionalService;
 import com.careerfest.service.IndustryService;
 import com.careerfest.service.SkillsService;
+import com.careerfest.service.StateService;
 import com.careerfest.service.UserService;
 
 
@@ -54,6 +60,12 @@ public class RegisterController {
     IndustryService industryService;
 	@Autowired
     FunctionalService functionalService;
+	@Autowired
+    CountryService countryService;
+	@Autowired
+    StateService stateService;
+	@Autowired
+	CompanyService companyService;
 	
 	
 	private static String UPLOADED_FOLDER = "\\src\\main\\resources\\static\\cv\\";
@@ -143,7 +155,19 @@ public class RegisterController {
 	 @RequestMapping(value="/employerRegister", method = RequestMethod.GET)
 		public ModelAndView showEmployerRegistrationPage(ModelAndView modelAndView, Employer employer){
 			modelAndView.addObject("register", employer);
+			
+			Iterable<Company> companylist = companyService.findAll();
+		 	Iterable<Industry> industrylist = industryService.findAll();
+		 	Iterable<Country> countrylist = countryService.findAll();
+		 	Iterable<State> statelist = stateService.findAll();
+		 	Iterable<City> citylist = cityService.findAll();
+		 	
 			modelAndView.setViewName("employerRegister");
+			modelAndView.addObject("companylist", companylist);
+			modelAndView.addObject("industrylist", industrylist);
+			modelAndView.addObject("countrylist", countrylist);
+			modelAndView.addObject("statelist", statelist);
+			modelAndView.addObject("citylist", citylist);
 			return modelAndView;
 		}
 	 
@@ -152,6 +176,19 @@ public class RegisterController {
 		         
 		 	Employer employerExists = empService.findByeEmail(employer.geteEmail());
 		 
+		 	Iterable<Company> companylist = companyService.findAll();
+		 	Iterable<Industry> industrylist = industryService.findAll();
+		 	Iterable<Country> countrylist = countryService.findAll();
+		 	Iterable<State> statelist = stateService.findAll();
+		 	Iterable<City> citylist = cityService.findAll();
+		 	
+			modelAndView.addObject("companylist", companylist);
+			modelAndView.addObject("industrylist", industrylist);
+			modelAndView.addObject("countrylist", countrylist);
+			modelAndView.addObject("statelist", statelist);
+			modelAndView.addObject("citylist", citylist);
+		 	
+		 	
 		 	if(result.hasErrors()){
 		 		modelAndView.setViewName("employerRegister");
 		 	}	
@@ -197,6 +234,26 @@ public class RegisterController {
 		 	Iterable<Functional> functionallist = functionalService.findByindustryname(industryname);
 
 			return functionallist;
+		}
+	 
+	 @ResponseBody
+	 @RequestMapping(value="/fetchState", method = RequestMethod.POST)
+		public  Iterable<State> fetchStateList(@RequestParam("countryname") String countryname){
+		 
+		 
+		 	Iterable<State> statelist = stateService.findBycountryname(countryname);
+
+			return statelist;
+		}
+	 
+	 @ResponseBody
+	 @RequestMapping(value="/fetchCity", method = RequestMethod.POST)
+		public  Iterable<City> fetchCityList(@RequestParam("statecode") String statecode ,@RequestParam("countryname") String countryname ){
+		 
+		 
+		 	Iterable<City> citylist = cityService.findByCountrynameAndStatecode(countryname,statecode);
+
+			return citylist;
 		}
 	 
 	    public String singleFileUpload(MultipartFile file,User user) {

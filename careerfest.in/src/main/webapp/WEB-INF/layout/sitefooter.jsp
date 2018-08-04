@@ -94,6 +94,59 @@ $("#Industry").change(function() {
     });
 });
 
+$("#eCountry").change(function() {
+    var countryname = $(this).val();
+    $.ajax({
+        async: true,
+        type: 'POST',
+        url: '/fetchState',
+        data: {
+        	countryname : countryname,
+        },
+        error: function() { 
+            alert("Error");
+        },
+        success: function(state) {
+        	$("#eState").html('');
+        	$('<option>').appendTo('#eState');
+        	$.each( state, function(i) {
+                  	$('<option>').val(state[i].statecode).text(state[i].statecode).appendTo('#eState');
+
+        		});
+
+        	
+        }
+    });
+});
+
+$("#eState").change(function() {
+    var statecode = $(this).val();
+    var countryname = $("#eCountry").val();
+    $.ajax({
+        async: true,
+        type: 'POST',
+        url: '/fetchCity',
+        data: {
+        	statecode : statecode,
+        	countryname:countryname,
+        },
+        error: function() { 
+            alert("Error");
+        },
+        success: function(city) {
+        	$("#eCity").html('');
+        	$('<option>').appendTo('#eCity');
+        	$.each(city, function(i) {
+                  	$('<option>').val(city[i].cityname).text(city[i].cityname).appendTo('#eCity');
+
+        		});
+
+        	
+        }
+    });
+});
+
+
 $('#terms').change(function(){
     if ($(this).is(':checked'))
     {

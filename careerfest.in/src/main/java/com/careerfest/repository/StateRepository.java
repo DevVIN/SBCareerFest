@@ -9,6 +9,8 @@ import com.careerfest.model.State;
 public interface StateRepository extends CrudRepository <State, Long>{
 
 
-	State findBycountrycode(String countrycode);
+	Iterable<State> findBycountryname(String countryname);
+
+	Iterable<State> findAll();
 
 }

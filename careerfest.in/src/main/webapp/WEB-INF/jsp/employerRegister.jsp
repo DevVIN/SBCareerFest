@@ -2,6 +2,7 @@
 
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@page import="org.springframework.util.StringUtils" %>
+<%@ page import="java.util.List" %>
 
 <section class="builder-bg" id="contact-section9">
 	<div class="container pad-top-btm-lrg">
@@ -25,7 +26,16 @@
 			<div class="upload-resume col-xs-12 col-sm-5 bg-light-gray padtopbtm">
 				<div class="head">New Employer/Recruiter Registration!</div>
 				<form:form role="form" id="empregisterform" method="post" action="/employerRegister" commandName="employer">
-					<% String alreadyRegisteredMessage=(String)request.getAttribute("alreadyRegisteredMessage");%>
+					<% String alreadyRegisteredMessage=(String)request.getAttribute("alreadyRegisteredMessage");
+					
+					List citylist = (List)request.getAttribute("citylist");
+					List companylist = (List)request.getAttribute("companylist");
+					List industrylist = (List)request.getAttribute("industrylist");
+					List countrylist = (List)request.getAttribute("countrylist");
+					List statelist = (List)request.getAttribute("statelist");
+					
+				
+					%>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
 							<div class="row">
@@ -76,30 +86,19 @@
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
 						    <form:errors path="eCompanyname" class="text-danger"></form:errors>
-							<select id="eCompanyname" name="eCompanyname" class="selectpicker form-control" title="Company" data-placeholder="Company Name">
-								<option></option>
-								<option value="Infosys">Infosys</option>
-								<option value="Tech Mahindra">Tech Mahindra</option>
-								<option value="Isobar commerce">Isobar commerce</option>
-								<option value="Swiftwin">Swiftwin</option>
-								<option value="IBM">IBM</option>
-								<option value="Accenture">Accenture</option>
-							</select>
+							<form:select path="eCompanyname" id="eCompanyname" name="eCompanyname" class="selectpicker form-control" title="Company" data-placeholder="Company Name">
+							<option></option>
+							<form:options items="${companylist}" itemValue="companyname" itemLabel="companyname" />
+							</form:select>
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
 						    <form:errors path="eIndustry" class="text-danger"></form:errors>
-							<select class="selectpicker form-control" name="eIndustry" id="eIndustry" title="Industry Type" data-placeholder="Industry Type">
-								<option></option>
-								<option  value="Automotive/ Ancillaries">Automotive/ Ancillaries</option>
-								<option value="Banking/ Financial Services">Banking/ Financial Services</option>
-								<option value="Construction & Engineering">Construction & Engineering</option>
-								<option value="ITES/BPO">ITES/BPO</option>
-								<option value="IT/ Computers - Hardware">IT/ Computers - Hardware</option>
-								<option value="IT/ Computers - Software">IT/ Computers - Software</option>
-								<option value="KPO/Analytics">KPO/Analytics</option>
-							</select>
+							<form:select path="eIndustry"  class="selectpicker form-control" name="eIndustry" id="eIndustry" title="Industry Type" data-placeholder="Industry Type">
+							<option></option>
+							<form:options items="${industrylist}" itemValue="industryname" itemLabel="industryname" />
+							</form:select>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -139,43 +138,26 @@
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-6">
 						    <form:errors path="eCountry" class="text-danger"></form:errors>
-							<select id="eCountry" name="eCountry" class="selectpicker form-control" title="country" data-placeholder="Country">
-								<option></option>
-								<option value="Argentina">Argentina</option>
-								<option value="Brazil">Brazil</option>
-								<option value="Croatia">Croatia</option>
-								<option value="Denmark">Denmark</option>
-								<option value="England">England</option>
-								<option value="France">France</option>
-								<option value="Germany">Germany</option>
-								<option value="Hungary">Hungary</option>
-								<option value="India">India</option>
-							</select>
+							<form:select path="eCountry" id="eCountry" name="eCountry" class="selectpicker form-control" title="country" data-placeholder="Country">
+							<option></option>
+							<form:options items="${countrylist}" itemValue="countryname" itemLabel="countryname" />
+							</form:select>
 						</div>
 						<div class="col-xs-12 col-sm-6">
 						   <form:errors path="eState" class="text-danger"></form:errors>
-							<select id="eState" name="eState" class="selectpicker form-control" title="state" data-placeholder="State">
-								<option></option>
-								<option value="MH">MH</option>
-								<option value="NH">NH</option>
-								<option value="AP">AP</option>
-								<option value="MP">MP</option>
-								<option value="UP">UP</option>
-							</select>
+							 <form:select  path="eState" id="eState" name="eState" class="selectpicker form-control" title="state" data-placeholder="State">
+							<option></option>
+							<form:options items="${statelist}" itemValue="statecode" itemLabel="statecode" />
+						</form:select>
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-6">
 						    <form:errors path="eCity" class="text-danger"></form:errors>
-							<select id="eCity" name="eCity" class="selectpicker form-control" title="city" data-placeholder="City">
+							<form:select path="eCity" id="eCity" name="eCity" class="selectpicker form-control" title="city" data-placeholder="City">
 								<option></option>
-								<option value="Mumbai">Mumbai</option>
-								<option value="Pune">Pune</option>
-								<option value="Delhi">Delhi</option>
-								<option value="Banglore">Banglore</option>
-								<option value="Hyderabad">Hyderabad</option>
-								<option value="Kolkata">Kolkata</option>
-							</select>
+								<form:options items="${citylist}" itemValue="cityname" itemLabel="cityname" />
+							</form:select>
 						</div>
 						<div class="col-xs-12 col-sm-6">
 						   <form:errors path="ePincode" class="text-danger"></form:errors>

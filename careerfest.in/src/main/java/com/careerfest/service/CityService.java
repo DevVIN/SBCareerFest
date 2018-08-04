@@ -13,8 +13,8 @@ public class CityService {
 	@Autowired
 	private CityRepository cityrepository;
 
-	public City findByCountryCodeAndStateCode(String countrycode,String statecode){
-		return cityrepository.findBycountrycode(countrycode,statecode);
+	public Iterable<City> findByCountrynameAndStatecode(String countryname,String statecode){
+		return cityrepository.findByCountrynameAndStatecode(countryname,statecode);
 		
 	}
 	
