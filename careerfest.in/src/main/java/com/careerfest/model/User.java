@@ -1,5 +1,6 @@
 package com.careerfest.model;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name="user")
@@ -66,8 +68,6 @@ public class User {
 	@Column(name = "Functional")
 	String functional;
 	
-	@NotNull
-	@NotEmpty(message = "*Please Upload Your Updated Resume")
 	@Column(name = "Resume")
 	String resume;
 	

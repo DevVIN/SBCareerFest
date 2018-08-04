@@ -17,5 +17,9 @@ public class FunctionalService {
 		
 	}
 
+	public Iterable<Functional> findByindustryid(String industryid){
+		return functionalrepository.findByindustryid(industryid);
+		
+	}
 
 }

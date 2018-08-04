@@ -1,13 +1,23 @@
 package com.careerfest.controllers;
 
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.careerfest.model.City;
@@ -16,6 +26,7 @@ import com.careerfest.model.Employer;
 import com.careerfest.model.Functional;
 import com.careerfest.model.Industry;
 import com.careerfest.model.Skills;
+import com.careerfest.model.UploadFile;
 import com.careerfest.model.User;
 import com.careerfest.service.CityService;
 import com.careerfest.service.EmpService;
@@ -42,7 +53,8 @@ public class RegisterController {
 	@Autowired
     FunctionalService functionalService;
 	
-	
+	private static String UPLOADED_FOLDER = "\\src\\main\\resources\\static\\cv\\";
+
 
 	 @RequestMapping("/")
 	 public ModelAndView welcome(ModelAndView modelAndView,Contact contact,BindingResult result) {
@@ -69,10 +81,19 @@ public class RegisterController {
 		}
 	 
 	 @RequestMapping(value = "/jobseekerRegister", method = RequestMethod.POST)
-		protected ModelAndView processRegisteration(@Valid User user,BindingResult result,ModelAndView modelAndView){		
+		protected ModelAndView processRegisteration(@Valid User user,BindingResult result,ModelAndView modelAndView ,@ModelAttribute UploadFile uploadfile){		
 		         
 		 User userExists = userService.findByEmail(user.getEmail());
+	 
+		 Iterable<City> citylist = cityService.findAll();
+		 Iterable<Skills> skillslist = skillsService.findAll();
+		 Iterable<Industry> industrylist = industryService.findAll();
+		 Iterable<Functional> functionallist = functionalService.findAll();
 
+			modelAndView.addObject("citylist", citylist);
+			modelAndView.addObject("skillslist", skillslist);
+			modelAndView.addObject("industrylist", industrylist);
+			modelAndView.addObject("functionallist", functionallist);
 		 if(result.hasErrors()){
 			 modelAndView.setViewName("jobseekerRegister");
 		 }	else
@@ -93,9 +114,12 @@ public class RegisterController {
 			user.setMobileno(user.getMobileno());
 			user.setRpassword(user.getRpassword());
 			user.setSkills(user.getSkills());
-			user.setResume(user.getResume());
+			user.setResume(System.getProperty("user.dir")+UPLOADED_FOLDER + user.getEmail()+"_"+uploadfile.getResumefile().getOriginalFilename());
 			
 			userService.registerUser(user);
+			
+			String status = singleFileUpload(uploadfile.getResumefile(),user);
+			
 			modelAndView.setViewName("jobseekerLanding");
 			}
 		 }
@@ -152,5 +176,34 @@ public class RegisterController {
 		 return modelAndView;
 				
 		}
+	 @ResponseBody
+	 @RequestMapping(value="/fetchFunctional", method = RequestMethod.POST)
+		public  Iterable<Functional> fetchFunctionalList(@RequestParam("Industryid") String industryid){
+		 
+		 
+		Iterable<Functional> functionallist = functionalService.findByindustryid(industryid);
+
+			return functionallist;
+		}
+	 
+	    public String singleFileUpload(MultipartFile file,User user) {
+	       
+	    	String uploadstatus = "success";
+	        try {
+	        	System.out.println();
+	            // Get the file and save it somewhere
+	            byte[] bytes = file.getBytes();
+	            Path path = Paths.get(System.getProperty("user.dir")+UPLOADED_FOLDER + user.getEmail()+"_"+file.getOriginalFilename());
+	            Files.write(path, bytes);
+
+
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	            uploadstatus = "fail";
+	            
+	        }
+
+	        return uploadstatus;
+	    }
 	 
 }

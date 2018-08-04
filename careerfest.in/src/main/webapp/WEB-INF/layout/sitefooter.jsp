@@ -68,3 +68,42 @@
 <script type="text/javascript" src="js/twitterFetcher_min.js"></script>
 <!-- main -->
 <script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript">
+$("#Industry").change(function() {
+    var Industryid = $(this).val();
+    $.ajax({
+        async: true,
+        type: 'POST',
+        url: '/fetchFunctional',
+        data: {
+        	Industryid : Industryid,
+        },
+        error: function() { 
+            alert("Error");
+        },
+        success: function(functional) {
+        	$("#Functional").html('');
+        	$('<option>').appendTo('#Functional');
+        	$.each( functional, function(i) {
+                  	$('<option>').val(functional[i].functionalname).text(functional[i].functionalname).appendTo('#Functional');
+
+        		});
+
+        	
+        }
+    });
+});
+
+$('#terms').change(function(){
+    if ($(this).is(':checked'))
+    {
+        $("#registersubmit").removeAttr("disabled");
+    }
+    else
+    {
+        $("#registersubmit").attr( "disabled", "disabled" );
+    }               
+});
+</script>
+
+

@@ -24,7 +24,7 @@
 			</div>
 			<div class="upload-resume col-xs-12 col-sm-5 bg-light-gray padtopbtm">
 				<div class="head">Register and Upload resume with us!</div>
-				<form:form role="form" id="registerform" method="post" action="/jobseekerRegister" commandName="user">
+				<form:form role="form" id="registerform" method="post" action="/jobseekerRegister" commandName="user" enctype="multipart/form-data">
 				<% 
 				String alreadyRegisteredMessage=(String)request.getAttribute("alreadyRegisteredMessage");
 				List citylist = (List)request.getAttribute("citylist");
@@ -115,18 +115,18 @@
 						<label class="col-sm-4 col-form-label" for="mobile">Upload Resume:</label>
 						<div class="col-sm-8">
 						     <form:errors path="resume" class="text-danger"></form:errors>
-							 <input type="file" id="Resume" name="Resume" class="form-control">
+							 <input type="file" id="Resumefile" name="Resumefile" class="form-control">
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-10 col-sm-offset-1">  
-							<input type="checkbox" class="form-check-input">
+							<input type="checkbox" class="form-check-input" id="terms">
 							<div class="fright">I have read and agree to Careerfest's  <a class="frm_lnk" linkindex="1" tabindex="13" id="privacy_id" href="#" target="_blank">Terms and Conditions.</a></div>
 						</div>
 					</div>
 					<div class="clearfix"></div>
 					<div class="col-xs-10 col-sm-6 col-sm-offset-3">
-						<button type="submit" class="btn btn-default">Register Now</button>
+						<button id="registersubmit" type="submit" class="btn btn-default" disabled>Register Now</button>
 					</div>
 				</form:form>
 				<div class="clearfix"></div>
