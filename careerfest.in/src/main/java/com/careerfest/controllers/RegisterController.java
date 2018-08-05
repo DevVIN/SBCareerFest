@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.careerfest.email.SendRegisterationMail;
 import com.careerfest.model.City;
+import com.careerfest.model.College;
 import com.careerfest.model.Company;
 import com.careerfest.model.Contact;
 import com.careerfest.model.Country;
@@ -37,11 +38,13 @@ import com.careerfest.model.State;
 import com.careerfest.model.UploadFile;
 import com.careerfest.model.User;
 import com.careerfest.service.CityService;
+import com.careerfest.service.CollegeService;
 import com.careerfest.service.CompanyService;
 import com.careerfest.service.CountryService;
 import com.careerfest.service.EmpService;
 import com.careerfest.service.FunctionalService;
 import com.careerfest.service.IndustryService;
+import com.careerfest.service.LocationService;
 import com.careerfest.service.RoleService;
 import com.careerfest.service.SkillsService;
 import com.careerfest.service.StateService;
@@ -59,74 +62,74 @@ public class RegisterController {
 	@Autowired
 	CityService cityService;
 	@Autowired
-    SkillsService skillsService;
+	SkillsService skillsService;
 	@Autowired
-    IndustryService industryService;
+	IndustryService industryService;
 	@Autowired
-    FunctionalService functionalService;
+	FunctionalService functionalService;
 	@Autowired
-    CountryService countryService;
+	CountryService countryService;
 	@Autowired
-    StateService stateService;
+	StateService stateService;
 	@Autowired
 	CompanyService companyService;
 	@Autowired
 	RoleService roleService;
+	@Autowired
+	LocationService locationService;
+	@Autowired
+	CollegeService collegeService;
 	
 	
 	private static String UPLOADED_FOLDER = "\\src\\main\\resources\\static\\cv\\";
 	private static String UPLOADED_IMAGE_FOLDER = "\\src\\main\\resources\\static\\images\\profile\\";
 
-	 @RequestMapping("/")
-	 public ModelAndView welcome(ModelAndView modelAndView,Contact contact,BindingResult result,HttpSession session) {
-		 	modelAndView.addObject("contactus",contact);
-		 	modelAndView.setViewName("home");
-		 	session.invalidate();
-		 	return modelAndView;
-		}
-	 
-	 @RequestMapping(value="/jobseekerRegister", method = RequestMethod.GET)
-		public ModelAndView showRegistrationPage(ModelAndView modelAndView, User user){
-		 
-		 	Iterable<City> citylist = cityService.findAll();
-		 	Iterable<Skills> skillslist = skillsService.findAll();
-		 	Iterable<Industry> industrylist = industryService.findAll();
-		 	Iterable<Functional> functionallist = functionalService.findAll();
+	@RequestMapping("/")
+	public ModelAndView welcome(ModelAndView modelAndView,Contact contact,BindingResult result,HttpSession session) {
+		modelAndView.addObject("contactus",contact);
+		modelAndView.setViewName("home");
+		session.invalidate();
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/jobseekerRegister", method = RequestMethod.GET)
+	public ModelAndView showRegistrationPage(ModelAndView modelAndView, User user){
+		Iterable<City> citylist = cityService.findAll();
+		Iterable<Skills> skillslist = skillsService.findAll();
+		Iterable<Industry> industrylist = industryService.findAll();
+		Iterable<Functional> functionallist = functionalService.findAll();
 
-			modelAndView.addObject("register", user);
-			modelAndView.addObject("citylist", citylist);
-			modelAndView.addObject("skillslist", skillslist);
-			modelAndView.addObject("industrylist", industrylist);
-			modelAndView.addObject("functionallist", functionallist);
+		modelAndView.addObject("register", user);
+		modelAndView.addObject("citylist", citylist);
+		modelAndView.addObject("skillslist", skillslist);
+		modelAndView.addObject("industrylist", industrylist);
+		modelAndView.addObject("functionallist", functionallist);
+		modelAndView.setViewName("jobseekerRegister");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/jobseekerRegister", method = RequestMethod.POST)
+	protected ModelAndView processRegisteration(@Valid User user,BindingResult result,ModelAndView modelAndView ,@ModelAttribute UploadFile uploadfile ,@ModelAttribute Contact contact){		
+		
+		User userExists = userService.findByEmail(user.getEmail());
+		Iterable<City> citylist = cityService.findAll();
+		Iterable<Skills> skillslist = skillsService.findAll();
+		Iterable<Industry> industrylist = industryService.findAll();
+		Iterable<Functional> functionallist = functionalService.findAll();
+		
+		modelAndView.addObject("citylist", citylist);
+		modelAndView.addObject("skillslist", skillslist);
+		modelAndView.addObject("industrylist", industrylist);
+		modelAndView.addObject("functionallist", functionallist);
+		
+		if(result.hasErrors()){
 			modelAndView.setViewName("jobseekerRegister");
-			return modelAndView;
-		}
-	 
-	 @RequestMapping(value = "/jobseekerRegister", method = RequestMethod.POST)
-		protected ModelAndView processRegisteration(@Valid User user,BindingResult result,ModelAndView modelAndView ,@ModelAttribute UploadFile uploadfile ,@ModelAttribute Contact contact){		
-		         
-		 	User userExists = userService.findByEmail(user.getEmail());
-	 
-		 	Iterable<City> citylist = cityService.findAll();
-		 	Iterable<Skills> skillslist = skillsService.findAll();
-		 	Iterable<Industry> industrylist = industryService.findAll();
-		 	Iterable<Functional> functionallist = functionalService.findAll();
-
-			modelAndView.addObject("citylist", citylist);
-			modelAndView.addObject("skillslist", skillslist);
-			modelAndView.addObject("industrylist", industrylist);
-			modelAndView.addObject("functionallist", functionallist);
-			if(result.hasErrors()){
-				modelAndView.setViewName("jobseekerRegister");
-			}	else
-			{
+		} else {
 			if (userExists != null) {
 				modelAndView.addObject("alreadyRegisteredMessage", "Oops!  There is already a user registered with the email provided.");
 				result.reject("email");
-     			modelAndView.setViewName("jobseekerRegister");
-			}
-			else
-			{
+				modelAndView.setViewName("jobseekerRegister");
+			} else {
 				user.setFullname(user.getFullname());	
 				user.setEmail(user.getEmail());	
 				user.setExperience(user.getExperience());
@@ -138,89 +141,73 @@ public class RegisterController {
 				user.setSkills(user.getSkills());
 				user.setResume(System.getProperty("user.dir")+UPLOADED_FOLDER + user.getEmail()+"_"+uploadfile.getResumefile().getOriginalFilename());
 				String status ="";
-				
-				if(uploadfile.getResumefile().getOriginalFilename()=="")
-	            {
+					
+				if(uploadfile.getResumefile().getOriginalFilename()=="") {
 					status="fail";
 					modelAndView.addObject("uploadResumeFail", "Please Select Resume to Upload.");
-	            }
-				else
-				{
+				} else {
 					status = singleFileUpload(uploadfile.getResumefile(),user);
-					if(status=="fail")
-					{
+					if(status=="fail") {
 						modelAndView.addObject("uploadResumeFail", "Oops! Problem in uploading the resume , Please try again .");
 					}
 				}
-				
-				if(status == "success")
-				{
+					
+				if(status == "success") {
 					userService.registerUser(user);
 					sendJobSeekerRegisterationMail(contact,user);
 					modelAndView.setViewName("jobseekerLanding");
-				}else
-				{
-					
+				} else {
 					result.reject("Resumefile");
-	     			modelAndView.setViewName("jobseekerRegister");
+					modelAndView.setViewName("jobseekerRegister");
 				}
-				
 			}
-		 }
-		 return modelAndView;
-				
 		}
-	 
-	 
-	 @RequestMapping(value="/employerRegister", method = RequestMethod.GET)
-		public ModelAndView showEmployerRegistrationPage(ModelAndView modelAndView, Employer employer){
-			modelAndView.addObject("register", employer);
-			
-			Iterable<Company> companylist = companyService.findAll();
-		 	Iterable<Industry> industrylist = industryService.findAll();
-		 	Iterable<Country> countrylist = countryService.findAll();
-		 	Iterable<State> statelist = stateService.findAll();
-		 	Iterable<City> citylist = cityService.findAll();
-		 	
+		return modelAndView;
+	}
+
+	@RequestMapping(value="/employerRegister", method = RequestMethod.GET)
+	public ModelAndView showEmployerRegistrationPage(ModelAndView modelAndView, Employer employer){
+		modelAndView.addObject("register", employer);
+		
+		List<Company> companylist = companyService.findAll();
+		Iterable<Industry> industrylist = industryService.findAll();
+		Iterable<Country> countrylist = countryService.findAll();
+		Iterable<State> statelist = stateService.findAll();
+		Iterable<City> citylist = cityService.findAll();
+		
+		modelAndView.setViewName("employerRegister");
+		modelAndView.addObject("companylist", companylist);
+		modelAndView.addObject("industrylist", industrylist);
+		modelAndView.addObject("countrylist", countrylist);
+		modelAndView.addObject("statelist", statelist);
+		modelAndView.addObject("citylist", citylist);
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/employerRegister", method = RequestMethod.POST)
+	protected ModelAndView processEmployerRegisteration(@Valid Employer employer,BindingResult result,ModelAndView modelAndView,@ModelAttribute UploadFile uploadfile,@ModelAttribute Contact contact){
+		Employer employerExists = empService.findByeEmail(employer.geteEmail());
+		
+		List<Company> companylist = companyService.findAll();
+		Iterable<Industry> industrylist = industryService.findAll();
+		Iterable<Country> countrylist = countryService.findAll();
+		Iterable<State> statelist = stateService.findAll();
+		Iterable<City> citylist = cityService.findAll();
+		
+		modelAndView.addObject("companylist", companylist);
+		modelAndView.addObject("industrylist", industrylist);
+		modelAndView.addObject("countrylist", countrylist);
+		modelAndView.addObject("statelist", statelist);
+		modelAndView.addObject("citylist", citylist);
+		
+		if(result.hasErrors()){
 			modelAndView.setViewName("employerRegister");
-			modelAndView.addObject("companylist", companylist);
-			modelAndView.addObject("industrylist", industrylist);
-			modelAndView.addObject("countrylist", countrylist);
-			modelAndView.addObject("statelist", statelist);
-			modelAndView.addObject("citylist", citylist);
-			return modelAndView;
-		}
-	 
-	 @RequestMapping(value = "/employerRegister", method = RequestMethod.POST)
-		protected ModelAndView processEmployerRegisteration(@Valid Employer employer,BindingResult result,ModelAndView modelAndView,@ModelAttribute UploadFile uploadfile,@ModelAttribute Contact contact){		
-		         
-		 	Employer employerExists = empService.findByeEmail(employer.geteEmail());
-		 
-		 	Iterable<Company> companylist = companyService.findAll();
-		 	Iterable<Industry> industrylist = industryService.findAll();
-		 	Iterable<Country> countrylist = countryService.findAll();
-		 	Iterable<State> statelist = stateService.findAll();
-		 	Iterable<City> citylist = cityService.findAll();
-		 	
-			modelAndView.addObject("companylist", companylist);
-			modelAndView.addObject("industrylist", industrylist);
-			modelAndView.addObject("countrylist", countrylist);
-			modelAndView.addObject("statelist", statelist);
-			modelAndView.addObject("citylist", citylist);
-		 	
-		 	
-		 	if(result.hasErrors()){
-		 		modelAndView.setViewName("employerRegister");
-		 	}	
-		 	else
-		 	{
+		} else {
 			if (employerExists != null) {
 				modelAndView.addObject("alreadyRegisteredMessage", "Oops!  There is already a employer registered with the email provided.");
 				result.reject("empEmail");
-  			    modelAndView.setViewName("employerRegister");
-			}
-			else
-			{
+				modelAndView.setViewName("employerRegister");
+			} else {
 				employer.setePhoto(System.getProperty("user.dir")+UPLOADED_IMAGE_FOLDER + employer.geteEmail()+"_"+uploadfile.getePhotoFile().getOriginalFilename());	
 				employer.seteFullname(employer.geteFullname());	
 				employer.seteEmail(employer.geteEmail());	
@@ -237,135 +224,115 @@ public class RegisterController {
 				employer.setePincode(employer.getePincode());
 				employer.seteType(employer.geteType());
 				String status ="";
-				if(uploadfile.getePhotoFile().getOriginalFilename()=="")
-	            {
+				if(uploadfile.getePhotoFile().getOriginalFilename()=="") {
 					status="fail";
 					modelAndView.addObject("uploadImageFail","Please select image to upload");
-
-	            }
-				else
-				{
-				 status = singleImageUpload(uploadfile.getePhotoFile(),employer);
-				 if(status == "fail")
-				 {
+				} else {
+					status = singleImageUpload(uploadfile.getePhotoFile(),employer);
+					if(status == "fail") {
 						modelAndView.addObject("uploadImageFail","Oops! Problem in uploading the image , Please try again ."); 
-				 }
+					}
 				}
-				if(status == "success")
-				{
+				if(status == "success") {
 					empService.registerUser(employer);
 					sendEmployerRegisterationMail(contact,employer);
 					modelAndView.setViewName("employerDashboard");
-				}else
-				{
+				} else {
 					result.reject("ePhotoFile");
-	  			    modelAndView.setViewName("employerRegister");
+					modelAndView.setViewName("employerRegister");
 				}
-				
-			
-			
 			}
-		 	}
-		 return modelAndView;
-				
 		}
-	 @ResponseBody
-	 @RequestMapping(value="/fetchFunctional", method = RequestMethod.POST)
-		public  Iterable<Functional> fetchFunctionalList(@RequestParam("Industryname") String industryname){
-		 
-		 
-		 	Iterable<Functional> functionallist = functionalService.findByindustryname(industryname);
-
-			return functionallist;
-		}
-	 
-	 @ResponseBody
-	 @RequestMapping(value="/fetchState", method = RequestMethod.POST)
-		public  Iterable<State> fetchStateList(@RequestParam("countryname") String countryname){
-		 
-		 
-		 	Iterable<State> statelist = stateService.findBycountryname(countryname);
-
-			return statelist;
-		}
+		return modelAndView;
+	}
 	
-	 @ResponseBody
-	 @RequestMapping(value="/fetchCity", method = RequestMethod.POST)
-		public  Iterable<City> fetchCityList(@RequestParam("statecode") String statecode ,@RequestParam("countryname") String countryname ){
-		 
-		 
-		 	Iterable<City> citylist = cityService.findByCountrynameAndStatecode(countryname,statecode);
+	@ResponseBody
+	@RequestMapping(value="/fetchFunctional", method = RequestMethod.POST)
+	public  Iterable<Functional> fetchFunctionalList(@RequestParam("Industryname") String industryname){
+		Iterable<Functional> functionallist = functionalService.findByindustryname(industryname);
+		return functionallist;
+	}
 
-			return citylist;
+	@ResponseBody
+	@RequestMapping(value="/fetchState", method = RequestMethod.POST)
+	public  Iterable<State> fetchStateList(@RequestParam("countryname") String countryname){
+		Iterable<State> statelist = stateService.findBycountryname(countryname);
+		return statelist;
+	}
+
+	@ResponseBody
+	@RequestMapping(value="/fetchCity", method = RequestMethod.POST)
+	public  Iterable<City> fetchCityList(@RequestParam("statecode") String statecode ,@RequestParam("countryname") String countryname ){
+		Iterable<City> citylist = cityService.findByCountrynameAndStatecode(countryname,statecode);
+		return citylist;
+	}
+	
+	public String singleFileUpload(MultipartFile file,User user) {
+		
+		String uploadstatus = "";
+		try {
+			System.out.println();
+			/* Get the file and save it somewhere */
+			byte[] bytes = file.getBytes();
+			Path path = Paths.get(System.getProperty("user.dir")+UPLOADED_FOLDER + user.getEmail()+"_"+file.getOriginalFilename());
+			Files.write(path, bytes);
+			uploadstatus="success";
+		} catch (IOException e) {
+			e.printStackTrace();
+			uploadstatus = "fail";
 		}
-	 
-	    public String singleFileUpload(MultipartFile file,User user) {
-	       
-	    	String uploadstatus = "";
-	        try {
-	        	System.out.println();
-	            // Get the file and save it somewhere
-	            byte[] bytes = file.getBytes();
-	            Path path = Paths.get(System.getProperty("user.dir")+UPLOADED_FOLDER + user.getEmail()+"_"+file.getOriginalFilename());
-	            Files.write(path, bytes);
-	            uploadstatus="success";
-	          
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	            uploadstatus = "fail";
-	            
-	        }
+		return uploadstatus;
+	}
+	
+	public String singleImageUpload(MultipartFile file,Employer emp) {
+		
+		String uploadstatus = "";
+		try {
+			System.out.println();
+			/* Get the file and save it somewhere */
+			byte[] bytes = file.getBytes();
+			Path path = Paths.get(System.getProperty("user.dir")+UPLOADED_IMAGE_FOLDER + emp.geteEmail()+"_"+file.getOriginalFilename());
+			Files.write(path, bytes);
+			uploadstatus="success";
+		} catch (IOException e) {
+			e.printStackTrace();
+			uploadstatus = "fail";
+		}
+		return uploadstatus;
+	}
+	
+	public void sendJobSeekerRegisterationMail(Contact contact ,User user) {
+	
+		contact.setName(user.getFullname());
+		contact.setEmailid(user.getEmail());
+		contact.setMessage("Thank You JobSeeker for your Registration in CareerFest");
+		Boolean isEmailSent = SendRegisterationMail.sendRegisterationEmail(contact);
+		System.out.println(isEmailSent);
+	}
 
-	        return uploadstatus;
-	    }
-	    
-	    public String singleImageUpload(MultipartFile file,Employer emp) {
-		       
-	    	String uploadstatus = "";
-	        try {
-	        	System.out.println();
-	            // Get the file and save it somewhere
-	            byte[] bytes = file.getBytes();
-	            Path path = Paths.get(System.getProperty("user.dir")+UPLOADED_IMAGE_FOLDER + emp.geteEmail()+"_"+file.getOriginalFilename());
-	            Files.write(path, bytes);
-	            uploadstatus="success";
+	public void sendEmployerRegisterationMail(Contact contact ,Employer emp) {
+	
+		contact.setName(emp.geteFullname());
+		contact.setEmailid(emp.geteEmail());
+		contact.setMessage("Thank You Employer for your Registration in CareerFest");
+		Boolean isEmailSent = SendRegisterationMail.sendRegisterationEmail(contact);
+		System.out.println(isEmailSent);
+	}
 
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	            uploadstatus = "fail";
-	            
-	        }
-
-	        return uploadstatus;
-	    }
-	    public void sendJobSeekerRegisterationMail(Contact contact ,User user) {
-	    	
-	    	contact.setName(user.getFullname());
-			contact.setEmailid(user.getEmail());
-			contact.setMessage("Thank You JobSeeker for your Registration in CareerFest");
-			Boolean isEmailSent = SendRegisterationMail.sendRegisterationEmail(contact);
-			
-			System.out.println(isEmailSent);
-	    	
-	    	
-	    }
-		  
-	    public void sendEmployerRegisterationMail(Contact contact ,Employer emp) {
-	    	
-	    	contact.setName(emp.geteFullname());
-			contact.setEmailid(emp.geteEmail());
-			contact.setMessage("Thank You Employer for your Registration in CareerFest");
-			Boolean isEmailSent = SendRegisterationMail.sendRegisterationEmail(contact);
-			
-			System.out.println(isEmailSent);
-	    	
-	    	
-	    }
-		 
 	@RequestMapping(value="/jobseekerlanding",method= RequestMethod.GET)
 	public ModelAndView saveJobseekarLanding(ModelAndView modelAndView,JobSeekerLanding jobSeekerLanding,BindingResult result){
 		List<Role> rolelist = roleService.findAll();
 		modelAndView.addObject("roleList",rolelist);
+		
+		List<City> locationlist = locationService.findAll();
+		modelAndView.addObject("locationlist",locationlist );
+		
+		List<Company> companylist = companyService.findAll();
+		modelAndView.addObject("companylist",companylist );
+		
+		List<College> collegelist = collegeService.findAll();
+		modelAndView.addObject("collegelist",collegelist);
+		
 		modelAndView.addObject("joblanding",jobSeekerLanding);
 		modelAndView.setViewName("jobseekerLanding");
 		return modelAndView;

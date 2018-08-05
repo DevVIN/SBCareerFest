@@ -1,5 +1,7 @@
 package com.careerfest.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +14,7 @@ public class CompanyService {
 	@Autowired
 	private CompanyRepository companyrepository;
 
-	public Iterable<Company> findAll(){
+	public List<Company> findAll(){
 		return companyrepository.findAll();
 		
 	}

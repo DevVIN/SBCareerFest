@@ -36,36 +36,34 @@
 			
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-						    <form:errors path="fullname" class="error"></form:errors>	
-						    <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Full Name">
-                        </div>
+							<form:errors path="fullname" class="error"></form:errors>	
+							<input type="text" class="form-control" id="fullname" name="fullname" placeholder="Full Name">
+						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-						    <div id="alreadyRegisteredMessage" class="error"><%=StringUtils.isEmpty(alreadyRegisteredMessage)!=true?alreadyRegisteredMessage:""%></div>
-						    <form:errors path="email" class="error"></form:errors>
-						    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+							<div id="alreadyRegisteredMessage" class="error"><%=StringUtils.isEmpty(alreadyRegisteredMessage)!=true?alreadyRegisteredMessage:""%></div>
+							<form:errors path="email" class="error"></form:errors>
+							<input type="email" class="form-control" id="email" name="email" placeholder="Email">
 						</div>
 					</div>
 					<div class="clearfix"></div>
 					<div class="form-group row"> 
-						<div class="col-xs-12 col-sm-12">                            
-						    <form:errors path="rpassword" class="error"></form:errors>	   
+						<div class="col-xs-12 col-sm-12">
+							<form:errors path="rpassword" class="error"></form:errors>	   
 							<input type="password" class="form-control" id="rpassword"  name="rpassword" placeholder="Password">
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-						     <form:errors path="mobileno" class="error"></form:errors>	
-						     <input type="text" class="form-control" id="mobileno" name="mobileno" placeholder="Mobile"  minlength="10" maxlength="10">
+							<form:errors path="mobileno" class="error"></form:errors>	
+							<input type="text" class="form-control" id="mobileno" name="mobileno" placeholder="Mobile"  minlength="10" maxlength="10">
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-						    <form:errors path="location" class="error"></form:errors>	
-						    
-						    
-						     <form:select path="location" id="Location" name="Location" class="selectpicker form-control" title="Location" data-placeholder="Location">
+							<form:errors path="location" class="error"></form:errors>	
+							<form:select path="location" id="Location" name="Location" class="selectpicker form-control" title="Location" data-placeholder="Location">
 								<option></option>
 								<form:options items="${citylist}" itemValue="cityname" itemLabel="cityname" />
 							</form:select> 
@@ -73,8 +71,8 @@
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-						    <form:errors path="experience" class="error"></form:errors>
-						    <select id="Experience"  name="Experience" class="selectpicker form-control" title="Experience" data-placeholder="Experience">
+							<form:errors path="experience" class="error"></form:errors>
+							<select id="Experience"  name="Experience" class="selectpicker form-control" title="Experience" data-placeholder="Experience">
 								<option></option>
 								<option value="0/Fresher">0/Fresher</option>
 								<option value="1">1</option>
@@ -86,8 +84,8 @@
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-						    <form:errors path="skills" class="error"></form:errors>	
-						    <form:select path="skills" class="selectpicker form-control" name="skills" id="skills" title="Key Skills" data-placeholder="Key Skills" multiple="multiple">
+							<form:errors path="skills" class="error"></form:errors>	
+							<form:select path="skills" class="selectpicker form-control" name="skills" id="skills" title="Key Skills" data-placeholder="Key Skills" multiple="multiple">
 								<option></option>
 								<form:options items="${skillslist}" itemValue="skillname" itemLabel="skillname" />
 							</form:select>
@@ -95,8 +93,8 @@
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-						    <form:errors path="industry" class="error"></form:errors>	
-						    <form:select  path="industry" class="selectpicker form-control" name="Industry" id="Industry" title="Industry" data-placeholder="Industry">
+							<form:errors path="industry" class="error"></form:errors>	
+							<form:select  path="industry" class="selectpicker form-control" name="Industry" id="Industry" title="Industry" data-placeholder="Industry">
 								<option></option>
 								<form:options items="${industrylist}" itemValue="industryname" itemLabel="industryname" />
 							</form:select>
@@ -104,8 +102,8 @@
 					</div>
 					<div class="form-group row">
 						<div class="col-xs-12 col-sm-12">
-						    <form:errors path="functional" class="error"></form:errors>
-						    <form:select path="functional" class="selectpicker form-control" name="Functional" id="Functional" title="Function" data-placeholder="Function">
+							<form:errors path="functional" class="error"></form:errors>
+							<form:select path="functional" class="selectpicker form-control" name="Functional" id="Functional" title="Function" data-placeholder="Function">
 								<option></option>
 								<form:options items="${functionallist}" itemValue="functionalname" itemLabel="functionalname" />
 							</form:select>
@@ -115,9 +113,9 @@
 					<div class="form-group row">
 						<label class="col-sm-4 col-form-label" for="mobile">Upload Resume:</label>
 						<div class="col-sm-8">
-						    <div id="uploadResumeFail" class="error"><%=StringUtils.isEmpty(uploadResumeFail)!=true?uploadResumeFail:""%></div>
-						     <form:errors path="resume" class="error"></form:errors>
-							 <input type="file" id="Resumefile" name="Resumefile" class="form-control">
+							<div id="uploadResumeFail" class="error"><%=StringUtils.isEmpty(uploadResumeFail)!=true?uploadResumeFail:""%></div>
+							<form:errors path="resume" class="error"></form:errors>
+							<input type="file" id="Resumefile" name="Resumefile" class="form-control">
 						</div>
 					</div>
 					<div class="form-group row">

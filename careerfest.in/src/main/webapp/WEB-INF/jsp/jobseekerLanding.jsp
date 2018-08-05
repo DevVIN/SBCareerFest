@@ -45,28 +45,18 @@
 							</select>
 						</div>
 						<div class="col-xs-12 col-sm-6">
-							<select class="selectpicker preferredjob form-control"  title="Preferred Job Location" data-placeholder="Preferred Job Location" multiple="multiple">
+							<form:errors path="preferredlocation" class="error"></form:errors>
+							<form:select path="preferredlocation" name="preferredlocation" class="selectpicker preferredjob form-control"  title="Preferred Job Location" data-placeholder="Preferred Job Location" multiple="multiple">
 								<option></option>
-								<option value="Mumbai">Mumbai</option>
-								<option value="Pune">Pune</option>
-								<option value="Delhi">Delhi</option>
-								<option value="Banglore">Banglore</option>
-								<option value="Hyderabad">Hyderabad</option>
-								<option value="Kolkata">Kolkata</option>
-							</select>
+								<form:options items="${locationlist}" itemValue="cityname" itemLabel="cityname" />
+							</form:select>
 						</div>
 						<div class="col-xs-12 col-sm-6">
+							<form:errors path="role" class="error"></form:errors>	
 							<form:select path="role" name="role" class="selectpicker form-control"  title="Role" data-placeholder="Role">
-								
-								 <option></option>
-							<!-- <option value="Java Developer">Java Developer</option>
-								<option value="UI Developer">UI Developer</option>
-								<option value="Dot Net Developer">Dot Net Developer</option>
-								<option value="Software Engineer">Software Engineer</option>
-								<option value="Team Lead">Team Lead</option>
-								<option value="Trainee">Trainee</option> -->
+								<option></option>
 								<form:options items="${roleList}" itemValue="rolename" itemLabel="rolename" />
-							</form:select>>
+							</form:select>
 						</div>
 						<div class="col-xs-12 col-sm-6">
 							<input type="text" id="dateofbirth" class="datepickerfromto form-control" placeholder="Date of Birth"/>
@@ -115,16 +105,11 @@
 							</select>
 						</div>
 						<div class="col-xs-12 col-sm-6">
-							<select class="selectpicker form-control" title="University/College" data-placeholder="University/College">
+							<form:errors path="college" class="error"></form:errors>	
+							<form:select path="college" name="college" class="selectpicker form-control" title="University/College" data-placeholder="University/College">
 								<option></option>
-								<option value="Fergusson College, Pune">Fergusson College, Pune</option>
-								<option value="Symbiosis Institute of Media and Communication, Pune">Symbiosis Institute of Media and Communication, Pune</option>
-								<option value="Government College of Engineering (GCE), Pune">Government College of Engineering (GCE), Pune</option>
-								<option value="Indian Institute of Modern Management (IIMM), Pune">Indian Institute of Modern Management (IIMM), Pune</option>
-								<option value="Indian Institute of Technology (IIT), Mumbai">Indian Institute of Technology (IIT), Mumbai</option>
-								<option value="Dr Babasaheb Ambedkar Marathwada University, Aurangabad">Dr Babasaheb Ambedkar Marathwada University, Aurangabad</option>
-								<option value="Dr Babasaheb Ambedkar Technological University, Lonere">Dr Babasaheb Ambedkar Technological University, Lonere</option>
-							</select>
+								<form:options items="${collegelist}" itemValue="collegename" itemLabel="collegename" />
+							</form:select>
 						</div>
 						<div class="col-xs-12 col-sm-6">
 							<div class="row checkrow">
@@ -165,15 +150,11 @@
 							<input type="text" class="form-control" id="designation" name="designation" placeholder="Designation">
 						</div>
 						<div class="col-xs-12 col-sm-6">
-							<select class="selectpicker form-control" title="Company" data-placeholder="Company">
+							<form:errors path="company" class="error"></form:errors>	
+							<form:select path="company" name="company" class="selectpicker form-control" title="Company" data-placeholder="Company">
 								<option></option>
-								<option value="Infosys">Infosys</option>
-								<option value="Tech Mahendra">Tech Mahendra</option>
-								<option value="Isobar commerce">Isobar commerce</option>
-								<option value="Swiftwin">Swiftwin</option>
-								<option value="IBM">IBM</option>
-								<option value="Accenture">Accenture</option>
-							</select>
+								<form:options items="${companylist}" itemValue="companyname" itemLabel="companyname" />
+							</form:select>
 						</div>
 						<div class="col-xs-12 col-sm-6">
 							<input type="text" id="datepickerfrom" class="datepickerfromto form-control" placeholder="From"/>
