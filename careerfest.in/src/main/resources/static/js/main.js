@@ -42,132 +42,134 @@ $(document).ready(function () {
 	$('.selectpicker.preferredjob').select2({
 		 maximumSelectionLength: 3
 	});
-    $( "#datepickerfrom, #datepickerto" ).datepicker({
-        changeMonth: true,
-        changeYear: true,
-        showButtonPanel: true,
-        dateFormat: 'MM yy',
-        onClose: function(dateText, inst) { 
-            $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
-        }        
-    });
-    $( "#dateofbirth" ).datepicker({
-        changeMonth: true,
-        changeYear: true,
-        yearRange: "1930:2000",
-        beforeShow: function(input, inst) {
-            $('#ui-datepicker-div').addClass('dateofbirth');
-        }
-    });
-    bind_shrink_header();
-    $("#proImg").change(function(){
-        readURL(this);
-    });
-    $('.button--trigger').on('click', function(e) {
-        $('.button--disapear').show();
-        $('.button--disapear').removeClass('out').addClass('active');
-    });
-    $('.button--disapear').on('click', function(e) {
-        $(this).removeClass('active').addClass('out');
-            setTimeout(function(){
-            $('.button--disapear').hide() 
-        }, 300); //Same time as animation
-    });
-   
-    var dialog, form,
-    allFields = $( [] ).add( name ).add( loginEmail ).add( loginPassword );
+	$( ".datepickerfromto" ).datepicker({
+		changeMonth: true,
+		changeYear: true,
+		showButtonPanel: false,
+		dateFormat: 'MM yy',
+		onClose: function(dateText, inst) { 
+			$(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
+		}
+	});
+	$( "#dateofbirth" ).datepicker({
+		changeMonth: true,
+		changeYear: true,
+		showButtonPanel: false,
+		dateFormat: 'dd-MM yy',
+		yearRange: "1930:2000"
+	});
+	
+	
+	bind_shrink_header();
+	$("#proImg").change(function(){
+		readURL(this);
+	});
+	
+	$('.button--trigger').on('click', function(e) {
+		$('.button--disapear').show();
+		$('.button--disapear').removeClass('out').addClass('active');
+	});
+	
+	$('.button--disapear').on('click', function(e) {
+		$(this).removeClass('active').addClass('out');
+		setTimeout(function(){
+			$('.button--disapear').hide() 
+		}, 300); //Same time as animation
+	});
 
-    dialog = $( "#login-form" ).dialog({
-        autoOpen: false,
-        height: 350,
-        width: 500,
-        modal: true,
-        dialogClass: 'loginDialog',
-        close: function() {
-          //form[ 0 ].reset();
-          allFields.removeClass( "ui-state-error" );
-        }
-    });
+	var dialog, form,
+	allFields = $( [] ).add( name ).add( loginEmail ).add( loginPassword );
 
-    form = dialog.find( ".login-form form" ).on( "submit", function( event ) {
-        event.preventDefault();
-    });
+	dialog = $( "#login-form" ).dialog({
+		autoOpen: false,
+		height: 350,
+		width: 500,
+		modal: true,
+		dialogClass: 'loginDialog',
+		close: function() {
+			//form[ 0 ].reset();
+			allFields.removeClass( "ui-state-error" );
+		}
+	});
 
-    $( ".jobseekerLogin, .employerLogin " ).on( "click", function() {
-    	$('#errorMessage').empty();
-        dialog.dialog( "open" );
-    });
-    
-    $('#loginsubmit').on("click",function(){
-    	var data={
-    			loginEmail: $('#loginEmail').val(),
-    			loginPassword: $('#loginPassword').val()
-    	}
-    	var host = window.location.href;
-    	$('#errorMessage').empty();
-    	$.ajax({
-            url: host+'login',
-            type: 'POST',    
-            contentType: "application/json; charset=utf-8",
-            data: JSON.stringify(data),
-            success: function (data) {
-            	if(data.validated){
-            		dialog.dialog("close");
-            		window.location.href = host+'jobseekardashboard';
-            	}else{
-            		/* $.each(data.errorMessages,function(key,value){
-           	            $('input[name='+key+']').before('<span style="float: left; color: red;">'+value+'</span>');
-                       });*/
-            		$('#errorMessage').append('<span style="float: left; color: red;">'+data.emessage+'</span>');
-            	}
-                
-            },
-            error: function () {
-            	$('#errorMessage').append('<span style="float: left; color: red;">*Something went wrong.Please try after some time.</span>');
-            }
-        });
-    });
-    
-    $('#sendEmail').on("click",function(){
-    	var data={
-    				name: $('#name').val(),
-    				emailid: $('#emailid').val(),
-	    			message: $('#message').val()
-    	     };
-    	$('span').empty();
-    	var host = window.location.href;
-    	$.ajax({
-    		url: host+'contact',
-    		type: 'POST',    
-            contentType: "application/json; charset=utf-8",
-            data: JSON.stringify(data),
-            success: function (data) {
-            	if(data.isErrorAvailable){
-            		$.each(data.error,function(key,value){
-           	            $('input[name='+key+']').before('<span class="error">'+value+'</span>');
-                       });
-            	}else{
-            		//$('input[type=text], textarea').val("");
-            		$('#emailform')[0].reset();
-        			if(data.success != null)
-        				$('#emailsentsuccessfully').append('<span class="emailSend1 sendsuc">'+data.success+'</span><br>').append('<span class="emailSend2 sendsuc">'+data.success2+'</span>');
-        			else
-        				$('#emailsentsuccessfully').append('<span class="error">'+data.service+'</span>')
-            	}
-                
-            },
-            error: function () {
-            	$('#emailsentsuccessfully').append('<span class="error">*Something went wrong.Please try after some time.</span>');
-            }
-        });
-    });
+	form = dialog.find( ".login-form form" ).on( "submit", function( event ) {
+		event.preventDefault();
+	});
 
-    $( ".test-popup-link" ).dialog({
-        autoOpen: true,
-        height: 570,
-        width: 750,
-        modal: true
-    });
+	$( ".jobseekerLogin, .employerLogin " ).on( "click", function() {
+		$('#errorMessage').empty();
+		dialog.dialog( "open" );
+	});
+
+	$('#loginsubmit').on("click",function(){
+		var data={
+			loginEmail: $('#loginEmail').val(),
+			loginPassword: $('#loginPassword').val()
+		}
+		var host = window.location.href;
+		$('#errorMessage').empty();
+		$.ajax({
+			url: host+'login',
+			type: 'POST',    
+			contentType: "application/json; charset=utf-8",
+			data: JSON.stringify(data),
+			success: function (data) {
+				if(data.validated){
+					dialog.dialog("close");
+					window.location.href = host+'jobseekardashboard';
+				}else{
+					/* $.each(data.errorMessages,function(key,value){
+						$('input[name='+key+']').before('<span style="float: left; color: red;">'+value+'</span>');
+					});*/
+					$('#errorMessage').append('<span style="float: left; color: red;">'+data.emessage+'</span>');
+				}
+			},
+			error: function () {
+				$('#errorMessage').append('<span style="float: left; color: red;">*Something went wrong.Please try after some time.</span>');
+			}
+		});
+	});
+
+	$('#sendEmail').on("click",function(){
+		var data={
+			name: $('#name').val(),
+			emailid: $('#emailid').val(),
+			message: $('#message').val()
+		};
+		
+		$('span').empty();
+		var host = window.location.href;
+		$.ajax({
+			url: host+'contact',
+			type: 'POST',    
+			contentType: "application/json; charset=utf-8",
+			data: JSON.stringify(data),
+			success: function (data) {
+				if(data.isErrorAvailable){
+					$.each(data.error,function(key,value){
+						$('input[name='+key+']').before('<span class="error">'+value+'</span>');
+					});
+				}else{
+					//$('input[type=text], textarea').val("");
+					$('#emailform')[0].reset();
+					if(data.success != null)
+						$('#emailsentsuccessfully').append('<span class="emailSend1 sendsuc">'+data.success+'</span><br>').append('<span class="emailSend2 sendsuc">'+data.success2+'</span>');
+					else
+						$('#emailsentsuccessfully').append('<span class="error">'+data.service+'</span>')
+				}
+			},
+			error: function () {
+				$('#emailsentsuccessfully').append('<span class="error">*Something went wrong.Please try after some time.</span>');
+			}
+		});
+	});
+
+	$( ".test-popup-link" ).dialog({
+		autoOpen: true,
+		height: 570,
+		width: 750,
+		modal: true
+	});
 
     var isMobile = false;
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {

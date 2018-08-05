@@ -78,15 +78,13 @@ fieldset[disabled] .btn-default:hover {
 		}
 	}
 }
+.select2-container:focus, .select2-container span:focus {
+	outline: none;
+}
+.select2-container--open .select2-dropdown {
+	top: -10px;
+}
 
-.ui-datepicker.dateofbirth {
-	.ui-datepicker-calendar {
-		display: block;
-	}
-}
-.ui-datepicker-calendar {
-	display: none;
-}
 .ui-datepicker {
 	width: 20em;
 }

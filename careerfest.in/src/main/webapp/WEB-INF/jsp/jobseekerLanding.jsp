@@ -59,7 +59,7 @@
 							</form:select>
 						</div>
 						<div class="col-xs-12 col-sm-6">
-							<input type="text" id="dateofbirth" class="datepickerfromto form-control" placeholder="Date of Birth"/>
+							<input type="text" id="dateofbirth" class="form-control" placeholder="Date of Birth"/>
 						</div>
 					</div>
 					<div class="clearfix"></div>
@@ -127,14 +127,7 @@
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-6">
-							<select class="selectpicker form-control"  title="Passing Year" data-placeholder="Passing Year">
-								<option></option>
-								<option  value="2018">2018</option>
-								<option value="2017">2017</option>
-								<option value="2016">2016</option>
-								<option value="2015">2015</option>
-								<option value="2014">2014</option>
-							</select>
+							<input type="text" class="datepickerfromto form-control" placeholder="Passing Year"/>
 						</div>
 					</div>
 				</div>

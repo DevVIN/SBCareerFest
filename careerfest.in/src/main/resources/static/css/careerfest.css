@@ -54,11 +54,11 @@ fieldset[disabled] .btn-default:hover {
     color: #555;
     line-height: inherit; }
 
-.ui-datepicker.dateofbirth .ui-datepicker-calendar {
-  display: block; }
+.select2-container:focus, .select2-container span:focus {
+  outline: none; }
 
-.ui-datepicker-calendar {
-  display: none; }
+.select2-container--open .select2-dropdown {
+  top: -10px; }
 
 .ui-datepicker {
   width: 20em; }
