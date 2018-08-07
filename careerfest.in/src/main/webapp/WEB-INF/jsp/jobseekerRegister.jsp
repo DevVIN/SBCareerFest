@@ -119,9 +119,12 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<div class="col-xs-12 col-sm-10 col-sm-offset-1">  
-							<input type="checkbox" class="form-check-input" id="terms">
-							<div class="fright">I have read and agree to Careerfest's  <a class="frm_lnk" linkindex="1" tabindex="13" id="privacy_id" href="#" target="_blank">Terms and Conditions.</a></div>
+						<div class="col-xs-12 col-sm-12">  
+							<label class="checkcontainer">
+								I have read and agree to Careerfest's <a class="frm_lnk" linkindex="1" tabindex="13" id="privacy_id" href="#" target="_blank">Terms and Conditions.</a>
+								<input type="checkbox" class="form-check-input form-control" id="terms">
+								<span class="checkmark"></span>
+							</label>
 						</div>
 					</div>
 					<div class="clearfix"></div>
