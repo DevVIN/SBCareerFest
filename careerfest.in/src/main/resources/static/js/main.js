@@ -92,9 +92,133 @@ $(document).ready(function () {
 		}
 	});
 
+
 	form = dialog.find( ".login-form form" ).on( "submit", function( event ) {
 		event.preventDefault();
 	});
+
+    $( ".jobseekerLogin, .employerLogin " ).on( "click", function() {
+    	$('#errorMessage').empty();
+        dialog.dialog( "open" );
+    });
+    
+    $('#loginsubmit').on("click",function(){
+    	var data={
+    			loginEmail: $('#loginEmail').val(),
+    			loginPassword: $('#loginPassword').val()
+    	}
+    	var host = window.location.href;
+    	$('#errorMessage').empty();
+    	$.ajax({
+            url: host+'login',
+            type: 'POST',    
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(data),
+            success: function (data) {
+            	if(data.validated){
+            		dialog.dialog("close");
+            		window.location.href = host+'jobseekardashboard';
+            	}else{
+            		/* $.each(data.errorMessages,function(key,value){
+           	            $('input[name='+key+']').before('<span style="float: left; color: red;">'+value+'</span>');
+                       });*/
+            		$('#errorMessage').append('<span style="float: left; color: red;">'+data.emessage+'</span>');
+            	}
+                
+            },
+            error: function () {
+            	$('#errorMessage').append('<span style="float: left; color: red;">*Something went wrong.Please try after some time.</span>');
+            }
+        });
+    });
+    
+    $('#sendEmail').on("click",function(){
+    	var data={
+    				name: $('#name').val(),
+    				emailid: $('#emailid').val(),
+	    			message: $('#message').val()
+    	     };
+    	$('span').empty();
+    	var host = window.location.href;
+    	$.ajax({
+    		url: host+'contact',
+    		type: 'POST',    
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(data),
+            success: function (data) {
+            	if(data.isErrorAvailable){
+            		$.each(data.error,function(key,value){
+           	            $('input[name='+key+']').before('<span class="error">'+value+'</span>');
+                       });
+            	}else{
+            		//$('input[type=text], textarea').val("");
+            		$('#emailform')[0].reset();
+        			if(data.success != null)
+        				$('#emailsentsuccessfully').append('<span class="emailSend1 sendsuc">'+data.success+'</span><br>').append('<span class="emailSend2 sendsuc">'+data.success2+'</span>');
+        			else
+        				$('#emailsentsuccessfully').append('<span class="error">'+data.service+'</span>')
+            	}
+                
+            },
+            error: function () {
+            	$('#emailsentsuccessfully').append('<span class="error">*Something went wrong.Please try after some time.</span>');
+            }
+        });
+    });
+    
+    $("#courseName").change(function() {
+        var coursename = $(this).val();
+        $('#specilizationIn').empty();
+        $.ajax({
+            async: true,
+            type: 'POST',
+            url: 'http://localhost:8080/fetchspecilization',
+            data: {
+            	coursename : coursename,
+            },
+            error: function() { 
+                alert("Error");
+            },
+            success: function(data) {
+            	/*$("#Functional").html('');
+            	$("#select2-Functional-container").html('Function');*/
+            	$('<option>').appendTo('#specilizationIn');
+            	$.each( data, function(i) {
+            		/*$('#specilizationIn').appendTo('<option value='+data[i].specilizationID+'>'+data[i].specilizationIn+'</option>');*/
+                      	$('<option>').val(data[i].specilizationIn).text(data[i].specilizationIn).appendTo('#specilizationIn');
+
+            		}); 
+
+            	
+            }
+        });
+    });
+    
+   /* $("#courseName").change(function() {
+        var coursename = $(this).val();
+        $.ajax({
+            async: true,
+            type: 'POST',
+            url: '/fetchspecilization',
+            data: {
+            	coursename : coursename,
+            },
+            error: function() { 
+                alert("Error");
+            },
+            success: function(functional) {
+            	alert(functional);
+            	$("#Functional").html('');
+            	$("#select2-Functional-container").html('Function');
+            	$('<option>').appendTo('#Functional');
+            	$.each( functional, function(i) {
+                      	$('<option>').val(functional[i].functionalname).text(functional[i].functionalname).appendTo('#Functional');
+
+            		});           	
+            }
+        });
+    });*/
+
 
 	$( ".jobseekerLogin, .employerLogin " ).on( "click", function() {
 		$('#errorMessage').empty();

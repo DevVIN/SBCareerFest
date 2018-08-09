@@ -12,7 +12,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +27,7 @@ import com.careerfest.model.College;
 import com.careerfest.model.Company;
 import com.careerfest.model.Contact;
 import com.careerfest.model.Country;
+import com.careerfest.model.Course;
 import com.careerfest.model.Employer;
 import com.careerfest.model.Functional;
 import com.careerfest.model.Industry;
@@ -44,6 +44,7 @@ import com.careerfest.service.CountryService;
 import com.careerfest.service.EmpService;
 import com.careerfest.service.FunctionalService;
 import com.careerfest.service.IndustryService;
+import com.careerfest.service.JobSeekerLandingService;
 import com.careerfest.service.LocationService;
 import com.careerfest.service.RoleService;
 import com.careerfest.service.SkillsService;
@@ -70,19 +71,25 @@ public class RegisterController {
 	@Autowired
 	CountryService countryService;
 	@Autowired
-	StateService stateService;
-	@Autowired
-	CompanyService companyService;
+	StateService stateService;	
 	@Autowired
 	RoleService roleService;
+	@Autowired 
+	JobSeekerLandingService jobSeekerLandingService;
+	@Autowired
+	CompanyService companyService;
 	@Autowired
 	LocationService locationService;
 	@Autowired
 	CollegeService collegeService;
 	
+
+	
+
 	
 	private static String UPLOADED_FOLDER = "\\src\\main\\resources\\static\\cv\\";
 	private static String UPLOADED_IMAGE_FOLDER = "\\src\\main\\resources\\static\\images\\profile\\";
+	
 
 	@RequestMapping("/")
 	public ModelAndView welcome(ModelAndView modelAndView,Contact contact,BindingResult result,HttpSession session) {
@@ -109,7 +116,7 @@ public class RegisterController {
 	}
 	
 	@RequestMapping(value = "/jobseekerRegister", method = RequestMethod.POST)
-	protected ModelAndView processRegisteration(@Valid User user,BindingResult result,ModelAndView modelAndView ,@ModelAttribute UploadFile uploadfile ,@ModelAttribute Contact contact){		
+	protected ModelAndView processRegisteration(@Valid User user,BindingResult result,ModelAndView modelAndView ,@ModelAttribute UploadFile uploadfile ,@ModelAttribute Contact contact,JobSeekerLanding jobSeekerLanding){		
 		
 		User userExists = userService.findByEmail(user.getEmail());
 		Iterable<City> citylist = cityService.findAll();
@@ -155,7 +162,22 @@ public class RegisterController {
 				if(status == "success") {
 					userService.registerUser(user);
 					sendJobSeekerRegisterationMail(contact,user);
-					modelAndView.setViewName("jobseekerLanding");
+					modelAndView.addObject("UserEmail",user.getEmail());
+					List<Role> rolelist = roleService.findAll();
+					List<Course> courseList = jobSeekerLandingService.fetchAllCouses();
+					modelAndView.addObject("courses", courseList);
+					modelAndView.addObject("roleList",rolelist);
+					
+					List<City> locationlist = locationService.findAll();
+					modelAndView.addObject("locationlist",locationlist );
+					
+					List<Company> companylist = companyService.findAll();
+					modelAndView.addObject("companylist",companylist );
+					
+					List<College> collegelist = collegeService.findAll();
+					modelAndView.addObject("collegelist",collegelist);
+					modelAndView.addObject("Joblanding",jobSeekerLanding);
+			    	modelAndView.setViewName("jobseekerLanding");
 				} else {
 					result.reject("Resumefile");
 					modelAndView.setViewName("jobseekerRegister");
@@ -319,22 +341,13 @@ public class RegisterController {
 		System.out.println(isEmailSent);
 	}
 
-	@RequestMapping(value="/jobseekerlanding",method= RequestMethod.GET)
-	public ModelAndView saveJobseekarLanding(ModelAndView modelAndView,JobSeekerLanding jobSeekerLanding,BindingResult result){
-		List<Role> rolelist = roleService.findAll();
-		modelAndView.addObject("roleList",rolelist);
-		
-		List<City> locationlist = locationService.findAll();
-		modelAndView.addObject("locationlist",locationlist );
-		
-		List<Company> companylist = companyService.findAll();
-		modelAndView.addObject("companylist",companylist );
-		
-		List<College> collegelist = collegeService.findAll();
-		modelAndView.addObject("collegelist",collegelist);
-		
-		modelAndView.addObject("joblanding",jobSeekerLanding);
-		modelAndView.setViewName("jobseekerLanding");
-		return modelAndView;
-	}
+	
+	
+	/*@RequestMapping(value="/fetchspecilization",method = RequestMethod.POST)
+	public List<Specilization> getSpecilization(@RequestParam("ID") Integer courseId){
+		System.out.println("inside get specilization "+courseId);
+		return jobSeekerLandingService.fetchAllSpecilization(courseId);
+	}*/
+	
+	
 }
