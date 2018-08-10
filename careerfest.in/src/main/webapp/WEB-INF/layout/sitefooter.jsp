@@ -29,6 +29,37 @@
 			</div>
 		</fieldset>
 	</form>
+</div>
+
+<div id="emploginform" class="container" title="Welcome on Careerfest" style="display: none">
+	<form>
+		<fieldset>
+			<div class="form-group row">
+				<div class="col-xs-12 col-sm-10 col-sm-offset-1" id="errorMessage"></div>
+				<div class="col-xs-12 col-sm-10 col-sm-offset-1">
+					<input type="text" name="eloginEmail" id="eloginEmail" placeholder="Enter your Email ID" class="text ui-widget-content ui-corner-all">
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-xs-12 col-sm-10 col-sm-offset-1 left-align">
+					<input type="password" name="eloginPassword" id="eloginPassword" placeholder="Enter your Password" class="text ui-widget-content ui-corner-all">
+					<a target="_blank" href="#" class="linkbtnstyle">Forgot Password?</a>
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-xs-12 col-sm-6 col-sm-offset-3">
+					<button type="button" id="eloginsubmit" class="btn btn-default" value="Login">Login</button>
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-xs-12 col-sm-10 col-sm-offset-1">
+					<div>Not a member yet? <a href="/employerRegister" class="linkbtnstyle">Register Now</a></div>
+					<!-- Allow form submission with keyboard without duplicating the dialog button -->
+					<input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+				</div>
+			</div>
+		</fieldset>
+	</form>
 </div> 
 
 <div class="test-popup-link" style="display: none">

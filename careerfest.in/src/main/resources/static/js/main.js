@@ -80,7 +80,7 @@ $(document).ready(function () {
 	var dialog, form,
 	allFields = $( [] ).add( name ).add( loginEmail ).add( loginPassword );
 
-	dialog = $( "#login-form" ).dialog({
+	$( "#login-form" ).dialog({
 		autoOpen: false,
 		height: 350,
 		width: 500,
@@ -92,22 +92,38 @@ $(document).ready(function () {
 		}
 	});
 
-
-	form = dialog.find( ".login-form form" ).on( "submit", function( event ) {
+	$( "#emploginform" ).dialog({
+		autoOpen: false,
+		height: 350,
+		width: 500,
+		modal: true,
+		dialogClass: 'loginDialog',
+		close: function() {
+			//form[ 0 ].reset();
+			allFields.removeClass( "ui-state-error" );
+		}
+	});
+	
+	/*form = dialog.find( "#login-form form" ).on( "submit", function( event ) {
 		event.preventDefault();
+	});*/
+
+	$( ".jobseekerLogin " ).on( "click", function() {
+		$('#errorMessage').empty();
+		$('#login-form').dialog('open');
+	});
+	
+	$( ".employerLogin " ).on( "click", function() {
+		$('#errorMessage').empty();
+		$('#emploginform').dialog('open');
 	});
 
-    $( ".jobseekerLogin, .employerLogin " ).on( "click", function() {
-    	$('#errorMessage').empty();
-        dialog.dialog( "open" );
-    });
-    
-    $('#loginsubmit').on("click",function(){
-    	var data={
-    			loginEmail: $('#loginEmail').val(),
-    			loginPassword: $('#loginPassword').val()
-    	}
-    	var host = window.location.href;
+	$('#loginsubmit').on("click",function(){
+		var data={
+			loginEmail: $('#loginEmail').val(),
+			loginPassword: $('#loginPassword').val()
+		}
+	var host = window.location.href;
     	$('#errorMessage').empty();
     	$.ajax({
             url: host+'login',
@@ -218,12 +234,6 @@ $(document).ready(function () {
             }
         });
     });*/
-
-
-	$( ".jobseekerLogin, .employerLogin " ).on( "click", function() {
-		$('#errorMessage').empty();
-		dialog.dialog( "open" );
-	});
 
 	$('#loginsubmit').on("click",function(){
 		var data={
