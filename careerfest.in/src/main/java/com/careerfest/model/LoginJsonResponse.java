@@ -5,6 +5,7 @@ import java.util.Map;
 public class LoginJsonResponse {
 
 	private User user;
+	private Employer employer;	
 	private boolean validated;
 	private String emessage;
 	private Map<String, String> errorMessages;
@@ -32,6 +33,11 @@ public class LoginJsonResponse {
 	public void setEmessage(String emessage) {
 		this.emessage = emessage;
 	}
-	
+	public Employer getEmployer() {
+		return employer;
+	}
+	public void setEmployer(Employer employer) {
+		this.employer = employer;
+	}
 	
 }

@@ -147,6 +147,36 @@ $(document).ready(function () {
             }
         });
     });
+	
+	$('#eloginsubmit').on("click",function(){
+		var data={
+				employeeLoginEmail: $('#employeeLoginEmail').val(),
+				employeeLoginPassword: $('#employeeLoginPassword').val()
+		}
+	var host = window.location.href;
+    	$('#employeerErrorMessage').empty();
+    	$.ajax({
+            url: host+'employeerlogin',
+            type: 'POST',    
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(data),
+            success: function (data) {
+            	if(data.validated){
+            		//dialog.dialog("close");
+            		window.location.href = host+'employerDashboard';
+            	}else{
+            		/* $.each(data.errorMessages,function(key,value){
+           	            $('input[name='+key+']').before('<span style="float: left; color: red;">'+value+'</span>');
+                       });*/
+            		$('#employeerErrorMessage').append('<span style="float: left; color: red;">'+data.emessage+'</span>');
+            	}
+                
+            },
+            error: function () {
+            	$('#employeerErrorMessage').append('<span style="float: left; color: red;">*Something went wrong.Please try after some time.</span>');
+            }
+        });
+    });
     
     $('#sendEmail').on("click",function(){
     	var data={

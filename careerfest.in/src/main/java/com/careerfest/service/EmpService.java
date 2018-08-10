@@ -3,6 +3,7 @@ package com.careerfest.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.careerfest.model.EmployeeLoginModel;
 import com.careerfest.model.Employer;
 import com.careerfest.repository.EmpRepository;
 
@@ -23,5 +24,8 @@ public class EmpService {
 		return saveuser;
 				 
 	}
+    	public Employer findEmployeeByEmailPass(EmployeeLoginModel emodel){
+    		return emprepository.findByEEmailAndEPassword(emodel.getEmployeeLoginEmail(), emodel.getEmployeeLoginPassword());
+    	}
 	
 }

@@ -12,15 +12,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.careerfest.model.EmployeeLoginModel;
+import com.careerfest.model.Employer;
 import com.careerfest.model.LoginJsonResponse;
 import com.careerfest.model.LoginModel;
 import com.careerfest.model.User;
+import com.careerfest.service.EmpService;
 import com.careerfest.service.UserService;
 
 @RestController
 public class LoginController {
 	@Autowired
 	UserService userService;
+	@Autowired
+	EmpService empService;
 
 	@RequestMapping(value = "/login",method=RequestMethod.POST)
 	public LoginJsonResponse Login(@Valid @RequestBody LoginModel loginModel,BindingResult result,HttpSession session){
@@ -46,8 +51,34 @@ public class LoginController {
 			}
 			return loginJsonResponse;
 	}
+	
+	@RequestMapping(value = "/employeerlogin",method=RequestMethod.POST)
+	public LoginJsonResponse employeeLogin(@Valid @RequestBody EmployeeLoginModel employeeLoginModel,BindingResult result,HttpSession session){
+			System.out.println("inside login controller............."+employeeLoginModel.getEmployeeLoginEmail());
+			LoginJsonResponse loginJsonResponse = new LoginJsonResponse();
+			loginJsonResponse.setValidated(false);
+			if(result.hasErrors()){
+				System.out.println("error occure");
+				/*Map<String, String> errors = result.getFieldErrors().stream()
+			               .collect(
+			                     Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage)
+			                 );*/
+				loginJsonResponse.setEmessage("*Please Enter Valid Email Id And Password !");
+			}else{
+				Employer employerdb = empService.findEmployeeByEmailPass(employeeLoginModel);	
+				 if(employerdb != null){
+					 loginJsonResponse.setValidated(true);
+				 	 loginJsonResponse.setEmployer(employerdb);
+				 	 session.setAttribute("usersession", "true");				 	 
+				 }else{
+					 loginJsonResponse.setEmessage("!Email ID password does not exist in our database. Please Enter valid emilid");
+				 }	
+			}
+			return loginJsonResponse;
+	}
+	
 	@RequestMapping(value="/jobseekardashboard", method=RequestMethod.GET)
-	public ModelAndView employeeDashboard(ModelAndView modelAndView, HttpServletRequest request){		
+	public ModelAndView LoginDashboard(ModelAndView modelAndView, HttpServletRequest request){		
 		System.out.println("Inside Employer Dashboard...."+request.getSession().getAttribute("usersession"));
 		if((request.getSession().getAttribute("usersession")!= null)&& (request.getSession().getAttribute("usersession").equals("true"))){
 			modelAndView.setViewName("jobseekerDashboard");
@@ -57,5 +88,18 @@ public class LoginController {
 		}
 		return modelAndView;
 	}
+	
+	@RequestMapping(value="/employerDashboard", method=RequestMethod.GET)
+	public ModelAndView employeeDashboard(ModelAndView modelAndView, HttpServletRequest request){		
+		System.out.println("Inside Employer Dashboard...."+request.getSession().getAttribute("usersession"));
+		if((request.getSession().getAttribute("usersession")!= null)&& (request.getSession().getAttribute("usersession").equals("true"))){
+			modelAndView.setViewName("employerDashboard");
+			
+		}else{
+			modelAndView.setViewName("redirect:/");
+		}
+		return modelAndView;
+	}
+	
 	
 }
