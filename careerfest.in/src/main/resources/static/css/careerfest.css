@@ -23,8 +23,10 @@ fieldset[disabled] .btn-default:hover {
 .error {
   color: #ff0000;
   float: left;
+  width: 100%;
   display: block;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  text-align: left; }
 
 .emailsentsuccessfully {
   margin-bottom: 10px;
@@ -333,7 +335,7 @@ fieldset[disabled] .btn-default:hover {
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased; }
 
-button[type="submit"] {
+button[type="submit"], .btn.btn-default {
   color: #FFF;
   background-color: #1F618D;
   border: none;
@@ -343,7 +345,7 @@ button[type="submit"] {
   cursor: pointer;
   outline: 0;
   width: 100%; }
-  button[type="submit"]:hover, button[type="submit"]:active {
+  button[type="submit"]:hover, button[type="submit"]:active, .btn.btn-default:hover, .btn.btn-default:active {
     background-color: #5DADE2 !important;
     opacity: 1;
     color: #fff !important; }

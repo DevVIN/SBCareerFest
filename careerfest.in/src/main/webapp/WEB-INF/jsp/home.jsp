@@ -15,7 +15,7 @@
 						<div class="social float-right">
 							<div class="employerLogin inlineblock linkbtnstyle">Employer</div> | 
 							<div class="jobseekerLogin inlineblock linkbtnstyle">Jobseeker</div>
-							<div class="inlineblock linkbtnstyle">Logout</div>
+							<!-- <div class="inlineblock linkbtnstyle">Logout</div> -->
 						</div>
 					</div>
 				</div>

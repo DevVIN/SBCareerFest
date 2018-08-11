@@ -5,10 +5,10 @@
 		<div class="topbar container">
 			<a href="/" class="topLogo"><img alt="" src="images/logo.svg" data-img-size="(W)163px X (H)39px"></a>
 			<div class="fright">
-				Already Registered? 
+				<!-- Already Registered? 
 				<div class="JobseekerLogin inlineblock linkbtnstyle">Login</div> 
 				here
-				<div class="inlineblock linkbtnstyle">Logout</div>
+				<div class="inlineblock linkbtnstyle">Logout</div> -->
 			</div>
 		</div>
 	</nav>

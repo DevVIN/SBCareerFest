@@ -193,14 +193,13 @@
 						</div>
 						<div class="col-xs-12 col-sm-6">
 							<div class="row checkrow">
-								<div class="right col-sm-6">									
+								<div class="right col-sm-6">
 									<label class="checkcontainer">Current Employer
 										<input type="checkbox" checked="checked" class="form-control" name="ToDate" value="Present">
 										<span class="checkmark"></span>
 									</label>
 								</div>
 							</div>
-							<form:errors path="resumeTitle" class="error"></form:errors>
 						</div>
 						<div class="col-xs-12 col-sm-6">
 							<form:errors path="noticePeriod" class="error"></form:errors>

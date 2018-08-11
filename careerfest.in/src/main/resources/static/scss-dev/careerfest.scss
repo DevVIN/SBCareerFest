@@ -39,8 +39,10 @@ fieldset[disabled] .btn-default:hover {
 .error {
 	color: 	#ff0000;
 	float: left;
+	width: 100%;
 	display: block;
 	margin-bottom: 10px;
+	text-align: left;
 }
 .emailsentsuccessfully {
 	margin-bottom: 10px;
@@ -376,7 +378,7 @@ fieldset[disabled] .btn-default:hover {
 	font-weight: normal;
 	font-family: 'Open Sans', sans-serif; -webkit-font-smoothing: antialiased; font-smoothing: antialiased;
 }
-button[type="submit"] {
+button[type="submit"], .btn.btn-default {
 	color: #FFF;
 	background-color: #1F618D;
 	border: none;
