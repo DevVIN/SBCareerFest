@@ -16,7 +16,7 @@ public class SendEmail{
 		public static Boolean sendMail(Contact contact) {
 			final String user = "enquirycareerfest@gmail.com";
 			final String pass = "careerfest@123";
-			String sender_mail_id = "vinodkanpurne372@gmail.com";
+			String sender_mail_id = "mycareer@careerfest.in";
 			String subject = "Enquire By "+contact.getName();
 			String content_message = "Name   :   "+contact.getName()+"\n\nEmail   :   "+contact.getEmailid()+"\n\nMessage   :   "+contact.getMessage();
 			// 1st step) Get the session object

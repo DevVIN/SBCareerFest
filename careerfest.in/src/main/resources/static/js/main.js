@@ -132,7 +132,7 @@ $(document).ready(function () {
             data: JSON.stringify(data),
             success: function (data) {
             	if(data.validated){
-            		dialog.dialog("close");
+            		$('#login-form').dialog("close");
             		window.location.href = host+'jobseekardashboard';
             	}else{
             		/* $.each(data.errorMessages,function(key,value){
@@ -218,7 +218,7 @@ $(document).ready(function () {
         $.ajax({
             async: true,
             type: 'POST',
-            url: 'http://localhost:8080/fetchspecilization',
+            url: '/fetchspecilization',
             data: {
             	coursename : coursename,
             },
@@ -279,7 +279,7 @@ $(document).ready(function () {
 			data: JSON.stringify(data),
 			success: function (data) {
 				if(data.validated){
-					dialog.dialog("close");
+					$('#login-form').dialog("close");
 					window.location.href = host+'jobseekardashboard';
 				}else{
 					/* $.each(data.errorMessages,function(key,value){
